@@ -7,3 +7,5 @@ This is a traversable model of the galaxy based on the Star Wars themed API: SWA
 Thomas Ceci, Jake Geiser, Andre Goulbourne, Richie Marier, Nathan Opsal
 
 [Star Wars API](https://swapi.dev/)
+
+##Contact
