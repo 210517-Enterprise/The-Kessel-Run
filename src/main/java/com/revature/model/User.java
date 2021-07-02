@@ -1,16 +1,12 @@
 package com.revature.model;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -38,10 +34,6 @@ public class User {
 	
 	@NotEmpty
 	private String password;
-	
-	
-	@Email // checks for @ and .com
-	private String email;
 	
 	@Length(min=0)
 	private double bounty;
