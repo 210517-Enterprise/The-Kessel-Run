@@ -2,11 +2,13 @@ package com.revature.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -15,6 +17,13 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity 
+@Data @AllArgsConstructor @NoArgsConstructor
+@Table(name="users")
 public class User {
 
 	@Id
@@ -24,8 +33,7 @@ public class User {
 	
 	@Length(min=1) // hibernate specific
 	// @Size this is another you can use, less specific
-	private String firstName;
-	private String lastName;
+	private String name;//as in the character name
 	
 	@Length(min=5)
 	@NotBlank // this comes From java EE from javax.val...
@@ -36,7 +44,13 @@ public class User {
 	private String password;
 	
 	@Length(min=0)
-	private double bounty;
+	private double credits;//currency the user has at a given moment
+	
+	private String race;
+	
+	private String hair_color;
+	
+	private String eye_color;//An array of string options //idea
 	
 	// JsonBackReference is the annotation that correlates to this one
 	@JsonManagedReference("label1") // prevent an infinite loop when we create JSON for these bi-directional relationship objects
