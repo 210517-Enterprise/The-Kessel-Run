@@ -44,7 +44,7 @@ public class User {
 	private String password;
 	
 	@Length(min=0)
-	private double credits;//currency the user has at a given moment
+	private int credits;//currency the user has at a given moment
 	
 	private String race;
 	
