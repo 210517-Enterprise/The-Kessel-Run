@@ -13,10 +13,12 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Planet {
 	
 	@Id
@@ -29,6 +31,7 @@ public class Planet {
 	@NotNull
 	private String desc;//description
 	
+		
 	// JsonBackReference is the annotation that correlates to this one
 	@JsonManagedReference("label2") // prevent an infinite loop when we create JSON for these bi-directional relationship objects
 	@OneToMany(cascade= CascadeType.ALL, fetch=FetchType.EAGER) // easier to laod this data in the case that a session is closed but we need this data
