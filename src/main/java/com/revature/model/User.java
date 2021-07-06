@@ -1,5 +1,7 @@
 package com.revature.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,6 +53,10 @@ public class User {
 	private String hair_color;
 	
 	private String eye_color;//An array of string options //idea
+	
+	private Starship starship;
+	
+	private List<Integer> listCrewMateId;
 	
 	// JsonBackReference is the annotation that correlates to this one
 	@JsonManagedReference("label1") // prevent an infinite loop when we create JSON for these bi-directional relationship objects
