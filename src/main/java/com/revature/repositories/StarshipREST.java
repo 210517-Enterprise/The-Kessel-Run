@@ -10,6 +10,11 @@ import com.revature.model.StarshipList;
 
 public class StarshipREST {
 	
+	public static void main(String[] args) {
+		StarshipREST sr = new StarshipREST();
+		System.out.println(sr.getStarshipById(9).getId()+1);
+	}
+	
 	public List<Starship> getAllStarships() {
 		RestTemplate restTemplate = new RestTemplate();
 		

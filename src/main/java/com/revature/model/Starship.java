@@ -37,8 +37,8 @@ public class Starship {
 	private int id;
 	
 	public int getId() {
-		int id = this.getUrl().charAt(this.getUrl().length()-2);
-		return id;
+		return Character.getNumericValue(this.getUrl().charAt(this.getUrl().length()-2));
+		
 	}
 	
 	@Getter @Setter
