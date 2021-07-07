@@ -33,8 +33,12 @@ public class Starship {
 	@Getter @Setter
 	private String previous;
 	
-	@Getter @Setter
+	@Setter
 	private int id;
+	
+	public int getId() {
+		return this.getUrl().charAt(this.getUrl().length()-2);
+	}
 	
 	@Getter @Setter
 	private String name;
