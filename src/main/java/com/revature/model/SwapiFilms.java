@@ -1,10 +1,13 @@
 package com.revature.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 
 public class SwapiFilms extends SwapiData {
 	/*
@@ -20,12 +23,19 @@ public class SwapiFilms extends SwapiData {
 	private int id;
 
 //	Title is a searchable field via SWAPI
+	@Setter
 	private String title;
+	@Setter
 	private int episode_id;			//	This one field is returned as an integer, NOT a String
+	@Setter
 	private String director;
+	@Setter
 	private String producer;
+	@Setter
 	private String release_date;	// "YYYY-MM-DD"
+	@Setter
 	private String opening_crawl;	// This is a formatted String with line breaks
+	// unique setter
 	private String url;
 	
 	/*
@@ -33,23 +43,25 @@ public class SwapiFilms extends SwapiData {
 	 * And the created and edited dates are not necessary for
 	 * our project but they're here for completeness of all the returned "properties"
 	 */
-	
+	// unique setter
 	private String[] characters;	// This is the same resource as api/people
 	private int[] charactersId;
-	
+	// unique setter
 	private String[] planets;		// This is the same resource as api/planets
 	private int[] planetsId;
-	
+	// unique setter
 	private String[] starships;		// This is the same resource as api/starships
 	private int[] starshipsId;
-	
+	// unique setter
 	private String[] vehicles;		// This is the same resource as api/vehicles
 	private int[] vehiclesId;
-	
+	// unique setter
 	private String[] species;		// This is the same resource as api/species
 	private int[] speciesId;
 	
+	@Setter
 	private String created;
+	@Setter
 	private String edited;
 	
 	/*
@@ -75,14 +87,6 @@ public class SwapiFilms extends SwapiData {
      ...
      }
 	 */
-	
-	public int getId() {
-		return id;
-	}
-
-	public String[] getCharacters() {
-		return characters;
-	}
 
 	public void setCharacters(String[] characters) {
 		this.characters = characters;
@@ -94,24 +98,13 @@ public class SwapiFilms extends SwapiData {
 
 	}
 
-	public String[] getPlanets() {
-		return planets;
-	}
-
 	public void setPlanets(String[] planets) {
 		this.planets = planets;
-	}
-
-	public int[] getPlanetsId() {
-		return planetsId;
-	}
-
-	public void setPlanetsId(int[] planetsId) {
-		this.planetsId = planetsId;
-	}
-
-	public String[] getStarships() {
-		return starships;
+		if (planets != null && planets.length > 0) {
+			this.planetsId = parseIds(planets);
+		} else {
+			this.planetsId = null;
+		}
 	}
 
 	public void setStarships(String[] starships) {
@@ -123,10 +116,6 @@ public class SwapiFilms extends SwapiData {
 		}
 	}
 
-	public String[] getVehicles() {
-		return vehicles;
-	}
-
 	public void setVehicles(String[] vehicles) {
 		this.vehicles = vehicles;
 		if (vehicles != null && vehicles.length > 0) {
@@ -134,10 +123,6 @@ public class SwapiFilms extends SwapiData {
 		} else {
 			this.vehiclesId = null;
 		}
-	}
-
-	public String[] getSpecies() {
-		return species;
 	}
 
 	public void setSpecies(String[] species) {
@@ -149,93 +134,8 @@ public class SwapiFilms extends SwapiData {
 		}
 	}
 
-	public String getCreated() {
-		return created;
-	}
-
-	public void setCreated(String created) {
-		this.created = created;
-	}
-
-	public String getEdited() {
-		return edited;
-	}
-
-	public void setEdited(String edited) {
-		this.edited = edited;
-	}
-
-	public String getProducer() {
-		return producer;
-	}
-
-	public void setProducer(String producer) {
-		this.producer = producer;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public int getEpisode_id() {
-		return episode_id;
-	}
-
-	public void setEpisode_id(int episode_id) {
-		this.episode_id = episode_id;
-	}
-
-	public String getDirector() {
-		return director;
-	}
-
-	public void setDirector(String director) {
-		this.director = director;
-	}
-
-	public String getRelease_date() {
-		return release_date;
-	}
-
-	public void setRelease_date(String release_date) {
-		this.release_date = release_date;
-	}
-
-	public String getOpening_crawl() {
-		return opening_crawl;
-	}
-
-	public void setOpening_crawl(String opening_crawl) {
-		this.opening_crawl = opening_crawl;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
 	public void setUrl(String url) {
 		this.url = url;
 		this.id = parseId(url);
 	}
-
-	public int[] getCharactersId() {
-		return charactersId;
-	}
-
-	public int[] getStarshipsId() {
-		return starshipsId;
-	}
-
-	public int[] getVehiclesId() {
-		return vehiclesId;
-	}
-
-	public int[] getSpeciesId() {
-		return speciesId;
-	}
-
 }

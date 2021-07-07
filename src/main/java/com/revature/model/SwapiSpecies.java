@@ -1,10 +1,13 @@
 package com.revature.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 
 public class SwapiSpecies extends SwapiData {
 	/*
@@ -20,42 +23,45 @@ public class SwapiSpecies extends SwapiData {
 	// It is set when this.url is set
 	private int id;
 //	Name is a searchable field via SWAPI
+	@Setter
 	private String name;
-	
+	@Setter
 	private String classification;		// The classification of this species, such as "mammal" or "reptile".
-	
+	@Setter
 	private String designation;			// The designation of this species, such as "sentient".
-	
+	@Setter
 	private String average_height;		// The average height of this species in centimeters.
-	
+	@Setter
 	private String skin_colors;			// A comma-separated string of common skin colors for this species,
-										// 		"none" if this species does not typically have skin.
+	@Setter								// 		"none" if this species does not typically have skin.
 	private String hair_colors;			// A comma-separated string of common hair colors for this species,
-										// 		"none" if this species does not typically have hair.
+	@Setter								// 		"none" if this species does not typically have hair.
 	private String eye_colors;			// A comma-separated string of common eye colors for this species,
 										//		"none" if this species does not typically have eyes.
-	
+	@Setter
 	private String average_lifespan;	// The average lifespan of this species in years.
-	
+	@Setter
 	private String language;
-	
+	// unique setter
 	private String homeworld;			// This is the same resource as api/planets
-	private int homeworldId;
+	private int homeworldId;			// We might have to have a call to our static table to display a name rather than a number
 	
 	/*
 	 * I think the connecting data is interesting but not essential.
 	 * And the created and edited dates are not necessary for
 	 * our project but they're here for completeness of all the returned "properties"
 	 */
-	
+	// unique setter
 	private String[] people;			// This is the same resource as api/people
 	private int[] peopleId;
-	
+	// unique setter
 	private String[] films;				// This is the same resource as api/films
 	private int[] filmsId;
-	
+	@Setter
 	private String created;
+	@Setter
 	private String edited;
+	// unique setter
 	private String url;
 	
 	/*
@@ -91,86 +97,6 @@ public class SwapiSpecies extends SwapiData {
 	}
 	 */
 
-	public int getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getClassification() {
-		return classification;
-	}
-
-	public void setClassification(String classification) {
-		this.classification = classification;
-	}
-
-	public String getDesignation() {
-		return designation;
-	}
-
-	public void setDesignation(String designation) {
-		this.designation = designation;
-	}
-
-	public String getAverage_height() {
-		return average_height;
-	}
-
-	public void setAverage_height(String average_height) {
-		this.average_height = average_height;
-	}
-
-	public String getSkin_colors() {
-		return skin_colors;
-	}
-
-	public void setSkin_colors(String skin_colors) {
-		this.skin_colors = skin_colors;
-	}
-
-	public String getHair_colors() {
-		return hair_colors;
-	}
-
-	public void setHair_colors(String hair_colors) {
-		this.hair_colors = hair_colors;
-	}
-
-	public String getEye_colors() {
-		return eye_colors;
-	}
-
-	public void setEye_colors(String eye_colors) {
-		this.eye_colors = eye_colors;
-	}
-
-	public String getAverage_lifespan() {
-		return average_lifespan;
-	}
-
-	public void setAverage_lifespan(String average_lifespan) {
-		this.average_lifespan = average_lifespan;
-	}
-
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-	public String getHomeworld() {
-		return homeworld;
-	}
-
 	public void setHomeworld(String homeworld) {
 		this.homeworld = homeworld;
 		if (homeworld != null) {
@@ -178,10 +104,6 @@ public class SwapiSpecies extends SwapiData {
 		} else {
 			this.homeworldId = 0;
 		}
-	}
-
-	public String[] getPeople() {
-		return people;
 	}
 
 	public void setPeople(String[] people) {
@@ -193,10 +115,6 @@ public class SwapiSpecies extends SwapiData {
 		}
 	}
 
-	public String[] getFilms() {
-		return films;
-	}
-
 	public void setFilms(String[] films) {
 		this.films = films;
 		if (films != null && films.length > 0) {
@@ -206,41 +124,9 @@ public class SwapiSpecies extends SwapiData {
 		}
 	}
 
-	public String getCreated() {
-		return created;
-	}
-
-	public void setCreated(String created) {
-		this.created = created;
-	}
-
-	public String getEdited() {
-		return edited;
-	}
-
-	public void setEdited(String edited) {
-		this.edited = edited;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
 	public void setUrl(String url) {
 		this.url = url;
 		this.id = parseId(url);
-	}
-
-	public int getHomeworldId() {
-		return homeworldId;
-	}
-
-	public int[] getPeopleId() {
-		return peopleId;
-	}
-
-	public int[] getFilmsId() {
-		return filmsId;
 	}
 
 }

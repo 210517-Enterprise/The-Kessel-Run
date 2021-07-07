@@ -1,10 +1,13 @@
 package com.revature.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 
 public class SwapiStarships extends SwapiData {
 	/*
@@ -27,29 +30,44 @@ public class SwapiStarships extends SwapiData {
 	 */
 
 	// Name and model are searchable fields via SWAPI
+	@Setter
 	private String name;					// The common name, such as "Death Star".
+	@Setter
 	private String model;					// The official name, such as "DS-1 Orbital Battle Station".
+	@Setter
 	private String starship_class;			// The class of ship, such as "Deep Space Mobile Battlestation"
+	@Setter
 	private String manufacturer;
+	@Setter
 	private String cost_in_credits;			// Galactic Credits
+	@Setter
 	private String length;					// In meters
+	@Setter
 	private String crew;					// Number needed to operate
+	@Setter
 	private String passengers;				// Number of non-crew that it can hold
+	@Setter
 	private String max_atmosphering_speed;	// Undefined unit. Probably meters/second. "N/A" if incapable of atmospheric flight/travel
+	@Setter
 	private String hyperdrive_rating;		// "4.0" example value
+	@Setter
 	private String MGLT;					// The max number of Megalights this starship can travel in a standard hour.
 											// This unit is undefined in canon but might be comparable to the AU (Astronomical unit)
+	@Setter
 	private String cargo_capacity;			// In kilograms
+	@Setter
 	private String consumables;				// The max time that can provide consumables for its entire crew.
-	
+	// unique setter
 	private String[] films;
 	private int[] filmsId;
-	
+	// unique setter
 	private String[] pilots;				// This is the same resource as api/people
 	private int[] pilotsId;
-	
+	// unique setter
 	private String url;
+	@Setter
 	private String created;
+	@Setter
 	private String edited;
 	
 	/*
@@ -80,88 +98,6 @@ public class SwapiStarships extends SwapiData {
         }
 	 */
 	
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getModel() {
-		return model;
-	}
-	public void setModel(String model) {
-		this.model = model;
-	}
-	public String getStarship_class() {
-		return starship_class;
-	}
-	public void setStarship_class(String starship_class) {
-		this.starship_class = starship_class;
-	}
-	public String getManufacturer() {
-		return manufacturer;
-	}
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
-	public String getCost_in_credits() {
-		return cost_in_credits;
-	}
-	public void setCost_in_credits(String cost_in_credits) {
-		this.cost_in_credits = cost_in_credits;
-	}
-	public String getLength() {
-		return length;
-	}
-	public void setLength(String length) {
-		this.length = length;
-	}
-	public String getCrew() {
-		return crew;
-	}
-	public void setCrew(String crew) {
-		this.crew = crew;
-	}
-	public String getPassengers() {
-		return passengers;
-	}
-	public void setPassengers(String passengers) {
-		this.passengers = passengers;
-	}
-	public String getMax_atmosphering_speed() {
-		return max_atmosphering_speed;
-	}
-	public void setMax_atmosphering_speed(String max_atmosphering_speed) {
-		this.max_atmosphering_speed = max_atmosphering_speed;
-	}
-	public String getHyperdrive_rating() {
-		return hyperdrive_rating;
-	}
-	public void setHyperdrive_rating(String hyperdrive_rating) {
-		this.hyperdrive_rating = hyperdrive_rating;
-	}
-	public String getMGLT() {
-		return MGLT;
-	}
-	public void setMGLT(String mGLT) {
-		MGLT = mGLT;
-	}
-	public String getCargo_capacity() {
-		return cargo_capacity;
-	}
-	public void setCargo_capacity(String cargo_capacity) {
-		this.cargo_capacity = cargo_capacity;
-	}
-	public String getConsumables() {
-		return consumables;
-	}
-	public void setConsumables(String consumables) {
-		this.consumables = consumables;
-	}
-	public String[] getFilms() {
-		return films;
-	}
 	public void setFilms(String[] films) {
 		this.films = films;
 		if (films != null && films.length > 0) {
@@ -170,9 +106,7 @@ public class SwapiStarships extends SwapiData {
 			this.filmsId = null;
 		}
 	}
-	public String[] getPilots() {
-		return pilots;
-	}
+
 	public void setPilots(String[] pilots) {
 		this.pilots = pilots;
 		if (pilots != null && pilots.length > 0) {
@@ -181,33 +115,11 @@ public class SwapiStarships extends SwapiData {
 			this.pilotsId = null;
 		}
 	}
-	public String getUrl() {
-		return url;
-	}
+
 	public void setUrl(String url) {
 		this.url = url;
 		this.id = parseId(url);
 	}
-	public String getCreated() {
-		return created;
-	}
-	public void setCreated(String created) {
-		this.created = created;
-	}
-	public String getEdited() {
-		return edited;
-	}
-	public void setEdited(String edited) {
-		this.edited = edited;
-	}
-	public int getId() {
-		return id;
-	}
-	public int[] getFilmsId() {
-		return filmsId;
-	}
-	public int[] getPilotsId() {
-		return pilotsId;
-	}
+
 
 }

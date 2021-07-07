@@ -1,10 +1,13 @@
 package com.revature.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 
 public class SwapiPeople extends SwapiData {
 	/*
@@ -20,15 +23,23 @@ public class SwapiPeople extends SwapiData {
 	private int id;
 
 	// Name is the searchable field via SWAPI
+	@Setter
 	private String name;
+	@Setter
 	private String birth_year;	// Standard of BBY or ABY - Before the Battle of Yavin or After the Battle of Yavin.
+	@Setter
 	private String eye_color;	// Will be "unknown" if not known or "n/a" if the person does not have an eye.
+	@Setter
 	private String gender;		// Will be "Male", "Female" or "unknown", "n/a" if the person does not have a gender.
+	@Setter
 	private String hair_color;	// Will be "unknown" if not known or "n/a" if the person does not have hair.
+	@Setter
 	private String height;		// in centimeters
+	@Setter
 	private String mass;		// in kilograms
+	@Setter
 	private String skin_color;
-	
+	// unique setter
 	private String homeworld;	// We might have to have a call to our static table to display a name rather than
 	private int homeworldId;	// a url when displaying this field.
 
@@ -37,21 +48,24 @@ public class SwapiPeople extends SwapiData {
 	 * And the created and edited dates are not necessary for
 	 * our project but they're here for completeness
 	 */
-
+	
+	// unique setter
 	private String[] films;
 	private int[] filmsId;
-
+	// unique setter
 	private String[] species;	// We might have to have a call to our static table to display a name rather than 
 	private int[] speciesId;	// a url when displaying this field (this is, at most, one index long).
-
+	// unique setter
 	private String[] vehicles;
 	private int[] vehiclesId;
-
+	// unique setter
 	private String[] starships;
 	private int[] starshipsId;
-
+	// unique setter
 	private String url;
+	@Setter
 	private String created;
+	@Setter
 	private String edited;
 	
 	/* 
@@ -87,78 +101,6 @@ public class SwapiPeople extends SwapiData {
 }
 	*/
 
-	public int getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getBirth_year() {
-		return birth_year;
-	}
-
-	public void setBirth_year(String birth_year) {
-		this.birth_year = birth_year;
-	}
-
-	public String getEye_color() {
-		return eye_color;
-	}
-
-	public void setEye_color(String eye_color) {
-		this.eye_color = eye_color;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getHair_color() {
-		return hair_color;
-	}
-
-	public void setHair_color(String hair_color) {
-		this.hair_color = hair_color;
-	}
-
-	public String getHeight() {
-		return height;
-	}
-
-	public void setHeight(String height) {
-		this.height = height;
-	}
-
-	public String getMass() {
-		return mass;
-	}
-
-	public void setMass(String mass) {
-		this.mass = mass;
-	}
-
-	public String getSkin_color() {
-		return skin_color;
-	}
-
-	public void setSkin_color(String skin_color) {
-		this.skin_color = skin_color;
-	}
-
-	public String getHomeworld() {
-		return homeworld;
-	}
-
 	public void setHomeworld(String homeworld) {
 		this.homeworld = homeworld;
 		if (homeworld != null && !homeworld.isEmpty()) {
@@ -167,11 +109,7 @@ public class SwapiPeople extends SwapiData {
 			this.homeworldId = 0;
 		}
 	}
-
-	public String[] getFilms() {
-		return films;
-	}
-
+	
 	public void setFilms(String[] films) {
 		this.films = films;
 		if (films != null && films.length > 0) {
@@ -179,14 +117,6 @@ public class SwapiPeople extends SwapiData {
 		} else {
 			this.filmsId = null;
 		}
-	}
-
-	public int[] getFilmsId() {
-		return filmsId;
-	}
-
-	public String[] getSpecies() {
-		return species;
 	}
 
 	public void setSpecies(String[] species) {
@@ -198,14 +128,6 @@ public class SwapiPeople extends SwapiData {
 		}
 	}
 
-	public int[] getSpeciesId() {
-		return speciesId;
-	}
-
-	public String[] getVehicles() {
-		return vehicles;
-	}
-
 	public void setVehicles(String[] vehicles) {
 		this.vehicles = vehicles;
 		if (vehicles != null && vehicles.length > 0) {
@@ -213,10 +135,6 @@ public class SwapiPeople extends SwapiData {
 		} else {
 			this.vehiclesId = null;
 		}
-	}
-
-	public String[] getStarships() {
-		return starships;
 	}
 
 	public void setStarships(String[] starships) {
@@ -228,41 +146,9 @@ public class SwapiPeople extends SwapiData {
 		}
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
 	public void setUrl(String url) {
 		this.url = url;
 		this.id = parseId(url);
-	}
-
-	public String getCreated() {
-		return created;
-	}
-
-	public void setCreated(String created) {
-		this.created = created;
-	}
-
-	public String getEdited() {
-		return edited;
-	}
-
-	public void setEdited(String edited) {
-		this.edited = edited;
-	}
-
-	public int getHomeworldId() {
-		return homeworldId;
-	}
-
-	public int[] getVehiclesId() {
-		return vehiclesId;
-	}
-
-	public int[] getStarshipsId() {
-		return starshipsId;
 	}
 	
 }

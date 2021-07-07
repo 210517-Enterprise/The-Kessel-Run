@@ -1,10 +1,13 @@
 package com.revature.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 
 public class SwapiPlanets extends SwapiData {
 	/*
@@ -20,39 +23,42 @@ public class SwapiPlanets extends SwapiData {
 	private int id;
 	
 	// Name is a searchable field via SWAPI
+	@Setter
 	private String name;
-
+	@Setter
 	private String rotation_period;	// The number of standard hours it takes for this planet to complete a single
 									// rotation on its axis.
-	
+	@Setter
 	private String orbital_period;	// The number of standard days it takes for this planet
 									// to complete a single orbit of its local star.
-	
+	@Setter
 	private String diameter;		// The diameter of this planet in kilometers.
 	
-	
+	@Setter
 	private String climate;			// The climate of this planet. Comma separated if diverse.
 	
-	
+	@Setter
 	private String terrain;			// The terrain of this planet. Comma separated if diverse.
 
-	
+	@Setter
 	private String gravity;			// A number denoting the gravity of this planet, where "1" is 1 standard G.
 									// "2" is twice or 2 standard Gs. "0.5" is half or 0.5 standard Gs.
-	
+	@Setter
 	private String surface_water;	// The percentage of the planet surface that is naturally occurring water
 									// or bodies of water.
-	
+	@Setter
 	private String population;		// The average population of sentient beings inhabiting this planet.
-
+	// unique setter
 	private String[] residents;		// This is the same resource as api/people
 	private int[] residentsId;
-	
+	// unique setter
 	private String[] films;			// This is the same resource as api/films
 	private int[] filmsId;
-	
+	// unique setter
 	private String url;
+	@Setter
 	private String created;
+	@Setter
 	private String edited;
 	
 	/*
@@ -78,86 +84,6 @@ public class SwapiPlanets extends SwapiData {
 	    "url": "https://swapi.dev/api/planets/6/"
 	}
 	 */
-	
-	public int getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getRotation_period() {
-		return rotation_period;
-	}
-
-	public void setRotation_period(String rotation_period) {
-		this.rotation_period = rotation_period;
-	}
-
-	public String getOrbital_period() {
-		return orbital_period;
-	}
-
-	public void setOrbital_period(String orbital_period) {
-		this.orbital_period = orbital_period;
-	}
-
-	public String getDiameter() {
-		return diameter;
-	}
-
-	public void setDiameter(String diameter) {
-		this.diameter = diameter;
-	}
-
-	public String getClimate() {
-		return climate;
-	}
-
-	public void setClimate(String climate) {
-		this.climate = climate;
-	}
-
-	public String getGravity() {
-		return gravity;
-	}
-
-	public void setGravity(String gravity) {
-		this.gravity = gravity;
-	}
-
-	public String getTerrain() {
-		return terrain;
-	}
-
-	public void setTerrain(String terrain) {
-		this.terrain = terrain;
-	}
-
-	public String getSurface_water() {
-		return surface_water;
-	}
-
-	public void setSurface_water(String surface_water) {
-		this.surface_water = surface_water;
-	}
-
-	public String getPopulation() {
-		return population;
-	}
-
-	public void setPopulation(String population) {
-		this.population = population;
-	}
-
-	public String[] getResidents() {
-		return residents;
-	}
 
 	public void setResidents(String[] residents) {
 		this.residents = residents;
@@ -166,10 +92,6 @@ public class SwapiPlanets extends SwapiData {
 		} else {
 			this.residentsId = null;
 		}
-	}
-
-	public String[] getFilms() {
-		return films;
 	}
 
 	public void setFilms(String[] films) {
@@ -181,37 +103,9 @@ public class SwapiPlanets extends SwapiData {
 		}
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
 	public void setUrl(String url) {
 		this.url = url;
 		this.id = parseId(url);
-	}
-
-	public String getCreated() {
-		return created;
-	}
-
-	public void setCreated(String created) {
-		this.created = created;
-	}
-
-	public String getEdited() {
-		return edited;
-	}
-
-	public void setEdited(String edited) {
-		this.edited = edited;
-	}
-
-	public int[] getResidentsId() {
-		return residentsId;
-	}
-
-	public int[] getFilmsId() {
-		return filmsId;
 	}
 
 }
