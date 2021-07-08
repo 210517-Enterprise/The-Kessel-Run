@@ -1,6 +1,5 @@
 package com.revature.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -26,6 +26,15 @@ import lombok.NoArgsConstructor;
 
 @Entity 
 @Data @AllArgsConstructor @NoArgsConstructor
+@NamedNativeQuery(name = "User.updatePlanet", 
+query = "UPDATE users SET planet=? WHERE id=?", 
+resultClass=User.class)
+@NamedNativeQuery(name = "User.updateStarship", 
+query = "UPDATE users SET starship=? WHERE id=?", 
+resultClass=User.class)
+@NamedNativeQuery(name = "User.updateCredits", 
+query = "UPDATE users SET credits=? + ? WHERE id=?", 
+resultClass=User.class)
 @Table(name="users")
 public class User {
 

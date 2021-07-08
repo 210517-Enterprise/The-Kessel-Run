@@ -12,10 +12,11 @@ import javax.persistence.ManyToMany;
 
 import com.sun.istack.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
-@Data
+@Data @AllArgsConstructor
 public class Starship {
 
 	
