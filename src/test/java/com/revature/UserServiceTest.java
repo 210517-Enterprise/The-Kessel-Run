@@ -35,7 +35,7 @@ public class UserServiceTest {
 	
 	private Planet planet = new Planet(1, "Jupiter", "A huge ball of gas.", new HashSet<>());
 	
-	private Starship starship = new Starship(1, "Unimpa", 4.05, 479L, new HashSet<>());
+	private Starship starship = new Starship(1, "Unimpa", "super", 30);
 
 	@BeforeEach
 	public void setup() {
