@@ -10,11 +10,6 @@ import com.revature.model.StarshipList;
 
 public class StarshipREST {
 	
-	public static void main(String[] args) {
-		StarshipREST sr = new StarshipREST();
-		System.out.println(sr.getStarshipById(9).getId()+1);
-	}
-	
 	public List<Starship> getAllStarships() {
 		RestTemplate restTemplate = new RestTemplate();
 		
@@ -32,10 +27,10 @@ public class StarshipREST {
 	}
 		
 
-	public Starship getStarshipById(int id) {
+	public Starship getStarshipById(String name) {
 		RestTemplate restTemplate = new RestTemplate();
 		
-		Starship starship = restTemplate.getForObject("https://swapi.dev/api/starships/" + id, Starship.class);
+		Starship starship = restTemplate.getForObject("https://swapi.dev/api/starships/?search=" + name, Starship.class);
 		return starship;
 	}
 			

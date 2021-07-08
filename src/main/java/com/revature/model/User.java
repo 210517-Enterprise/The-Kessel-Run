@@ -48,6 +48,8 @@ public class User {
 	@Length(min=0)
 	private int credits;//currency the user has at a given moment
 	
+	private int bounty; //user's current bounty
+	
 	private String race;
 	
 	private String hair_color;
