@@ -54,8 +54,8 @@ public class Starship {
 	private String manufacturer;
 	
 	@Getter @Setter
-	private String cost_in_credits;
-	
+	private int cost_in_credits;
+
 	@Getter @Setter
 	private String length;
 	
@@ -94,5 +94,14 @@ public class Starship {
 	
 	@Getter @Setter
 	private String edited;
+
+	public Starship(int id, String name, String model, int cost_in_credits) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.model = model;
+		this.cost_in_credits = cost_in_credits;
+	}
+  
 	
 }
