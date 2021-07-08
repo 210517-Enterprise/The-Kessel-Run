@@ -664,7 +664,7 @@
         this.gameContainer.appendChild(this.canvas);
         this.ctx = this.canvas.getContext("2d");
         
-        this.ctx.fillStyle = "black";
+        this.ctx.fillStyle = "yellow";
         this.ctx.strokeStyle = "black";
         
         // navigation wrapper element
@@ -733,7 +733,12 @@
                 zIndex = '9999999';
             }
             this.appstore.className = 'ASTEROIDSYEAH';
-            this.appstore.innerHTML = '<a class="ASTEROIDSYEAH" target="_blank" href="http://itunes.apple.com/us/app/kick-ass-destroy-the-web/id436623109?mt=8&ls=1"><img src="http://erkie.github.com/appstore.png" class="ASTEROIDSYEAH" style="border: none" alt="Get the mobile version" /></a>';
+            this.appstore.innerHTML = '<a class="ASTEROIDSYEAH" target="_blank" href=""></a>';
+            /** this.appstore.innerHTML
+             * href="http://itunes.apple.com/us/app/kick-ass-destroy-the-web/id436623109?mt=8&ls=1"
+             * <img src="http://erkie.github.com/appstore.png" class="ASTEROIDSYEAH" style="border: none" alt="" />
+             * 
+             */
             this.appstore.getElementsByTagName('a')[0].onclick = function() {
                 this.parentNode.removeChild(this);
             }
