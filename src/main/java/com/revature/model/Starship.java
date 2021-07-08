@@ -55,7 +55,7 @@ public class Starship {
 	
 	@Getter @Setter
 	private int cost_in_credits;
-	
+
 	@Getter @Setter
 	private String length;
 	
@@ -102,7 +102,6 @@ public class Starship {
 		this.model = model;
 		this.cost_in_credits = cost_in_credits;
 	}
-  
   
 	
 }

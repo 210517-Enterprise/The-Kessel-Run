@@ -11,16 +11,15 @@ Thomas Ceci, Jake Geiser, Andre Goulbourne, Richie Marier, and Nathan Opsal
 - Register.
 - Login/Logout.
 - Customize their character’s alien race, homeworld, facial features, and Force alignment.
-- Examine their current planet and travel to new ones via an embedded Galaga-style minigame.
-- Personalize a Starship to pilot, view detailed information about it, and upgrade its hyperdrive to enable traveling to more locations.
+- Examine their current planet and travel to new ones via an embedded Asteroids minigame.
+- Name a Starship to pilot and view detailed information about it.
 - Add and remove up to 2 crew members from the SWAPI list of people.
 - Earn credits by playing the minigame, solving riddles at various planets, and collecting bounties on other players if they're at the same location as another user.
 - Spend credits by posting bounties on other users.
-- Browse the SWAPI at large to view various details about the galaxy.
 
 `Technology Stack:`
 - Spring Boot (With Spring Data and Spring Web)
-- JavaScript, HTML, CSS via React
+- React/JavaScript, HTML, CSS, Bootstrap
 - Amazon RDS
-    
-[Star Wars API](https://swapi.dev/)
+- [Asteroids minigame](https://github.com/erkie/erkie.github.com)
+- [Star Wars API](https://swapi.dev/)
