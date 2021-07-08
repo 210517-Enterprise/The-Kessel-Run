@@ -166,44 +166,5 @@ public class UserServiceTest {
 			
 	}
 	
-	@Test
-	public void testAddCredit_returnsUserWithUpdatedCredits() {
-		
-		expectedUser.setCredits(user.getCredits()+ 10);;
-		when(mockdao.updateCredits(user, 10)).thenReturn(expectedUser);
-		
-	    User updatedUser = userv.addCredits(user,10);
-
-		assertEquals(updatedUser, expectedUser);
-
-	}
-	
-	@Test
-	public void testAddCredit_nullUser_throwsUserNotFoundException() {
-		
-		assertThrows(UserNotFoundException.class, () -> 
-		userv.addCredits(null, 10), "No User was found");
-			
-	}
-	
-	@Test
-	public void testMinusCredit_returnsUserWithUpdatedCredits() {
-		
-		expectedUser.setCredits(user.getCredits()- 10);;
-		when(mockdao.updateCredits(user, -10)).thenReturn(expectedUser);
-		
-	    User updatedUser = userv.minusCredits(user,10);
-
-		assertEquals(updatedUser, expectedUser);
-
-	}
-	
-	@Test
-	public void testMinusCredit_nullUser_throwsUserNotFoundException() {
-		
-		assertThrows(UserNotFoundException.class, () -> 
-		userv.minusCredits(null, 10), "No User was found");
-			
-	}
 
 }

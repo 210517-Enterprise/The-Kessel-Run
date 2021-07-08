@@ -226,44 +226,5 @@ public class UserService {
 			throw new UserNotFoundException("No User was found");
 		}
 	}
-	
-	/*
-	 * return User
-	 * 
-	 * param User, Planet
-	 */
-	public User addCredits(User u, int credit ) {
-
-		if (u != null) {
-			
-			
-				User result = userDAO.updateCredits(u, credit);
-				
-				return result;
-			
-		} else {
-			throw new UserNotFoundException("No User was found");
-		}
-		
-	}
-	
-	/*
-	 * return User
-	 * 
-	 * param User, Planet
-	 */
-	public User minusCredits(User u, int credit ) {
-
-		if (u != null) {
-			
-			User result = userDAO.updateCredits(u, -1*credit);
-			
-			return result;
-		
-	} else {
-		throw new UserNotFoundException("No User was found");
-	}
-		
-	}
 
 }
