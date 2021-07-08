@@ -11,5 +11,5 @@ public interface UserDAO extends JpaRepository<User, Integer>{
 	// Since we are inheriting all methods from JPARepository, we already have save(), get()...etc...
 	public User findByUsername(String username);
 	// eventually venture into Optional.ofNullable
-
+	
 }
