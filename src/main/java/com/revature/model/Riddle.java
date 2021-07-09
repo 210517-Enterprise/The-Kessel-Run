@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.validator.constraints.Length;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,19 +19,27 @@ import lombok.NoArgsConstructor;
 public class Riddle {
 
 	@Id
-	@Column(name="riddle_id",nullable=false, unique=true, updatable= false)
+	@Column(name="riddle_id", updatable= false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Length(min=1) 
+	@NotBlank
 	private String riddle;
 	
-	@NotEmpty
+	@NotBlank
 	private String correctAnswer;
 	
-	@NotBlank // this comes From java EE from javax.val...
-	private String[] incorrectAnswer;
+	@NotBlank
+	private String incorrectAnswer1;
+
+	@NotBlank
+	private String incorrectAnswer2;
 	
+	@NotBlank
+	private String incorrectAnswer3;
+	
+	@JsonIgnoreProperties("planet")
+	@ManyToOne
 	private Planet planet;
 	
 }

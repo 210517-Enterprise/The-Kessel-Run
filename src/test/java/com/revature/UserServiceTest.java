@@ -19,7 +19,6 @@ import com.revature.exceptions.PlanetNotFoundException;
 import com.revature.exceptions.StarshipNotFoundException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.model.Planet;
-import com.revature.model.Starship;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 import com.revature.service.UserService;
@@ -33,9 +32,11 @@ public class UserServiceTest {
 
 	private User user = new User(), expectedUser = new User();
 	
-	private Planet planet = new Planet(1, "Jupiter", "A huge ball of gas.", new HashSet<>());
+	private Planet planet = new Planet(1, "Jupiter", "A huge ball of gas.", new HashSet<>(), new HashSet<>());
 	
-	private Starship starship = new Starship(1, "Unimpa", "super", 30);
+	private String starship = "The Flying Chicken";
+	
+	private String model = "Executor-class star dreadnought";
 
 	@BeforeEach
 	public void setup() {
@@ -44,13 +45,13 @@ public class UserServiceTest {
 		
 		userv.setUserDAO(mockdao); 
 
-		user.setListCrewMateId(new ArrayList<Integer>());
+//		user.setListCrewMate(new ArrayList<String>());
 		user.setId(0);
 		user.setName("John Collens");
 		user.setUsername("john");
 		user.setPassword("FunnyBunny");
 		
-		expectedUser.setListCrewMateId(new ArrayList<Integer>());
+//		expectedUser.setListCrewMate(new ArrayList<String>());
 		expectedUser.setId(0);
 		expectedUser.setName("John Collens");
 		expectedUser.setUsername("john");

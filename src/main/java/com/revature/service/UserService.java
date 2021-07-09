@@ -15,7 +15,6 @@ import com.revature.exceptions.PlanetNotFoundException;
 import com.revature.exceptions.StarshipNotFoundException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.model.Planet;
-import com.revature.model.Starship;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 
@@ -104,7 +103,7 @@ public class UserService {
 	 * 
 	 * param User and Starship
 	 */
-	public User updateStarship(User u, Starship s) {
+	public User updateStarship(User u, String s) {
 		
 		Query q = em.createNamedQuery("User.updatePlanet");
 		q.setParameter(1, s);
@@ -215,7 +214,7 @@ public class UserService {
 	 * 
 	 * param User, Starship
 	 */
-	public User changeStarship(User u, Starship s) {
+	public User changeStarship(User u, String s) {
 
 		if (u != null) {
 			

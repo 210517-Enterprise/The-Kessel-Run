@@ -2,6 +2,11 @@ package com.revature.exceptions;
 
 public class FailedToRegisterUserException extends RuntimeException{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5788625983690434493L;
+
 	public FailedToRegisterUserException() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -2,6 +2,11 @@ package com.revature.exceptions;
 
 public class FailedToRegisterRiddleException extends RuntimeException{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8849694939107325207L;
+
 	public FailedToRegisterRiddleException() {
 		super();
 		// TODO Auto-generated constructor stub
