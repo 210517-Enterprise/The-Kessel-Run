@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -25,6 +26,15 @@ import lombok.NoArgsConstructor;
 
 @Entity 
 @Data @AllArgsConstructor @NoArgsConstructor
+@NamedNativeQuery(name = "User.updatePlanet", 
+query = "UPDATE users SET planet=? WHERE id=?", 
+resultClass=User.class)
+@NamedNativeQuery(name = "User.updateStarship", 
+query = "UPDATE users SET starship=? WHERE id=?", 
+resultClass=User.class)
+@NamedNativeQuery(name = "User.updateCredits", 
+query = "UPDATE users SET credits=? + ? WHERE id=?", 
+resultClass=User.class)
 @Table(name="users")
 public class User {
 
@@ -61,7 +71,17 @@ public class User {
 	// JsonBackReference is the annotation that correlates to this one
 	@JsonManagedReference("label1") // prevent an infinite loop when we create JSON for these bi-directional relationship objects
 	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER) // easier to laod this data in the case that a session is closed but we need this data
-	private Planet planet; 
+	private Planet planet;
+
+	public User(int id, @Length(min = 1) String name,
+			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
+			@NotEmpty String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.username = username;
+		this.password = password;
+	}
 	
 
 	
