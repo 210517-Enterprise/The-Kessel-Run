@@ -15,14 +15,14 @@ function generateShootableObjects() {
 // load object on loading the window
 window.onload = generateShootableObjects();
 
-// collect bount function
-function collectBounty() {
-    
-}
-
-
-// add event listener for collecting the bounty
-document.getElementById("collect-credits-btn")
+// // collect bount function
+// function collectBounty() {
+//     let objectContainer = document.getElementById("object-container");
+//     objectContainer.innerHTML = `
+//         <div>
+//         </div>
+//     `;
+// }
 
 
 
@@ -787,8 +787,17 @@ document.getElementById("collect-credits-btn")
 
             // collect points button
             this.creditBtn = document.createElement('div');
-            this.creditBtn.innerHTML = '<button type="button" class="btn btn-secondary btn-sm" id="collect-credits-btn">Collect Credits</button>';
+            this.creditBtn.innerHTML = '<button type="button" class="btn btn-secondary btn-sm" id="collect-credits-btn" data-toggle="modal" data-target="#bountyModal">Collect Credits</button>';
             this.navigation.appendChild(this.creditBtn);
+
+            // add event listener for collecting the bounty
+            // document.getElementById("collect-credits-btn").addEventListener("click", collectBounty);
+
+
+
+
+
+
             
             // Don't show appstore on frontpage, because they are already present
             if ( document.location.href === 'http://erkie.github.com/' ) {
