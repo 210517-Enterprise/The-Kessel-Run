@@ -41,7 +41,7 @@
       top: 0;
       left:0;
       bottom: 0;
-      right: 0;
+      right: 0;/* 0*/
   }
   
   .stars {
@@ -52,7 +52,7 @@
       left: 0;
       right: 0;
       display: block;
-        z-index: 0;
+      /* z-index: 0; 0 */
   }
   
   .twinkling{
@@ -64,7 +64,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      z-index: 2;
+      /* z-index: 2; 2 */
       
       -moz-animation:move-background 70s linear infinite;
     -ms-animation:move-background 70s linear infinite;
@@ -83,13 +83,17 @@
       right: 0;
       top: 0;
       bottom: 0;
-      z-index: 3;
+      /* z-index: 3; */
   
      -moz-animation:move-background 150s linear infinite;
     -ms-animation:move-background 150s linear infinite;
     -o-animation:move-background 150s linear infinite;
     -webkit-animation:move-background 150s linear infinite;
     animation:move-background 150s linear infinite;
+  }
+
+  .stars,.clouds,.twinkling{
+      z-index: -1;
   }
   /* img{
     height: 70vh;
@@ -112,7 +116,17 @@
     transform: rotate(5deg);
 }
 
-.modal {
-    z-index: 10001;
+.rotate{
+    animation: rotation 30s infinite linear;
 }
+
+@keyframes rotation {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(359deg);
+    }
+}
+
 
