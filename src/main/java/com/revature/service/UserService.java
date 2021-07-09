@@ -1,14 +1,18 @@
 package com.revature.service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.exceptions.FailedToRegisterUserException;
 import com.revature.exceptions.LoginUserFailureException;
 import com.revature.exceptions.UserNotFoundException;
+import com.revature.model.Planet;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 
@@ -82,6 +86,26 @@ public class UserService {
 			throw new UserNotFoundException("No User was found");
 		}
 			
+	}
+	
+	//returns a list of users from highest to lowest bounty
+	public List<User> bountyList() {
+		
+		List<User> bountyList = userDAO.findAll(Sort.by(Sort.Direction.DESC, "bounty"));
+		
+		return bountyList;
+	}
+	
+	public List<User> usersOnPlanet(Planet planet) {
+		List<User> list = userDAO.findByPlanet(planet);
+		return list;
+	}
+	
+	//removes a bounty from one user and adds the credits to another
+	@Transactional
+	public void claimBounty(User claimer, User captured) {
+		userDAO.increaseCredits(captured.getBounty(), claimer.getId());
+		userDAO.removeBounty(captured.getId());
 	}
 
 }
