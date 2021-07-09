@@ -13,6 +13,8 @@ buildNumber.properties
 *.code-workspace
 *.vscode
 
+bin/
+
 # Package Files #
 *.jar
 *.war
