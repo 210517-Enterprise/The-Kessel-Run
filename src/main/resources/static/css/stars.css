@@ -112,3 +112,7 @@
     transform: rotate(5deg);
 }
 
+.modal {
+    z-index: 10001;
+}
+
