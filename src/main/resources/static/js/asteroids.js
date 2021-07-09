@@ -1,5 +1,41 @@
-// See license: https://github.com/erkie/erkie.github.com/blob/master/README
+// function to generate all objects that can be used for collecting score
+function generateShootableObjects() {
+    
+    let objectContainer = document.getElementById("object-container");
+    let objectHTML = []
+    for (let i = 1; i < 15; i++) {
+        objectHTML.push(`
+            <div id="asteroid-img-div" style="top:${Math.floor(Math.random()*85)}%;left:${Math.floor(Math.random()*85)}%;transform:rotate(${Math.floor(Math.random()*360)}deg);">
+                <img src="../assets/a${i}.png">
+            </div>
+        `);
+    }
+    objectContainer.innerHTML = objectHTML.join('');
+}
+// load object on loading the window
+window.onload = generateShootableObjects();
 
+// collect bount function
+function collectBounty() {
+    
+}
+
+
+// add event listener for collecting the bounty
+document.getElementById("collect-credits-btn")
+
+
+
+
+// See license: https://github.com/erkie/erkie.github.com/blob/master/README
+/**
+ * BELOW IS CODE TAKEN FROM THE ABOVE LINK
+ * I only changed a couple things to suit our needs
+ * 1. Change bullet fill color
+ * 2. Removed app store link
+ * 3. Removed Kick Ass facebook link
+ * 4. Added button to collect credits
+ */
 (function() {
     function Asteroids() {
         if ( ! window.ASTEROIDS )
@@ -516,7 +552,7 @@
         };
         
         function setScore() {
-            that.points.innerHTML = window.ASTEROIDS.enemiesKilled * 10;
+            that.points.innerHTML = window.ASTEROIDS.enemiesKilled * 555;
         };
         
         function hasOnlyTextualChildren(element) {
@@ -664,7 +700,7 @@
         this.gameContainer.appendChild(this.canvas);
         this.ctx = this.canvas.getContext("2d");
         
-        this.ctx.fillStyle = "yellow";
+        this.ctx.fillStyle = "red";
         this.ctx.strokeStyle = "black";
         
         // navigation wrapper element
@@ -676,8 +712,8 @@
                 fontFamily = "Arial,sans-serif";
                 position = "fixed";
                 zIndex = "10001";
-                bottom = "0px";
-                right = "10px";
+                bottom = "3%";
+                right = "3%";
                 textAlign = "left";
                 background = '#fff';
                 color = '#222';
@@ -695,7 +731,7 @@
                 font = '28pt Arial, sans-serif';
                 fontWeight = 'bold';
                 position = 'relative';
-                left = '20px';
+                // left = '20px';
             }
             this.points.className = "ASTEROIDSYEAH";
             this.navigation.appendChild(this.points);
@@ -718,12 +754,12 @@
                 top: '-3px'
             }
             
-            for ( var key in css ) if ( css.hasOwnProperty(key) )
-              this.highscoreLink.style[key] = css[key];
+            // for ( var key in css ) if ( css.hasOwnProperty(key) )
+            //   this.highscoreLink.style[key] = css[key];
             
-            this.highscoreLink.href = '#';
-            this.highscoreLink.innerHTML = "Submit highscore";
-            this.navigation.appendChild(this.highscoreLink);
+            // this.highscoreLink.href = '#';
+            // this.highscoreLink.innerHTML = "Submit highscore";
+            // this.navigation.appendChild(this.highscoreLink);
             
             this.appstore = document.createElement('div');
             with ( this.appstore.style ) {
@@ -745,9 +781,14 @@
             document.body.appendChild(this.appstore);
             
             // fb like box
-            this.fbLike = document.createElement('div');
-            this.fbLike.innerHTML = '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FKick-Ass-Destroy-the-web%2F168200253236727&amp;width=292&amp;colorscheme=light&amp;show_faces=false&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:70px;" allowTransparency="true"></iframe>';
-            this.navigation.appendChild(this.fbLike);
+            // this.fbLike = document.createElement('div');
+            // this.fbLike.innerHTML = '<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FKick-Ass-Destroy-the-web%2F168200253236727&amp;width=292&amp;colorscheme=light&amp;show_faces=false&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:70px;" allowTransparency="true"></iframe>';
+            // this.navigation.appendChild(this.fbLike);
+
+            // collect points button
+            this.creditBtn = document.createElement('div');
+            this.creditBtn.innerHTML = '<button type="button" class="btn btn-secondary btn-sm" id="collect-credits-btn">Collect Credits</button>';
+            this.navigation.appendChild(this.creditBtn);
             
             // Don't show appstore on frontpage, because they are already present
             if ( document.location.href === 'http://erkie.github.com/' ) {
