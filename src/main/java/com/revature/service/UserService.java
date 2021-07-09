@@ -75,6 +75,13 @@ public class UserService {
 	}
 	
 	/*
+	 * param User to persist to the database
+	 */
+	public void delete(User u) {
+		 getUserDAO().delete(u);
+	}
+	
+	/*
 	 * return User 
 	 * 
 	 * param User and Planet
