@@ -16,8 +16,6 @@ buildNumber.properties
 
 bin/
 
-*/application.properties
-
 # Package Files #
 *.jar
 *.war
