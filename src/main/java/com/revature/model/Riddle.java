@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Entity 
 @Data @AllArgsConstructor @NoArgsConstructor
+@JsonIgnoreProperties("planet")
 public class Riddle {
 
 	@Id
@@ -27,18 +28,8 @@ public class Riddle {
 	private String riddle;
 	
 	@NotBlank
-	private String correctAnswer;
+	private String answer;
 	
-	@NotBlank
-	private String incorrectAnswer1;
-
-	@NotBlank
-	private String incorrectAnswer2;
-	
-	@NotBlank
-	private String incorrectAnswer3;
-	
-	@JsonIgnoreProperties("planet")
 	@ManyToOne
 	private Planet planet;
 	
