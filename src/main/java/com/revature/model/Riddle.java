@@ -1,10 +1,12 @@
 package com.revature.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
@@ -16,11 +18,10 @@ import lombok.NoArgsConstructor;
 
 @Entity 
 @Data @AllArgsConstructor @NoArgsConstructor
-@JsonIgnoreProperties("planet")
+@JsonIgnoreProperties("planet") // this means that the planet property is ignored when this object is passed as a JSON object so as to avoid infinite loop
 public class Riddle {
 
 	@Id
-	@Column(name="riddle_id", updatable= false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
@@ -30,7 +31,8 @@ public class Riddle {
 	@NotBlank
 	private String answer;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Planet planet;
 	
 }

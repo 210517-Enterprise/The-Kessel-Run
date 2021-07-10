@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class)
 public class User {
 
 	@Id
@@ -46,12 +46,10 @@ public class User {
 	private String name;// as in the character name
 
 	@Length(min = 5)
-	@NotBlank // this comes From java EE from javax.val...
-	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed,
-												// no spaces allowed
+	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed, no spaces allowed
 	private String username;
 
-	@NotEmpty
+	@NotBlank
 	private String password;
 
 	private int credits;// currency the user has at a given moment
