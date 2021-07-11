@@ -8,10 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -66,17 +64,17 @@ public class User {
 	
 	private int bounty;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Planet planet;
 
-	public User(int id, @Length(min = 1) String name,
-			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
-			@NotEmpty String password) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.username = username;
-		this.pass = password;
-	}
+//	public User(int id, @Length(min = 1) String name,
+//			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
+//			@NotBlank String password) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.username = username;
+//		this.pass = password;
+//	}
 
 }

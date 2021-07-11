@@ -29,10 +29,10 @@ public class Planet {
 	@Id
 	private String name;
 
-	@OneToMany(mappedBy = "planet", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "planet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users;// represents the users on the planet // another way to think of it is as
 							// players currently the planet
 
-	@OneToMany(mappedBy="planet", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="planet", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Riddle> riddles;
 }

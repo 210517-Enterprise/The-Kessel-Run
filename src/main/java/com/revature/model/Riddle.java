@@ -34,7 +34,7 @@ public class Riddle {
 	@NotBlank
 	private String answer;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Planet planet;
 	
 }

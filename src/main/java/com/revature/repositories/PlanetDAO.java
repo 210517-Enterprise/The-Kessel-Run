@@ -1,10 +1,9 @@
 package com.revature.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
 import com.revature.model.Planet;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlanetDAO extends JpaRepository<Planet, String> {
