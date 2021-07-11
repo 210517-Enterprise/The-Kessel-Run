@@ -6,6 +6,11 @@ import lombok.NoArgsConstructor;
 public class UserNotFoundException extends RuntimeException{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5512717139401012131L;
+
 	public UserNotFoundException(String message) {
 		super(message);
 	}

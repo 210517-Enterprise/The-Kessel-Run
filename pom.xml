@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.revature</groupId>
-	<artifactId>TheKesselRun</artifactId>
+	<artifactId>The-Kessel-Run</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TheKesselRun</name>
-	<description>Demo project for Spring Boot</description>
+	<name>The-Kessel-Run</name>
+	<description>Traverse a Galaxy Far, Far Away...</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

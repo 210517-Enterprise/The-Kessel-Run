@@ -2,6 +2,11 @@ package com.revature.exceptions;
 
 public class StarshipNotFoundException extends RuntimeException{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7049475254447468224L;
+
 	public StarshipNotFoundException() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -2,6 +2,11 @@ package com.revature.exceptions;
 
 public class RiddleNotFoundException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9028583966294786345L;
+
 	public RiddleNotFoundException() {
 		super();
 		// TODO Auto-generated constructor stub

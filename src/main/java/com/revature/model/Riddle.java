@@ -1,37 +1,40 @@
 package com.revature.model;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.validator.constraints.Length;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity 
-@Data @AllArgsConstructor @NoArgsConstructor
+@Entity
+@Table(name = "riddle")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties("planet") // this means that the planet property is ignored when this object is passed as a JSON object so as to avoid infinite loop
 public class Riddle {
 
 	@Id
-	@Column(name="riddle_id",nullable=false, unique=true, updatable= false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Length(min=1) 
+	@NotBlank
 	private String riddle;
 	
-	@NotEmpty
-	private String correctAnswer;
+	@NotBlank
+	private String answer;
 	
-	@NotBlank // this comes From java EE from javax.val...
-	private String[] incorrectAnswer;
-	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Planet planet;
 	
 }

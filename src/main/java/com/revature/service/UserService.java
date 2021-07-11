@@ -15,7 +15,6 @@ import com.revature.exceptions.PlanetNotFoundException;
 import com.revature.exceptions.StarshipNotFoundException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.model.Planet;
-import com.revature.model.Starship;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 
@@ -104,7 +103,7 @@ public class UserService {
 	 * 
 	 * param User and Starship
 	 */
-	public User updateStarship(User u, Starship s) {
+	public User updateStarship(User u, String s) {
 		
 		Query q = em.createNamedQuery("User.updatePlanet");
 		q.setParameter(1, s);
@@ -175,7 +174,7 @@ public class UserService {
 		User u = (User) getUserDAO().findByUsername(username);
 
 		if (u != null) {
-			if (u.getPassword().equals(password)) {
+			if (u.getPass().equals(password)) {
 				return u;
 			} else {
 				throw new LoginUserFailureException("The password or username you enter did not match!");
@@ -191,47 +190,47 @@ public class UserService {
 	 * 
 	 * param User, Planet
 	 */
-	public User changePlanet(User u, Planet p) {
-		
-		if (u != null) {
-			
-			if(p != null) {
-			
-				User result = userDAO.updatePlanet(u, p);
-				
-				return result;
-				
-			} else {
-				throw new PlanetNotFoundException("No Planet was found");
-			}
-			
-		} else {
-			throw new UserNotFoundException("No User was found");
-		}
-	}
+//	public User changePlanet(User u, Planet p) {
+//		
+//		if (u != null) {
+//			
+//			if(p != null) {
+//			
+//				User result = userDAO.updatePlanet(u, p);
+//				
+//				return result;
+//				
+//			} else {
+//				throw new PlanetNotFoundException("No Planet was found");
+//			}
+//			
+//		} else {
+//			throw new UserNotFoundException("No User was found");
+//		}
+//	}
 
 	/*
 	 * return User
 	 * 
 	 * param User, Starship
 	 */
-	public User changeStarship(User u, Starship s) {
-
-		if (u != null) {
-			
-			if(s != null) {
-			
-				User result = userDAO.updateStarship(u, s);
-				
-				return result;
-				
-			} else {
-				throw new StarshipNotFoundException("No Starship was found");
-			}
-			
-		} else {
-			throw new UserNotFoundException("No User was found");
-		}
-	}
+//	public User changeStarship(User u, String s) {
+//
+//		if (u != null) {
+//			
+//			if(s != null) {
+//			
+//				User result = userDAO.updateStarship(u, s);
+//				
+//				return result;
+//				
+//			} else {
+//				throw new StarshipNotFoundException("No Starship was found");
+//			}
+//			
+//		} else {
+//			throw new UserNotFoundException("No User was found");
+//		}
+//	}
 
 }

@@ -35,14 +35,11 @@ private RiddleService rserv;
 
 		riddle.setId(0);
 		riddle.setRiddle("What Language is this coded in?");
-		riddle.setCorrectAnswer("Java");
-		String[] incorrectAnswers = {"C++", "JavaScript", "Python"};
-		riddle.setIncorrectAnswer(incorrectAnswers);
+		riddle.setAnswer("Java");
 		
 		expectedRiddle.setId(0);
 		expectedRiddle.setRiddle("What Language is this coded in?");
-		expectedRiddle.setCorrectAnswer("Java");
-		expectedRiddle.setIncorrectAnswer(incorrectAnswers);
+		expectedRiddle.setAnswer("Java");
 		
 	}
 
