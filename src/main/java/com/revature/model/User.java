@@ -23,11 +23,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NamedNativeQuery(name = "User.updatePlanet", query = "UPDATE users SET planet=? WHERE id=?", resultClass = User.class)
-@NamedNativeQuery(name = "User.updateStarship", query = "UPDATE users SET starship=? WHERE id=?", resultClass = User.class)
-@NamedNativeQuery(name = "User.updateModel", query = "UPDATE users SET model=? WHERE id=?", resultClass = User.class)
-@NamedNativeQuery(name = "User.updateCopilot", query = "UPDATE users SET copilot=? WHERE id=?", resultClass = User.class)
-@NamedNativeQuery(name = "User.updateCredits", query = "UPDATE users SET credits=? + ? WHERE id=?", resultClass = User.class)
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
