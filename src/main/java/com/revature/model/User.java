@@ -37,7 +37,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	@Id
-	@Column(name = "user_id", nullable = false, unique = true, updatable = false)
+	@Column(name = "user_id", updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
@@ -46,25 +46,30 @@ public class User {
 	private String name;// as in the character name
 
 	@Length(min = 5)
+	@Column(unique = true)
 	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed, no spaces allowed
 	private String username;
 
 	@NotBlank
-	private String password;
+	private String pass;
 
 	private int credits;// currency the user has at a given moment
 
 	private String race;
+	
+	private String skinColor;
 
-	private String hair_color;
+	private String hairColor;
 
-	private String eye_color;// An array of string options //idea
+	private String eyeColor;// An array of string options //idea
 
 	private String starship;
 
 	private String model;
 
 	private String copilot;
+	
+	private int bounty;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Planet planet;
@@ -76,7 +81,7 @@ public class User {
 		this.id = id;
 		this.name = name;
 		this.username = username;
-		this.password = password;
+		this.pass = password;
 	}
 
 }

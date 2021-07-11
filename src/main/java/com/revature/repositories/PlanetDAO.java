@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.revature.model.Planet;
 
 @Repository
-public interface PlanetDAO extends JpaRepository<Planet, Integer> {
+public interface PlanetDAO extends JpaRepository<Planet, String> {
 	
 	/*
 	 * Updates are saved automatically by the JPA Repository when you update an object attached to a session
