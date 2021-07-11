@@ -1,11 +1,12 @@
 package com.revature.service;
 
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.exceptions.FailedToRegisterRiddleException;
 import com.revature.exceptions.FailedToRegisterUserException;
@@ -25,8 +26,9 @@ public class RiddleService {
 	/*
 	 * return a Set<Riddle>
 	 */
-	public Set<Riddle> findAll() {
-		return getRiddleDAO().findAll().stream().collect(Collectors.toSet());
+	@Transactional(readOnly = true)
+	public List<Riddle> findAll() {
+		return getRiddleDAO().findAll().stream().collect(Collectors.toList());
 	}
 
 	/*
@@ -34,6 +36,7 @@ public class RiddleService {
 	 * 
 	 * param riddle
 	 */
+	@Transactional(readOnly = true)
 	public Riddle findByRiddle(String riddle) {
 		Riddle r = getRiddleDAO().findByRiddle(riddle);
 
@@ -49,6 +52,7 @@ public class RiddleService {
 	 * 
 	 * param id
 	 */
+	@Transactional(readOnly = true)
 	public Riddle findById(int id) {
 
 		return getRiddleDAO().findById(id).orElseThrow(() -> new RiddleNotFoundException("No riddle found with id " + id));
@@ -60,6 +64,7 @@ public class RiddleService {
 	 * 
 	 * param Riddle to persist to the database
 	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Riddle insert(Riddle r) {
 		return getRiddleDAO().save(r);
 	}
@@ -76,6 +81,7 @@ public class RiddleService {
 	 * 
 	 * param Riddle with id=0 
 	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Riddle register(Riddle r) {
 
 		if (r.getId() != 0) {

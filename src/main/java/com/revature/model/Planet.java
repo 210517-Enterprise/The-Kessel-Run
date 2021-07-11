@@ -1,6 +1,6 @@
 package com.revature.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,9 +30,9 @@ public class Planet {
 	private String name;
 
 	@OneToMany(mappedBy = "planet", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<User> users;// represents the users on the planet // another way to think of it is as
+	private List<User> users;// represents the users on the planet // another way to think of it is as
 							// players currently the planet
 
 	@OneToMany(mappedBy="planet", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<Riddle> riddles;
+	private List<Riddle> riddles;
 }
