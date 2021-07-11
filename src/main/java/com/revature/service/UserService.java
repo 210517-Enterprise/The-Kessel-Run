@@ -1,20 +1,18 @@
 package com.revature.service;
 
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.exceptions.FailedToRegisterUserException;
 import com.revature.exceptions.LoginUserFailureException;
-import com.revature.exceptions.PlanetNotFoundException;
-import com.revature.exceptions.StarshipNotFoundException;
 import com.revature.exceptions.UserNotFoundException;
-import com.revature.model.Planet;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 
@@ -34,8 +32,9 @@ public class UserService {
 	/*
 	 * return a Set<User>
 	 */
-	public Set<User> findAll() {
-		return getUserDAO().findAll().stream().collect(Collectors.toSet());
+	@Transactional(readOnly = true)
+	public List<User> findAll() {
+		return getUserDAO().findAll().stream().collect(Collectors.toList());
 	}
 
 	/*
@@ -43,6 +42,7 @@ public class UserService {
 	 * 
 	 * param username
 	 */
+	@Transactional(readOnly = true)
 	public User findByUsername(String username) {
 		User u = getUserDAO().findByUsername(username);
 
@@ -58,6 +58,7 @@ public class UserService {
 	 * 
 	 * param id
 	 */
+	@Transactional(readOnly = true)
 	public User findById(int id) {
 
 		return getUserDAO().findById(id).orElseThrow(() -> new UserNotFoundException("No user found with id " + id));
@@ -69,6 +70,7 @@ public class UserService {
 	 * 
 	 * param User to persist to the database
 	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public User insert(User u) {
 		return getUserDAO().save(u);
 	}
@@ -76,63 +78,9 @@ public class UserService {
 	/*
 	 * param User to persist to the database
 	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void delete(User u) {
 		 getUserDAO().delete(u);
-	}
-	
-	/*
-	 * return User 
-	 * 
-	 * param User and Planet
-	 */
-	public User updatePlanet(User u, Planet planet) {
-		
-		Query q = em.createNamedQuery("User.updatePlanet");
-		q.setParameter(1, planet);
-		q.setParameter(2, u.getId());
-		
-		q.executeUpdate();
-		
-		User result =findById(u.getId());
-		
-		return result;
-	}
-	
-	/*
-	 * return User 
-	 * 
-	 * param User and Starship
-	 */
-	public User updateStarship(User u, String s) {
-		
-		Query q = em.createNamedQuery("User.updatePlanet");
-		q.setParameter(1, s);
-		q.setParameter(2, u.getId());
-		
-		q.executeUpdate();
-		
-		User result =findById(u.getId());
-		
-		return result;
-	}
-	
-	/*
-	 * return User 
-	 * 
-	 * param User and credit to add or minus
-	 */
-	public User updateCredits(User u, int credits) {
-		
-		Query q = em.createNamedQuery("User.updateCredits");
-		q.setParameter(1, u.getCredits());
-		q.setParameter(2, credits);
-		q.setParameter(3, u.getId());
-		
-		q.executeUpdate();
-		
-		User result =findById(u.getId());
-		
-		return result;
 	}
 	
 
@@ -145,6 +93,7 @@ public class UserService {
 	 * 
 	 * param User with id=0 
 	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public User register(User u) {
 
 		if (u.getId() != 0) {
@@ -169,6 +118,7 @@ public class UserService {
 	 * 
 	 * param username and password
 	 */
+	@Transactional(readOnly = true)
 	public User login(String username, String password) {
 
 		User u = (User) getUserDAO().findByUsername(username);

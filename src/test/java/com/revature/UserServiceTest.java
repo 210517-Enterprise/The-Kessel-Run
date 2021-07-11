@@ -32,7 +32,7 @@ public class UserServiceTest {
 
 	private User user = new User(), expectedUser = new User();
 	
-	private Planet planet = new Planet("Jupiter", new HashSet<>(), new HashSet<>());
+//	private Planet planet = new Planet("Jupiter", new HashSet<>(), new HashSet<>());
 	
 	private String starship = "The Flying Chicken";
 	
