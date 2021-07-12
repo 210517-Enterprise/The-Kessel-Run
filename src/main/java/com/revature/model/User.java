@@ -60,7 +60,7 @@ public class User {
 
 	private String model;
 
-  private String credits;
+  private int credits;
 	
 	private int bounty;
 
@@ -78,7 +78,8 @@ public class User {
     this.eyeColor = eyeColor;
     this.copilot = copilot;
     this.starship = "YT-1300 light freighter";
-    this.credits = 4;
+    this.credits = 0;
+    this.bounty = 0;
   }
 
 
