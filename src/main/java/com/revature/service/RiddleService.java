@@ -1,18 +1,15 @@
 package com.revature.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import com.revature.exceptions.RiddleNotFoundException;
+import com.revature.model.Riddle;
+import com.revature.repositories.RiddleDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.revature.exceptions.FailedToRegisterRiddleException;
-import com.revature.exceptions.FailedToRegisterUserException;
-import com.revature.exceptions.RiddleNotFoundException;
-import com.revature.model.Riddle;
-import com.revature.repositories.RiddleDAO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,11 +21,11 @@ public class RiddleService {
 	private RiddleDAO riddleDAO;
 	
 	/*
-	 * return a Set<Riddle>
+	 * return a List<Riddle>
 	 */
 	@Transactional(readOnly = true)
 	public List<Riddle> findAll() {
-		return getRiddleDAO().findAll().stream().collect(Collectors.toList());
+		return riddleDAO.findAll();
 	}
 
 	/*
@@ -38,7 +35,7 @@ public class RiddleService {
 	 */
 	@Transactional(readOnly = true)
 	public Riddle findByRiddle(String riddle) {
-		Riddle r = getRiddleDAO().findByRiddle(riddle);
+		Riddle r = riddleDAO.findByRiddle(riddle);
 
 		if (r == null) {
 			new RiddleNotFoundException("No riddle found with for '" + riddle+"'");
@@ -55,7 +52,7 @@ public class RiddleService {
 	@Transactional(readOnly = true)
 	public Riddle findById(int id) {
 
-		return getRiddleDAO().findById(id).orElseThrow(() -> new RiddleNotFoundException("No riddle found with id " + id));
+		return riddleDAO.findById(id).orElseThrow(() -> new RiddleNotFoundException("No riddle found with id " + id));
 
 	}
 
@@ -66,40 +63,15 @@ public class RiddleService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Riddle insert(Riddle r) {
-		return getRiddleDAO().save(r);
+		return riddleDAO.save(r);
 	}
 	
 	/*
 	 * param Riddle to persist to the database
 	 */
+  @Transactional
 	public void delete(Riddle r) {
-		 getRiddleDAO().delete(r);
+    riddleDAO.delete(r);
 	}
-	
-	/*
-	 * return Riddle
-	 * 
-	 * param Riddle with id=0 
-	 */
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public Riddle register(Riddle r) {
-
-		if (r.getId() != 0) {
-			throw new FailedToRegisterRiddleException("Received Riddle Object did not have ID of 0");
-		}
-
-		Riddle persistedRiddle = insert(r);
-
-		int generatedId = persistedRiddle.getId();
-
-		if (generatedId != -1 && generatedId != r.getId()) {
-			r.setId(generatedId);
-		} else {
-			throw new FailedToRegisterUserException("Failed to insert the User record");
-		}
-
-		return r;
-	}
-	
 	
 }

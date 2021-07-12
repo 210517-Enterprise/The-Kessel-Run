@@ -34,7 +34,7 @@ public class UserService {
 	 */
 	@Transactional(readOnly = true)
 	public List<User> findAll() {
-		return getUserDAO().findAll().stream().collect(Collectors.toList());
+		return userDAO.findAll().stream().collect(Collectors.toList());
 	}
 
 	/*
@@ -44,7 +44,7 @@ public class UserService {
 	 */
 	@Transactional(readOnly = true)
 	public User findByUsername(String username) {
-		User u = getUserDAO().findByUsername(username);
+		User u = userDAO.findByUsername(username);
 
 		if (u == null) {
 			new UserNotFoundException("No user found with username " + username);
@@ -61,7 +61,7 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public User findById(int id) {
 
-		return getUserDAO().findById(id).orElseThrow(() -> new UserNotFoundException("No user found with id " + id));
+		return userDAO.findById(id).orElseThrow(() -> new UserNotFoundException("No user found with id " + id));
 
 	}
 
@@ -72,7 +72,7 @@ public class UserService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public User insert(User u) {
-		return getUserDAO().save(u);
+		return userDAO.save(u);
 	}
 	
 	/*
@@ -80,7 +80,7 @@ public class UserService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void delete(User u) {
-		 getUserDAO().delete(u);
+		 userDAO.delete(u);
 	}
 	
 
@@ -121,7 +121,7 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public User login(String username, String password) {
 
-		User u = (User) getUserDAO().findByUsername(username);
+		User u = (User) userDAO.findByUsername(username);
 
 		if (u != null) {
 			if (u.getPass().equals(password)) {
