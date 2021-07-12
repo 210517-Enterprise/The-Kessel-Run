@@ -34,10 +34,6 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Length(min = 1) // hibernate specific
-	// @Size this is another you can use, less specific
-	private String name;// as in the character name
-
 	@Length(min = 5)
 	@Column(unique = true)
 	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed, no spaces allowed
@@ -46,7 +42,9 @@ public class User {
 	@NotBlank
 	private String pass;
 
-	private int credits;// currency the user has at a given moment
+	@Length(min = 1) // hibernate specific
+	// @Size this is another you can use, less specific
+	private String name;// as in the character name
 
 	private String race;
 	
@@ -56,25 +54,33 @@ public class User {
 
 	private String eyeColor;// An array of string options //idea
 
+  private String copilot;
+
 	private String starship;
 
 	private String model;
 
-	private String copilot;
+  private String credits;
 	
 	private int bounty;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Planet planet;
 
-//	public User(int id, @Length(min = 1) String name,
-//			@Length(min = 5) @NotBlank @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username,
-//			@NotBlank String password) {
-//		super();
-//		this.id = id;
-//		this.name = name;
-//		this.username = username;
-//		this.pass = password;
-//	}
+  public User(@Length(min = 5) @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username, @NotBlank String pass,
+      @Length(min = 1) String name, String race, String skinColor, String hairColor, String eyeColor, String copilot) {
+    this.username = username;
+    this.pass = pass;
+    this.name = name;
+    this.race = race;
+    this.skinColor = skinColor;
+    this.hairColor = hairColor;
+    this.eyeColor = eyeColor;
+    this.copilot = copilot;
+    this.starship = "YT-1300 light freighter";
+    this.credits = 4;
+  }
+
+
 
 }
