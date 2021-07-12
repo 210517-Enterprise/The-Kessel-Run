@@ -48,7 +48,7 @@ public class UserController {
 	
 	// Getmapping for the planet page, findUserByPlanet()
 	@GetMapping("/planet")
-  public getUsers(@RequestBody User u) {
+  public ResponseEntity<List<User>> getUsers(@RequestBody User u) {
 
 
 
