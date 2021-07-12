@@ -13,7 +13,7 @@ Thomas Ceci, Jake Geiser, Andre Goulbourne, Richie Marier, and Nathan Opsal
 - Customize their character’s alien race, homeworld, facial features, and Force alignment.
 - Examine their current planet and travel to new ones via an embedded Asteroids minigame.
 - Name a Starship to pilot and view detailed information about it.
-- Add and remove up to 2 crew members from the SWAPI list of people.
+- Add a copilot from the SWAPI list of people.
 - Earn credits by playing the minigame, solving riddles at various planets, and collecting bounties on other players if they're at the same location as another user.
 - Spend credits by posting bounties on other users.
 
