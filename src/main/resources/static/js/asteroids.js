@@ -5,7 +5,7 @@ function generateShootableObjects() {
     let objectHTML = []
     for (let i = 1; i < 15; i++) {
         objectHTML.push(`
-            <div id="asteroid-img-div" style="top:${Math.floor(Math.random()*85)}%;left:${Math.floor(Math.random()*85)}%;transform:rotate(${Math.floor(Math.random()*360)}deg);">
+            <div class="rotate" id="asteroid-img-div" style="top:${Math.floor(Math.random()*85)}%;left:${Math.floor(Math.random()*85)}%;transform:rotate(${Math.floor(Math.random()*360)}deg);">
                 <img src="../assets/a${i}.png">
             </div>
         `);
@@ -15,15 +15,18 @@ function generateShootableObjects() {
 // load object on loading the window
 window.onload = generateShootableObjects();
 
-// // collect bount function
-// function collectBounty() {
-//     let objectContainer = document.getElementById("object-container");
-//     objectContainer.innerHTML = `
-//         <div>
-//         </div>
-//     `;
-// }
+// function to collect credits and progress to next planet.
+function continueToPlanet() {
+    let points = document.getElementById("ASTEROIDS-POINTS").innerText;
+    console.log("POINTS EARNED:" + points);
 
+    // store points earned in session strorage
+    sessionStorage.setItem("points", points);
+
+    // change url to planet location
+    
+
+}
 
 
 
@@ -787,11 +790,10 @@ window.onload = generateShootableObjects();
 
             // collect points button
             this.creditBtn = document.createElement('div');
-            this.creditBtn.innerHTML = '<button type="button" class="btn btn-secondary btn-sm" id="collect-credits-btn" data-toggle="modal" data-target="#bountyModal">Collect Credits</button>';
+            this.creditBtn.innerHTML = '<button type="button" class="btn btn-secondary btn-sm" id="collect-credits-btn">Collect Credits</button>';
             this.navigation.appendChild(this.creditBtn);
 
-            // add event listener for collecting the bounty
-            // document.getElementById("collect-credits-btn").addEventListener("click", collectBounty);
+            
 
 
 
@@ -1268,14 +1270,17 @@ window.onload = generateShootableObjects();
     }
     else window.ASTEROIDSPLAYERS[window.ASTEROIDSPLAYERS.length] = new Asteroids();
     
-    var trackingFrame = document.createElement('iframe');
-    trackingFrame.src = 'http://erkie.github.com/tracking.html';
-    trackingFrame.frameborder = '0';
-    trackingFrame.style.position = 'absolute';
-    trackingFrame.style.top = "-1000px";
-    trackingFrame.style.height = "0px";
-    trackingFrame.style.width = "0px";
+    // var trackingFrame = document.createElement('iframe');
+    // trackingFrame.src = 'http://erkie.github.com/tracking.html';
+    // trackingFrame.frameborder = '0';
+    // trackingFrame.style.position = 'absolute';
+    // trackingFrame.style.top = "-1000px";
+    // trackingFrame.style.height = "0px";
+    // trackingFrame.style.width = "0px";
     
-    document.getElementsByTagName('body')[0].appendChild(trackingFrame);
+    // document.getElementsByTagName('body')[0].appendChild(trackingFrame);
     
     })();
+
+    // add event listener for collecting the bounty
+    document.getElementById("collect-credits-btn").addEventListener("click", continueToPlanet);
