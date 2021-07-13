@@ -1,13 +1,10 @@
 package com.revature.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -16,7 +13,6 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
 
 	@Id
@@ -64,8 +61,7 @@ public class User {
 
 	private int bounty;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Planet planet;
+	private String planet;
 
 	public User(@Length(min = 5) @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username, @NotBlank String pass,
 			@Length(min = 1) String name, String race, String skinColor, String hairColor, String eyeColor,
@@ -79,9 +75,6 @@ public class User {
 		this.eyeColor = eyeColor;
 		this.starship = starship;
 		this.copilot = copilot;
-		this.model = "YT-1300 light freighter";
-		this.credits = 0;
-		this.bounty = 0;
 	}
 
 }

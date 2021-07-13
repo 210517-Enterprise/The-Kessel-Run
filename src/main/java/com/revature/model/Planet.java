@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,18 +22,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="name") // This defaults to generating references to
 																			// this object as just its id
 public class Planet {
 
 	@Id
 	private String name;
 
-	@OneToMany(mappedBy = "planet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<User> users;// represents the users on the planet // another way to think of it is as
-							// players currently the planet
-
 	@OneToMany(mappedBy="planet", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Riddle> riddles;
+	
+	private String image;
 }
