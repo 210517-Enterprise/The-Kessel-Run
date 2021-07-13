@@ -18,12 +18,13 @@ window.onload = generateShootableObjects();
 // function to collect credits and progress to next planet.
 function continueToPlanet() {
     let points = document.getElementById("ASTEROIDS-POINTS").innerText;
-    console.log(points);
+    console.log("POINTS EARNED:" + points);
 
-    // persist score to user by increasing their credits
+    // store points earned in session strorage
+    sessionStorage.setItem("points", points);
 
     // change url to planet location
-    document
+    
 
 }
 
