@@ -1,6 +1,6 @@
 package com.revature.controller;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -25,7 +25,7 @@ public class UserController {
 	
 	// find all
 	@GetMapping
-	public ResponseEntity<Set<User>> findAll() {
+	public ResponseEntity<List<User>> findAll() {
 		return ResponseEntity.ok(userService.findAll());
 	}
 	
@@ -46,11 +46,12 @@ public class UserController {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
+	// Getmapping for the planet page, findUserByPlanet()
+	@GetMapping("/planet")
+  public ResponseEntity<List<User>> getUsers(@RequestBody User u) {
+
+
+
+  }
 
 }

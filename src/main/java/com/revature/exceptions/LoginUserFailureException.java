@@ -5,8 +5,12 @@ public class LoginUserFailureException extends RuntimeException{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5083150349984480781L;
 
+	/**
+	 * 
+	 */
+	
 	public LoginUserFailureException() {
 		super();
 		// TODO Auto-generated constructor stub
