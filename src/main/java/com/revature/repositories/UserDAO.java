@@ -2,7 +2,6 @@ package com.revature.repositories;
 
 import java.util.List;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -44,8 +43,8 @@ public interface UserDAO extends JpaRepository<User, Integer>{
 	
 	
 	//Allows to sort by a sort object. Useful in a bounty list for example. modular so we don't need multiple sorting queries
-	@Query
-	public List<User> findAll(Sort sort);
+//	@Query
+//	public List<User> findAll();
 
 	/*
 	 * Updates are saved automatically by the JPA Repository when you update an object attached to a session

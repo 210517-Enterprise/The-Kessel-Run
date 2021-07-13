@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class) // This defaults to generating references to
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="name") // This defaults to generating references to
 																			// this object as just its id
 public class Planet {
 

@@ -137,15 +137,15 @@ public class UserService {
 
 	}
 	
-	@Transactional(readOnly = true)
-	public List<User> bountyList() {
-		List<User> list = userDAO.findAll(Sort.by(Sort.Direction.ASC, "bounty"));
-		List<User> bountyList = new ArrayList<User>();
-		for (int i = 0; i < 5; i++) {
-			bountyList.add(list.get(i));
-		}
-		return bountyList;
-	}
+//	@Transactional(readOnly = true)
+//	public List<User> bountyList() {
+//		List<User> list = userDAO.findAll(Sort.by(Sort.Direction.ASC, "bounty"));
+//		List<User> bountyList = new ArrayList<User>();
+//		for (int i = 0; i < 5; i++) {
+//			bountyList.add(list.get(i));
+//		}
+//		return bountyList;
+//	}
 
 	/*
 	 * return User

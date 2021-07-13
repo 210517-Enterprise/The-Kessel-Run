@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class)
 public class User {
 
 	@Id
@@ -36,7 +35,8 @@ public class User {
 
 	@Length(min = 5)
 	@Column(unique = true)
-	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed, no spaces allowed
+	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") // using regex to make sure that only alphanumeric characters are allowed,
+												// no spaces allowed
 	private String username;
 
 	@NotBlank
@@ -47,41 +47,41 @@ public class User {
 	private String name;// as in the character name
 
 	private String race;
-	
+
 	private String skinColor;
 
 	private String hairColor;
 
 	private String eyeColor;// An array of string options //idea
 
-  private String copilot;
+	private String copilot;
 
 	private String starship;
 
 	private String model;
 
-  private int credits;
-	
+	private int credits;
+
 	private int bounty;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Planet planet;
 
-  public User(@Length(min = 5) @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username, @NotBlank String pass,
-      @Length(min = 1) String name, String race, String skinColor, String hairColor, String eyeColor, String copilot) {
-    this.username = username;
-    this.pass = pass;
-    this.name = name;
-    this.race = race;
-    this.skinColor = skinColor;
-    this.hairColor = hairColor;
-    this.eyeColor = eyeColor;
-    this.copilot = copilot;
-    this.starship = "YT-1300 light freighter";
-    this.credits = 0;
-    this.bounty = 0;
-  }
-
-
+	public User(@Length(min = 5) @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9]*") String username, @NotBlank String pass,
+			@Length(min = 1) String name, String race, String skinColor, String hairColor, String eyeColor,
+			String starship, String copilot) {
+		this.username = username;
+		this.pass = pass;
+		this.name = name;
+		this.race = race;
+		this.skinColor = skinColor;
+		this.hairColor = hairColor;
+		this.eyeColor = eyeColor;
+		this.starship = starship;
+		this.copilot = copilot;
+		this.model = "YT-1300 light freighter";
+		this.credits = 0;
+		this.bounty = 0;
+	}
 
 }
