@@ -10,16 +10,16 @@ Thomas Ceci, Jake Geiser, Andre Goulbourne, Richie Marier, and Nathan Opsal
 `Users can:`
 - Register.
 - Login/Logout.
-- Customize their character’s alien race, homeworld, facial features, and Force alignment.
+- Customize their character’s alien race and facial features.
 - Examine their current planet and travel to new ones via an embedded Asteroids minigame.
 - Name a Starship to pilot and view detailed information about it.
 - Add a copilot from the SWAPI list of people.
-- Earn credits by playing the minigame, solving riddles at various planets, and collecting bounties on other players if they're at the same location as another user.
+- Earn credits by playing the minigame, solving riddles at various planets, and collecting bounties on other players if they're at the same location.
 - Spend credits by posting bounties on other users.
 
 `Technology Stack:`
 - Spring Boot (With Spring Data and Spring Web)
-- React/JavaScript, HTML, CSS, Bootstrap
+- JavaScript, HTML, CSS, Bootstrap
 - Amazon RDS
 - [Asteroids minigame](https://github.com/erkie/erkie.github.com)
 - [Star Wars API](https://swapi.dev/)
