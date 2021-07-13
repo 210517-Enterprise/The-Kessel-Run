@@ -1,11 +1,13 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -133,6 +135,16 @@ public class UserService {
 			throw new UserNotFoundException("No User was found");
 		}
 
+	}
+	
+	@Transactional(readOnly = true)
+	public List<User> bountyList() {
+		List<User> list = userDAO.findAll(Sort.by(Sort.Direction.ASC, "bounty"));
+		List<User> bountyList = new ArrayList<User>();
+		for (int i = 0; i < 5; i++) {
+			bountyList.add(list.get(i));
+		}
+		return bountyList;
 	}
 
 	/*
