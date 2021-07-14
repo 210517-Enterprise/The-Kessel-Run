@@ -6,7 +6,7 @@ function searchByValue() {
   // set searchParam to the current active tab
   let searchParam = getCurrentActiveTab();
   // set searchValue to the value of the search-form's value
-  let searchValue = document.getElementById("search-form").value;
+  let searchValue = getSearchValue();
   // fetch from swapi api with the specified values
   fetch(`https://swapi.dev/api/${searchParam}/?search=${searchValue}`)
     .then((res) => res.json())
@@ -18,12 +18,9 @@ function searchByValue() {
           output += `
         <div class="col-md-auto">
           <div class="card text-white bg-dark" style="width: 18rem">
-          <img src="../assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
+          <img src="./assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
             <div class="card-body">
               <h5 class="card-title">${planet.name}</h5>
-              <p class="card-text">${planet.climate}</p>
-              <p class="card-text">${planet.terrain}</p>
-              <p class="card-text">${planet.population}</p>
               <button onclick='goToPlanet("${planet.name}")' class="btn btn-secondary">Go To Planet</button>
             </div>
           </div>
@@ -39,17 +36,9 @@ function searchByValue() {
           output += `
         <div class="col-md-auto">
           <div class="card text-white bg-dark" style="width: 18rem">
-          <img src="./images/${
-            person.name
-          }.jpg" class="card-img-top" alt="Picture Coming Soon..">
+          <img src="./assets/${person.name}.png" class="card-img-top" alt="Picture Coming Soon..">
             <div class="card-body">
-              <h5 class="card-title">${person.name}</h5>
-              <p class="card-text">${person.height}</p>
-              <p class="card-text">${person.hair_color}</p>
-              <p class="card-text" id="homeworld-${person.name}">${getHomeWorld(
-            person.homeworld,
-            person.name
-          )}</p>
+              
               <a href="#" class="btn btn-secondary">Add to Crew</a>
             </div>
           </div>
@@ -61,6 +50,13 @@ function searchByValue() {
     });
 
   document.getElementById("search-form").value = "";
+}
+
+// get search value function
+function getSearchValue() {
+  let search = document.getElementById("search-form").value;
+
+  return search;
 }
 
 // get the current active tab on the search page i.e: (Planet, People, Profile)
