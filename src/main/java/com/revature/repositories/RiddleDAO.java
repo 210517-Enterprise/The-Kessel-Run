@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import com.revature.model.Riddle;
 
 @Repository
@@ -14,6 +16,9 @@ public interface RiddleDAO extends JpaRepository<Riddle, Integer> {
 	
 	@Query
 	public Riddle findByAnswer(String answer);
+
+  @Query
+  public List<Riddle> findByPlanet(String planet);
   
 	/*
 	 * Updates are saved automatically by the JPA Repository when you update an object attached to a session

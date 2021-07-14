@@ -41,11 +41,5 @@ public class UserController {
 	public ResponseEntity<User> insert(@Valid @RequestBody User u) {
 		return ResponseEntity.ok(userService.insert(u));
 	}
-	
-	// Getmapping for the planet page, findUserByPlanet()
-	@GetMapping("/{planet}")
-  public ResponseEntity<List<User>> findByPlanet(@PathVariable("planet") String planet) {
-    return ResponseEntity.ok(userService.findByPlanet(planet));
-  }
 
 }

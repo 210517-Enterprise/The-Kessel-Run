@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.Random;
 
 import com.revature.exceptions.FailedToRegisterUserException;
+import com.revature.exceptions.LoginUserFailureException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
@@ -101,7 +102,7 @@ public class UserServiceTest {
 	@Test
 	public void testLoginUser_noPasswordandnoUsername_throwsUserNotFoundException() {
 		
-		assertThrows(UserNotFoundException.class, () -> 
+		assertThrows(LoginUserFailureException.class, () -> 
 		userv.login("", ""), "No User was found");
 			
 	}

@@ -38,7 +38,7 @@ public class RiddleService {
 		Riddle r = riddleDAO.findByRiddle(riddle);
 
 		if (r == null) {
-			new RiddleNotFoundException("No riddle found with for '" + riddle+"'");
+			new RiddleNotFoundException("No riddle found with for \'" + riddle+"\'");
 		}
 
 		return r;
@@ -53,6 +53,18 @@ public class RiddleService {
 	public Riddle findById(int id) {
 
 		return riddleDAO.findById(id).orElseThrow(() -> new RiddleNotFoundException("No riddle found with id " + id));
+
+	}
+
+  	/*
+	 * return Riddle
+	 * 
+	 * param id
+	 */
+	@Transactional(readOnly = true)
+	public List<Riddle> findByPlanet(String planet) {
+
+		return riddleDAO.findByPlanet(planet);
 
 	}
 

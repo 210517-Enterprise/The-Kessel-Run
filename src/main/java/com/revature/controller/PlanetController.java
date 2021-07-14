@@ -1,7 +1,11 @@
 package com.revature.controller;
 
-import com.revature.model.Planet;
-import com.revature.service.PlanetSerice;
+import java.util.List;
+
+import com.revature.model.Riddle;
+import com.revature.model.User;
+import com.revature.service.RiddleService;
+import com.revature.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class PlanetController {
 
   @Autowired
-  PlanetSerice planetSerice;
+  RiddleService riddleService;
+
+  @Autowired
+  UserService userService;
 
   @GetMapping("/{planet}") // This passes all riddles
-  public ResponseEntity<Planet> get(@PathVariable("planet") String planet) {
+  public ResponseEntity<List<Riddle>> get(@PathVariable("planet") String planet) {
     planet = planet.replace('_', ' ');
-    return ResponseEntity.ok(planetSerice.getPlanet(planet));
+    return ResponseEntity.ok(riddleService.findByPlanet(planet));
   }
   
+  	// Getmapping for the planet page, findUserByPlanet()
+	@GetMapping("/{planet}/users")
+  public ResponseEntity<List<User>> findByPlanet(@PathVariable("planet") String planet) {
+    planet = planet.replace('_', ' ');
+    return ResponseEntity.ok(userService.findByPlanet(planet));
+  }
 }
