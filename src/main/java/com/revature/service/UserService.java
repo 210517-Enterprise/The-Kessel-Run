@@ -138,63 +138,10 @@ public class UserService {
 		}
 
 	}
-	
-//	@Transactional(readOnly = true)
-//	public List<User> bountyList() {
-//		List<User> list = userDAO.findAll(Sort.by(Sort.Direction.ASC, "bounty"));
-//		List<User> bountyList = new ArrayList<User>();
-//		for (int i = 0; i < 5; i++) {
-//			bountyList.add(list.get(i));
-//		}
-//		return bountyList;
-//	}
 
-	/*
-	 * return User
-	 * 
-	 * param User, Planet
-	 */
-//	public User changePlanet(User u, Planet p) {
-//		
-//		if (u != null) {
-//			
-//			if(p != null) {
-//			
-//				User result = userDAO.updatePlanet(u, p);
-//				
-//				return result;
-//				
-//			} else {
-//				throw new PlanetNotFoundException("No Planet was found");
-//			}
-//			
-//		} else {
-//			throw new UserNotFoundException("No User was found");
-//		}
-//	}
-
-	/*
-	 * return User
-	 * 
-	 * param User, Starship
-	 */
-//	public User changeStarship(User u, String s) {
-//
-//		if (u != null) {
-//			
-//			if(s != null) {
-//			
-//				User result = userDAO.updateStarship(u, s);
-//				
-//				return result;
-//				
-//			} else {
-//				throw new StarshipNotFoundException("No Starship was found");
-//			}
-//			
-//		} else {
-//			throw new UserNotFoundException("No User was found");
-//		}
-//	}
+  @Transactional(readOnly = true)
+  public List<User> findByPlanet(String planet) {
+    return userDAO.findByPlanet(planet);
+  }
 
 }

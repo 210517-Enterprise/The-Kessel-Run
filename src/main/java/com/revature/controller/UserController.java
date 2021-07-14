@@ -33,25 +33,19 @@ public class UserController {
 	// find by username /{username} use @pathvariable as your parameter
 	@GetMapping("/{username}")
 	public ResponseEntity<User> findByUsername(@PathVariable("username") String username) {
-		
 		return ResponseEntity.ok(userService.findByUsername(username));
-		
 	}
 	
 	// insert
 	@PostMapping("/add")
 	public ResponseEntity<User> insert(@Valid @RequestBody User u) {
-		
 		return ResponseEntity.ok(userService.insert(u));
-		
 	}
 	
-	// // Getmapping for the planet page, findUserByPlanet()
-	// @GetMapping("/planet")
-  // public ResponseEntity<List<User>> getUsers(@RequestBody User u) {
-
-
-
-  // }
+	// Getmapping for the planet page, findUserByPlanet()
+	@GetMapping("/{planet}")
+  public ResponseEntity<List<User>> findByPlanet(@PathVariable("planet") String planet) {
+    return ResponseEntity.ok(userService.findByPlanet(planet));
+  }
 
 }
