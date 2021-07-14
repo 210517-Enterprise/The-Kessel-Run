@@ -6,7 +6,7 @@ function generateShootableObjects() {
     for (let i = 1; i < 15; i++) {
         objectHTML.push(`
             <div class="rotate" id="asteroid-img-div" style="top:${Math.floor(Math.random()*85)}%;left:${Math.floor(Math.random()*85)}%;transform:rotate(${Math.floor(Math.random()*360)}deg);">
-                <img src="../assets/a${i}.png">
+                <img src="assets/a${i}.png">
             </div>
         `);
     }
@@ -330,7 +330,7 @@ function continueToPlanet() {
         
         var playerVerts = [[-1 * playerHeight/2, -1 * playerWidth/2], [-1 * playerHeight/2, playerWidth/2], [playerHeight/2, 0]];
         
-        var ignoredTypes = ['HTML', 'HEAD', 'BODY', 'SCRIPT', 'TITLE', 'META', 'STYLE', 'LINK'];
+        var ignoredTypes = ['HTML', 'HEAD', 'BODY', 'SCRIPT', 'TITLE', 'META', 'STYLE', 'LINK', 'DIV'];
         if ( window.ActiveXObject )
             ignoredTypes = ['HTML', 'HEAD', 'BODY', 'SCRIPT', 'TITLE', 'META', 'STYLE', 'LINK', 'SHAPE', 'LINE', 'GROUP', 'IMAGE', 'STROKE', 'FILL', 'SKEW', 'PATH', 'TEXTPATH', 'INS']; // Half of these are for IE g_vml
         var hiddenTypes = ['BR', 'HR'];
