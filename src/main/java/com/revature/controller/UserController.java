@@ -46,12 +46,12 @@ public class UserController {
 		
 	}
 	
-	// Getmapping for the planet page, findUserByPlanet()
-	@GetMapping("/planet")
-  public ResponseEntity<List<User>> getUsers(@RequestBody User u) {
+	// // Getmapping for the planet page, findUserByPlanet()
+	// @GetMapping("/planet")
+  // public ResponseEntity<List<User>> getUsers(@RequestBody User u) {
 
 
 
-  }
+  // }
 
 }
