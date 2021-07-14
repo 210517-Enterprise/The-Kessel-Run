@@ -38,6 +38,7 @@ function continueToPlanet() {
  * 2. Removed app store link
  * 3. Removed Kick Ass facebook link
  * 4. Added button to collect credits
+ * 5. Added 'DIV' to the ignored types
  */
 (function() {
     function Asteroids() {
