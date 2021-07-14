@@ -2,12 +2,11 @@ package com.revature.repositories;
 
 import java.util.List;
 
+import com.revature.model.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.revature.model.Planet;
-import com.revature.model.User;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Integer>{
@@ -39,31 +38,6 @@ public interface UserDAO extends JpaRepository<User, Integer>{
 	public List<User> findByCopilot(String copilot);
 	
 	@Query
-	public List<User> findByPlanet(Planet planet);
-	
-	
-	//Allows to sort by a sort object. Useful in a bounty list for example. modular so we don't need multiple sorting queries
-//	@Query
-//	public List<User> findAll();
-
-	/*
-	 * Updates are saved automatically by the JPA Repository when you update an object attached to a session
-	 * We do NOT need to write update methods for each field.
-	 * Might be UNCESSARY METHODS. I know this would kill the junit tests. but we only need to test the functions that we write. like custom queries
-	 * |||||||||||||||
-	 * |||||||||||||||
-	 * |||||||||||||||
-	 * VVVVVVVVVVVVVVV
-	 */
-	
-//	public User updatePlanet(User u, Planet planet);
-//	
-//	public User updateStarship(User u, String starship);
-//	
-//	public User updateModel(User u, String model);
-//	
-//	public User updateCredits(User u, int credits);
-//	
-//	public User updateCopilot(User u, String copilot);
+	public List<User> findByPlanet(String planet);
 	
 }

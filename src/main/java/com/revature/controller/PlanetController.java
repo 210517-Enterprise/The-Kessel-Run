@@ -17,8 +17,9 @@ public class PlanetController {
   @Autowired
   PlanetSerice planetSerice;
 
-  @GetMapping("/{planet}") // This passes all riddles compeltely, and users as ID's in JSON
+  @GetMapping("/{planet}") // This passes all riddles
   public ResponseEntity<Planet> get(@PathVariable("planet") String planet) {
+    planet = planet.replace('_', ' ');
     return ResponseEntity.ok(planetSerice.getPlanet(planet));
   }
   

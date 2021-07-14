@@ -5,23 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
+
+import com.revature.exceptions.FailedToRegisterUserException;
+import com.revature.exceptions.UserNotFoundException;
+import com.revature.model.User;
+import com.revature.repositories.UserDAO;
+import com.revature.service.UserService;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.revature.exceptions.FailedToRegisterUserException;
-import com.revature.exceptions.PlanetNotFoundException;
-import com.revature.exceptions.StarshipNotFoundException;
-import com.revature.exceptions.UserNotFoundException;
-import com.revature.model.Planet;
-import com.revature.model.User;
-import com.revature.repositories.UserDAO;
-import com.revature.service.UserService;
 
 public class UserServiceTest {
 	
@@ -110,62 +105,6 @@ public class UserServiceTest {
 		userv.login("", ""), "No User was found");
 			
 	}
-	
-//	@Test
-//	public void testChangePlanet_returnsUserWithUpdatedPlanet() {
-//		
-//		expectedUser.setPlanet(planet);
-//		when(mockdao.updatePlanet(user, planet)).thenReturn(expectedUser);
-//		
-//	    User updatedUser = userv.changePlanet(user,planet);
-//
-//		assertEquals(updatedUser, expectedUser);
-//
-//	}
-//	
-//	@Test
-//	public void testChangePlanet_nullUser_throwsUserNotFoundException() {
-//		
-//		assertThrows(UserNotFoundException.class, () -> 
-//		userv.changePlanet(null, planet), "No User was found");
-//			
-//	}
-//	
-//	@Test
-//	public void testChangePlanet_nullPlanet_throwsPlanetNotFoundException() {
-//		
-//		assertThrows(PlanetNotFoundException.class, () -> 
-//		userv.changePlanet(user, null), "No Planet was found");
-//			
-//	}
-//	
-//	@Test
-//	public void testChangeStarship_returnsUserWithUpdatedStarship() {
-//		
-//		expectedUser.setStarship(starship);;
-//		when(mockdao.updateStarship(user, starship)).thenReturn(expectedUser);
-//		
-//	    User updatedUser = userv.changeStarship(user,starship);
-//
-//		assertEquals(updatedUser, expectedUser);
-//
-//	}
-//	
-//	@Test
-//	public void testChangeStarship_nullUser_throwsUserNotFoundException() {
-//		
-//		assertThrows(UserNotFoundException.class, () -> 
-//		userv.changeStarship(null, starship), "No User was found");
-//			
-//	}
-//	
-//	@Test
-//	public void testChangeStarship_nullStarship_throwsStarshipNotFoundException() {
-//		
-//		assertThrows(StarshipNotFoundException.class, () -> 
-//		userv.changeStarship(user, null), "No Planet was found");
-//			
-//	}
 	
 
 }
