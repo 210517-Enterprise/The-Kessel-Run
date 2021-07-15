@@ -63,9 +63,9 @@ window.onload = function() {
     console.log("register.js is loaded")
     // capture the button element and add an event listener
    
-    document.getElementById('btn').addEventListener("click", setUser);
-    document.getElementById('btn').addEventListener("click", printUsertoConsole);
-    document.getElementById('btn').addEventListener("click", registerUser);
+    document.getElementById('login-btn').addEventListener("click", setUser);
+    document.getElementById('login-btn').addEventListener("click", printUsertoConsole);
+    document.getElementById('login-btn').addEventListener("click", registerUser);
 }
 
 function printUsertoConsole(){
@@ -147,26 +147,14 @@ register.js:130 POST http://localhost:8080/users/add net::ERR_FAILED
             'Content-Type':'application/json',
         },
         body: json_str,}) // fetch returns a PROMISE which is a obj that produces a single value at some point in the furture
-    .then((response) => response.json())
-    .then((data) => {
- 
-        console.log(data)
- 
- 
-    }, (err) => {
-        console.log(`error: ${err}`)
-    }); 
- }
- 
- let user1 = {
-    username: "jjjjjj",
-
-    
-         pass: "kjkgjkjg",
-
-    
-         name: "gkgpkgpkg"
-
- } 
-        
-console.log(JSON.stringify(user1))
+    .then((res) =>{
+        if(res.ok){
+            console.log("Success")
+            location.replace('login.html')
+        }else{
+            console.log('Error')
+            alert("Invalid input")
+        }
+    })   
+  
+}
