@@ -20,34 +20,34 @@
 
 <body>
   <!--Start-->
-  <form class="container" action="" method="GET">
+  <form action="" class="container" method="dialog">
     <fieldset>
       <legend class="text-warning">Your Profile</legend>
 
-      <div class="row mb-3 text-warning"">
+      <div class="row mb-3 text-warning">
         <div class=" col">
         <label for="username" class="form-label">Username:</label>
-        <input type="text" class="form-control" name="username" maxlength="250"
-          placeholder="Please enter your username">
+        <input id="username" type="text" class="form-control" name="username" maxlength="250"
+          placeholder="Please enter your username" >
       </div>
 
       <div class="col">
         <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" name="password" maxlength="250"
-          placeholder="Please enter your password">
+        <input id="password" type="password" class="form-control" name="password" maxlength="250"
+          placeholder="Please enter your password" >
       </div>
       </div>
 
-      <div class="row mb-3 text-warning"">
+      <div class="row mb-3 text-warning">
         <div class=" col">
         <label for="character name" class="form-label">Character Name:</label>
-        <input type="text" class="form-control" name="character" maxlength="250"
-          placeholder="Please enter your character name">
+        <input id="character" type="text" class="form-control" name="character" maxlength="250"
+          placeholder="Please enter your character name" >
       </div>
 
       <div class="col">
         <label for="race" class="form-label">Character Race:</label>
-        <select name="race" class="form-select" id="race">
+        <select name="race" class="form-select" id="race" >
           <option value="Human" selected>Human</option>
           <option value="Droid">Droid</option>
           <option value="Wookie">Wookie</option>
@@ -56,6 +56,7 @@
           <option value="Yoda's species">Yoda's species</option>
           <option value="Trandoshan">Trandoshan</option>
           <option value="Mon Calamari">Mon Calamari</option>
+          
           <option value="Ewok">Ewok</option>
           <option value="Sullustan">Sullustan</option>
           <option value="Neimodian">Neimodian</option>
@@ -89,10 +90,10 @@
       </div>
       </div>
 
-      <div class="row mb-3 text-warning"">
+      <div class="row mb-3 text-warning">
         <div class=" col">
         <label for="skin" class="form-label">Skin Color:</label>
-        <select name="skin" class="form-select" id="skin">
+        <select name="skin" class="form-select" id="skinColor" >
           <option value="None" selected>None</option>
           <option value="White">White</option>
           <option value="Pale">Pale</option>
@@ -112,7 +113,7 @@
 
       <div class="col">
         <label for="hair" class="form-label">Hair Color:</label>
-        <select name="hair" class="form-select" id="hair">
+        <select name="hair" class="form-select" id="hairColor" >
           <option value="None" selected>None</option>
           <option value="White">White</option>
           <option value="Blonde">Blonde</option>
@@ -123,10 +124,10 @@
       </div>
       </div>
 
-      <div class="row mb-3 text-warning"">
+      <div class="row mb-3 text-warning">
         <div class=" col">
         <label for="eye" class="form-label">Eye Color:</label>
-        <select name="eye" class="form-select" id="eye">
+        <select name="eye" class="form-select" id="eyeColor" >
           <option value="None" selected>None</option>
           <option value="Amber">Amber</option>
           <option value="Indigo">Indigo</option>
@@ -146,7 +147,7 @@
 
       <div class="col">
         <label for="copilot" class="form-label">Copilot:</label>
-        <select name="copilot" class="form-select" id="copilot">
+        <select name="copilot" class="form-select" id="copilot" >
           <option value="Luke Skywalker" selected>Luke Skywalker</option>
           <option value="C-3PO">C-3PO</option>
           <option value="R2-D2">R2-D2</option>
@@ -232,7 +233,7 @@
       </div>
       </div>
 
-      <button type="submit" class="btn btn-outline-warning">Submit</button>
+      <button type="submit" class="btn btn-outline-warning" id="btn">Submit</button>
     </fieldset>
 
   </form>
@@ -242,9 +243,7 @@
   <div class="twinkling"></div>
   <div class="clouds"></div>
 
-  <script src="js/script.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/populate.js"></script>
+  <script src="js/register.js"></script>
 </body>
 
 </html>
