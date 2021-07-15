@@ -79,7 +79,7 @@ ol, ul {
       left: 0;
       right: 0;
       display: block;
-      /* z-index: 0; 0 */
+      /* z-index: 0;  */
   }
   
   .twinkling{
@@ -91,7 +91,7 @@ ol, ul {
       right: 0;
       top: 0;
       bottom: 0;
-      /* z-index: 2; 2 */
+      /* z-index: 2;  */
       
       -moz-animation:move-background 70s linear infinite;
     -ms-animation:move-background 70s linear infinite;
@@ -102,10 +102,12 @@ ol, ul {
   }
   
   .clouds{
-      width:10000px;
-      height: 100%;
-      background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
-      background-size: 1000px 1000px;
+      width:100%;
+      height: 100%; /* "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png"*/
+      background: transparent url("http://cdn153.picsart.com/225525982015202.png") repeat; 
+      animation: move-clouds-back 200s linear infinite;
+      opacity: 0.1;
+      background-size: 3000px 1000px;
       position: absolute;
       right: 0;
       top: 0;
@@ -117,19 +119,7 @@ ol, ul {
     -o-animation:move-background 150s linear infinite;
     -webkit-animation:move-background 150s linear infinite;
     animation:move-background 150s linear infinite;
-  }
-
-  .stars,.clouds,.twinkling{
-      z-index: -1;
-  }
-  /* img{
-    height: 70vh;
-    width:70vh;
-    position: absolute;
-    z-index: 3;
-    right: 20px;
-  } */
-  
+  } 
 
 
   #asteroid-img-div {
@@ -184,6 +174,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .stars, .twinkling, .clouds {
+  z-index: -1;
+}
+/* .stars, .twinkling, .clouds {
   position: absolute;
   display: block;
   top: 0;
@@ -192,7 +185,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   right: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -3;
 }
 
 .stars {
@@ -204,10 +197,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   animation: move-twink-back 200s linear infinite;
 }
 
-.clouds {
-  background: transparent url("https://image.ibb.co/bT4N7T/clouds.png") repeat top center;
+/* .clouds { 
+  background: transparent url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn153.picsart.com%2F225525982015202.png&f=1&nofb=1") repeat top center; 
   animation: move-clouds-back 200s linear infinite;
-}
+  opacity: 0.1;
+
+} */
 
 @keyframes move-twink-back {
   from {
@@ -224,5 +219,4 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   to {
     background-position: 10000px 0;
   }
-}
-
+} 
