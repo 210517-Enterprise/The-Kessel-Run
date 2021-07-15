@@ -1,58 +1,117 @@
-let obj = sessionStorage.getItem("test");
-let objObj = JSON.parse(sessionStorage.getItem(obj));
-
-let title = objObj.name;
-document.title = title;
-
-// Planet Image
+// // Planet Image
 let image = document.createElement("img");
-image.setAttribute("class", "float-start");
-image.setAttribute("src", `../assets/${title}.png`);
+// adding img attributes
+image.setAttribute("class", "rounded");
 
-// create list function for planet stats
-function createPlanetList() {
-  // Planet Stats
-  let uList = document.createElement("ul");
-  uList.setAttribute("class", "list-group float-start");
-  // Planet Name
-  let planetName = document.createElement("li");
-  planetName.setAttribute("class", "list-group-item list-group-item-dark");
-  planetName.innerHTML = `${objObj.name}:`;
-  // Planet Climate
-  let planetClimate = document.createElement("li");
-  planetClimate.setAttribute("class", "list-group-item list-group-item-dark");
-  planetClimate.innerHTML = `Climate: ${objObj.climate}`;
-  // Planet Terrain
-  let planetTerrain = document.createElement("li");
-  planetTerrain.setAttribute("class", "list-group-item list-group-item-dark");
-  planetTerrain.innerHTML = `Terrain: ${objObj.terrain}`;
-  // Planet Population
-  let planetPop = document.createElement("li");
-  planetPop.setAttribute("class", "list-group-item list-group-item-dark");
-  planetPop.innerHTML = `Population: ${objObj.population}`;
-  // Planet Rotational Period
-  let planetRotPer = document.createElement("li");
-  planetRotPer.setAttribute("class", "list-group-item list-group-item-dark");
-  planetRotPer.innerHTML = `Rotational Period: ${objObj.rotation_period}`;
-  // Planet Orbital Period
-  let planetOrbPer = document.createElement("li");
-  planetOrbPer.setAttribute("class", "list-group-item list-group-item-dark");
-  planetOrbPer.innerHTML = `Orbital Period: ${objObj.orbital_period}`;
+image.setAttribute("width", "300rem");
+// Planet Stats planetList
+let planetList = document.createElement("ul");
+planetList.setAttribute("class", "list-group");
+// Planet Name
+let planetName = document.createElement("h3");
+planetName.setAttribute("id", "star-wars");
+// Planet Climate
+let planetClimate = document.createElement("li");
+planetClimate.setAttribute("class", "list-group-item list-group-item-dark");
+// Planet Terrain
+let planetTerrain = document.createElement("li");
+planetTerrain.setAttribute("class", "list-group-item list-group-item-dark");
+// Planet Population
+let planetPop = document.createElement("li");
+planetPop.setAttribute("class", "list-group-item list-group-item-dark");
+// Planet Rotational Period
+let planetRotPer = document.createElement("li");
+planetRotPer.setAttribute("class", "list-group-item list-group-item-dark");
+// Planet Orbital Period
+let planetOrbPer = document.createElement("li");
+planetOrbPer.setAttribute("class", "list-group-item list-group-item-dark");
 
-  uList.appendChild(planetName);
-  uList.appendChild(planetClimate);
-  uList.appendChild(planetTerrain);
-  uList.appendChild(planetPop);
-  uList.appendChild(planetRotPer);
-  uList.appendChild(planetOrbPer);
+// Planet Users
+let usersList = document.createElement("ul");
+usersList.setAttribute("class", "list-group");
+let usersDisplay = document.createElement("h3");
+usersDisplay.setAttribute("id", "star-wars");
+usersDisplay.innerHTML = "The current users on this planet are";
+usersList.appendChild(usersDisplay);
 
-  return uList;
+planetList.appendChild(planetName);
+planetList.appendChild(planetClimate);
+planetList.appendChild(planetTerrain);
+planetList.appendChild(planetPop);
+planetList.appendChild(planetRotPer);
+planetList.appendChild(planetOrbPer);
+
+// function to load the user from the db
+function loadUser(username) {
+  let url = `http://localhost:8080/users/${username}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      sessionStorage.setItem("currentUserPlnt", JSON.stringify(data.planet));
+      createPlanetList(data.planet);
+      loadUsersOnPlanet(data.planet);
+    });
+}
+function loadUsersOnPlanet(planetName) {
+  let url = `http://localhost:8080/planets/${planetName}/users`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      data.map((u) => {
+        let li = document.createElement("li");
+        li.setAttribute("class", "list-group-item list-group-item-dark");
+        li.innerHTML = u.username;
+        usersList.appendChild(li);
+      });
+    });
+}
+
+// // create list function for planet stats
+function createPlanetList(planetDisplayName) {
+  let planetUrl = `https://swapi.dev/api/planets/?search=${planetDisplayName}`;
+  fetch(planetUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      data.results.forEach((entry) => {
+        planetName.innerHTML = `You are currently on ${entry.name}`;
+        planetClimate.innerHTML = `Climate: ${entry.climate}`;
+        planetTerrain.innerHTML = `Terrain: ${entry.terrain}`;
+        planetPop.innerHTML = `Population: ${entry.population}`;
+        planetRotPer.innerHTML = `Rotational Period: ${entry.rotation_period}`;
+        planetOrbPer.innerHTML = `Orbital Period: ${entry.orbital_period}`;
+      });
+    });
+
+  // sets the title to the name of the planet the user is currently on
+  let title = JSON.parse(sessionStorage.getItem("currentUserPlnt"));
+  document.title = title;
+
+  image.setAttribute("src", `./assets/${title}.png`);
+
+  // return uList;
+}
+
+function createMainDiv() {
+  // get the main div to connect everything to in planet.html
+  let mainDiv = document.getElementById("content");
+  // mainDiv.setAttribute("class", "d-flex justify-content-center");
+  let row1 = document.getElementById("row");
+  mainDiv.append(row1);
+
+  let listCol = document.getElementById("list-col");
+  listCol.append(planetList);
+  let imgCol = document.getElementById("img-col");
+  imgCol.append(image);
+
+  // append the created elements to the main div
+  row1.append(listCol);
+  row1.append(imgCol);
+  mainDiv.appendChild(usersList);
 }
 
 window.onload = function () {
-  let mainDiv = document.getElementById("content");
-  mainDiv.appendChild(image);
-
-  let uList = createPlanetList();
-  mainDiv.appendChild(uList);
+  createMainDiv();
+  loadUser("ramarier11");
 };
