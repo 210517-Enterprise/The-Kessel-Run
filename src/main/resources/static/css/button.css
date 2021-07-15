@@ -1,0 +1,32 @@
+#login-btn {
+  animation: fade-button 10s;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#login-btn,
+.btn {
+  border: 2px solid rgb(253, 242, 83);
+  color: rgb(253, 242, 83);
+  font-size: 20px;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  margin-top: 20px;
+  width: 300px;
+}
+
+#login-btn:hover,
+.btn:hover {
+  color: black;
+  background-color: rgb(253, 242, 83);
+  /* font-weight: bold; */
+}
+
+.starwars {
+  color: rgb(253, 242, 83);
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}

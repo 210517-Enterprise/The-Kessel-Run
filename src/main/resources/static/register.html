@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- CSS only -->
   <link rel="stylesheet" href="css/stars.css" />
+  <link rel="stylesheet" href="css/button.css" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -21,20 +22,20 @@
 
 <body>
   <!--Start-->
-  <form action="" class="container" method="dialog" ">
-    <fieldset style=" color: rgb(253, 242, 83); font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;">
+  <form class="container" method="dialog" ">
+    <fieldset class="starwars">
     <legend class="">Your Profile</legend>
 
     <div class="row mb-3 ">
       <div class=" col">
         <label for="username" class="form-label">Username:</label>
-        <input id="username" type="text" class="form-control" name="username" maxlength="250"
+        <input required id="username" type="text" class="form-control" name="username" maxlength="250"
           placeholder="Please enter your username">
       </div>
 
       <div class="col">
         <label for="password" class="form-label">Password:</label>
-        <input id="password" type="password" class="form-control" name="password" maxlength="250"
+        <input required id="password" type="password" class="form-control" name="password" maxlength="250"
           placeholder="Please enter your password">
       </div>
     </div>
@@ -42,7 +43,7 @@
     <div class="row mb-3 ">
       <div class=" col">
         <label for="character name" class="form-label">Character Name:</label>
-        <input id="character" type="text" class="form-control" name="character" maxlength="250"
+        <input required id="character" type="text" class="form-control" name="character" maxlength="250"
           placeholder="Please enter your character name">
       </div>
 
@@ -57,7 +58,6 @@
           <option value="Yoda's species">Yoda's species</option>
           <option value="Trandoshan">Trandoshan</option>
           <option value="Mon Calamari">Mon Calamari</option>
-
           <option value="Ewok">Ewok</option>
           <option value="Sullustan">Sullustan</option>
           <option value="Neimodian">Neimodian</option>
@@ -232,12 +232,15 @@
           <option value="Tion Medon">Tion Medon</option>
         </select>
       </div>
-    </div>
 
-
-    </fieldset>
-    <button type="submit" id="btn">Submit</button>
+      </fieldset>
+      <div class="button-group">
+        <button type="submit" class="btn" id="login-btn">Submit</button>
+      </div>
   </form>
+
+
+mvn
   <!--end-->
 
   <div class="stars"></div>
