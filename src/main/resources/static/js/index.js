@@ -1,21 +1,32 @@
 
+// create form on button press
+let loginBtn = document.getElementById('login-btn')
 
-// StarWars Movie Intro
-var byline = document.getElementById('byline');   // Find the H2
-bylineText = byline.innerHTML;                    // Get the content of the H2
-bylineArr = bylineText.split('');                 // Split content into array
-byline.innerHTML = '';                            // Empty current content
+loginBtn.addEventListener("click", createForm);
 
-var span;         // Create variables to create elements
-var letter;
+function createForm() {
+    let formDiv = document.getElementById('form-div');
 
-for(i=0;i<bylineArr.length;i++){                  // Loop for every letter
-  span = document.createElement("span");          // Create a <span> element
-  letter = document.createTextNode(bylineArr[i]); // Create the letter
-  if(bylineArr[i] == ' ') {                       // If the letter is a space...
-    byline.appendChild(letter);         // ...Add the space without a span
-  } else {
-    span.appendChild(letter);           // Add the letter to the span
-    byline.appendChild(span);           // Add the span to the h2
-  }
+    formDiv.innerHTML = `
+        <form>
+            <div class="form-group row">
+                <label for="inputUsername" class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-sm-4"></div>
+            <button type="submit" class="btn col-sm-3" id="form-submit">Submit</button>
+            <button type="button" class="btn col-sm-3" id="register-btn">Register</button>
+            </div>
+        </form>
+    `;
+    
 }
