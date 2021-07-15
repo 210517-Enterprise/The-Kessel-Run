@@ -1,12 +1,14 @@
 .card {
   margin-bottom: 10px;
 }
-div.error{
+div.error {
   text-align: center;
   color: #fff;
 }
 
-h2.error{
+h2.error {
   font-size: 20rem;
-  
+}
+#star-wars {
+  color: rgb(253, 242, 83);
 }
