@@ -19,7 +19,6 @@ import com.revature.service.UserService;
 
 @RestController // RestController automatically puts ResponseBody on every public method (that is mapped) within this class
 @RequestMapping("/users") // we can access the methods of this controller at http://localhost:8090/app/users
-@CrossOrigin // allows us to access the db from a different localhost domain
 public class UserController {
 	
 	@Autowired

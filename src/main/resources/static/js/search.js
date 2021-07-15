@@ -38,7 +38,7 @@ function searchByValue() {
           <div class="card text-white bg-dark" style="width: 18rem">
           <img src="./assets/${person.name}.png" class="card-img-top" alt="Picture Coming Soon..">
             <div class="card-body">
-              
+            <h5 class="card-title">${person.name}</h5>
               <a href="#" class="btn btn-secondary">Add to Crew</a>
             </div>
           </div>

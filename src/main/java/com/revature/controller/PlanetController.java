@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/planets")
-@CrossOrigin
 public class PlanetController {
 
   @Autowired
