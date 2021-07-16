@@ -41,5 +41,10 @@ public class UserController {
 	public ResponseEntity<User> insert(@Valid @RequestBody User u) {
 		return ResponseEntity.ok(userService.insert(u));
 	}
+	
+	@GetMapping("/{username}_{password}")
+	public ResponseEntity<User> findByUsername(@PathVariable("username") String username, @PathVariable("password") String password) {
+		return ResponseEntity.ok(userService.login(username, password));
+	}
 
 }

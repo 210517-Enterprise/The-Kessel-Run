@@ -30,3 +30,9 @@ function createForm() {
     `;
     
 }
+var username = document.getElementById("inputUsername")
+
+var password = doucment.getElementById("inputPassword")
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", ``)
