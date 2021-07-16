@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,8 +46,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/login")
-	public ResponseEntity<User> findByUsername(@RequestBody LoginForm loginForm) {
-		return ResponseEntity.ok(userService.login(loginForm.getUsername(), loginForm.getPassword()));
+	public BodyBuilder findByUsername(@RequestBody LoginForm loginForm) {
+		if (userService.login(loginForm.getUsername(), loginForm.getPassword())) {
+			return ResponseEntity.ok();
+		} else {
+			return ResponseEntity.badRequest();
+		}
 	}
 
 }
