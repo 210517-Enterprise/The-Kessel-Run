@@ -175,7 +175,7 @@ function registerUser() {
     .then((res) =>{
         if(res.ok){
             console.log("Success")
-            location.replace('login.html')
+            location.replace('index.html')
         }else{
             console.log('Error')
             alert("Invalid input")

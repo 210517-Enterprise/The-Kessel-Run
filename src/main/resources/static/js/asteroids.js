@@ -21,10 +21,24 @@ function continueToPlanet() {
     console.log("POINTS EARNED:" + points);
 
     // store points earned in session strorage
-    sessionStorage.setItem("points", points);
+    // sessionStorage.setItem("points", points);
+    let user = fetch(`localhost:8080/users/${user}`)
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        });
 
-    // change url to planet location
+    user.credits = user.credits + points;
+
     
+    fetch(`localhost:8080/users/${user}`, {method: "PUT"})
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        });
+    
+    // change url to planet location
+    location.href = "planet.html";
 
 }
 
