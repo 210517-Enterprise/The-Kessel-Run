@@ -1,7 +1,8 @@
 let searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", searchByValue);
 // searchBtn.addEventListener("click", clearStorage);
-
+sessionStorage.setItem("username", "ramarier11");
+let username = sessionStorage.getItem("username");
 function searchByValue() {
   // set searchParam to the current active tab
   let searchParam = getCurrentActiveTab();
@@ -22,12 +23,12 @@ function searchByValue() {
               <img src="./assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
                 <div class="card-body">
                   <h5 class="card-title">${planet.name}</h5>
-                  <button onclick='goToPlanet("ramarier11")' class="btn btn-secondary">Go To Planet</button> 
+                  <button onclick='goToPlanet("${username}")' class="btn btn-secondary">Go To Planet</button> 
                 </div>
               </div>
             </div>
         `;
-          } // ***************** IMPORTANT CHANGE THE GOTOPLANET PARAMETER TO THE SESSION VARIABLE USERNAME ***********************************
+          }
           // sessionStorage.setItem(planet.name, JSON.stringify(planet));
           document.getElementById(`${searchParam}-output`).innerHTML = output;
         });
@@ -93,7 +94,7 @@ function goToPlanet(username) {
     .then((data) => {
       console.log(data);
     });
-  // document.location = "planet.html";
+  document.location = "asteroids.html";
 }
 // function clearStorage() {
 //   sessionStorage.clear();

@@ -213,8 +213,8 @@ function getAnswer() {
     inputDiv.appendChild(answeredDiv);
   }
 }
-
+let username = sessionStorage.getItem("username");
 window.onload = function () {
   createMainDiv();
-  loadUser("ramarier11");
+  loadUser(username);
 };

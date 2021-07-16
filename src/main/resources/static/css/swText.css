@@ -1,183 +1,177 @@
 /* https://codepen.io/donovanh/pen/pJzwEw?editors=110 */
 
-  
-  /* Keyframes */
-  @keyframes star {
-    0% {
-      opacity: 1;
-      transform: scale(1.3) translateY(-0.80em);
-    }
-    20% {
-      opacity: 1;
-    }
-    89% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: translateZ(-1000em);
-    }
+/* Keyframes */
+@keyframes star {
+  0% {
+    opacity: 1;
+    transform: scale(1.3) translateY(-0.8em);
   }
-  
-  @keyframes wars {
-    0% {
-      opacity: 1;
-      transform: scale(1.3) translateY(0.55em);
-    }
-    20% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: translateZ(-1000em);
-    }
+  20% {
+    opacity: 1;
   }
+  89% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
 
-  @keyframes move-byline {
-    0% {
-      opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+@keyframes wars {
+  0% {
+    opacity: 1;
+    transform: scale(1.3) translateY(0.55em);
   }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
 
-  @keyframes fade-button {
-      0% {
-          opacity: 0;
-      }
-      100% {
-          opacity: 1;
-      }
+@keyframes move-byline {
+  0% {
+    opacity: 0;
   }
-  
-  /* Make the 3D work on the container */
-  .starwars-demo {
-    perspective: 800px;
-    transform-style: preserve3d;
+  100% {
+    opacity: 1;
   }
-  
-  /* General styles and layout */
-  /* body {
+}
+
+@keyframes fade-button {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Make the 3D work on the container */
+.starwars-demo {
+  perspective: 800px;
+  transform-style: preserve3d;
+}
+
+/* General styles and layout */
+/* body {
     background: #000 url(//cssanimation.rocks/demo/starwars/images/bg.jpg);
   } */
-  
+
+.starwars-demo {
+  height: 17em;
+  left: 50%;
+  position: absolute;
+  top: 53%;
+  transform: translate(-50%, -85%);
+  width: 34em;
+}
+
+.byline span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+}
+
+.star,
+.wars,
+.byline {
+  position: absolute;
+}
+
+.star {
+  top: -0.76em;
+}
+
+.wars {
+  bottom: -0.49em;
+}
+
+.byline {
+  color: #fff;
+  font-family: "ITC Serif Gothic", Lato;
+  font-size: 2.25em;
+  left: -2em;
+  letter-spacing: 0.4em;
+  right: -2em;
+  text-align: center;
+  text-transform: uppercase;
+  top: 41%;
+}
+
+/* Login Stuff */
+/* .button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 140vh;
+} */
+
+#login-btn,
+.btn {
+  border: 2px solid rgb(253, 242, 83);
+  color: rgb(253, 242, 83);
+  font-size: 20px;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+#login-btn:hover,
+.btn:hover {
+  color: black;
+  background-color: rgb(253, 242, 83);
+}
+
+label {
+  text-align: left;
+  font-size: 20px;
+  color: rgb(253, 242, 83);
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+
+.form-group {
+  margin: 20px;
+}
+
+#register-btn {
+  margin-left: 10px;
+}
+
+/* Animation properties */
+.star {
+  animation: star 10s forwards reverse ease-in;
+}
+.wars {
+  animation: wars 10s forwards reverse ease-in;
+}
+.byline {
+  animation: move-byline 10s;
+}
+#login-btn {
+  animation: fade-button 10s;
+}
+
+/*** Media queries for adjusting to different screen sizes ***/
+
+@media only screen and (max-width: 600px) {
   .starwars-demo {
-    height: 17em;
-    left: 50%;
-    position: absolute;
-    top: 53%;
-    transform: translate(-50%, -85%);
-    width: 34em;
+    font-size: 10px;
   }
-  
-  .byline span {
-    display: inline-block;
-  }
-  
-  img {
-    width: 100%;
-  }
-  
-  .star, .wars, .byline {
-    position: absolute;
-  }
-  
-  .star {
-    top: -0.76em;
-  }
-  
-  .wars {
-    bottom: -0.49em;
-  }
-  
-  .byline {
-    color: #fff;
-    font-family: "ITC Serif Gothic", Lato;
-    font-size: 2.25em;
-    left: -2em;
-    letter-spacing: 0.4em;
-    right: -2em;
-    text-align: center;
-    text-transform: uppercase;
-    top: 41%;
-  }
+}
 
-  /* Login Stuff */
-  .button-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 140vh;
+@media only screen and (max-width: 480px) {
+  .starwars-demo {
+    font-size: 7px;
   }
-
-  
-
-  #login-btn, .btn {
-    border: 2px solid rgb(253, 242, 83);
-    color: rgb(253, 242, 83);
-    font-size: 20px;
-    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-  }
-
-  #login-btn:hover, .btn:hover {
-    color: black;
-    background-color: rgb(253, 242, 83);
-  }
-
-  label {
-      text-align: left;
-      font-size: 20px;
-      color: rgb(253, 242, 83);
-      font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
-  }
-
-  .form-group {
-    margin: 20px;
-  }
-
-
-  #register-btn {
-      margin-left: 10px;
-  }
-
-    /* Animation properties */
-  .star {
-    animation: star 10s forwards reverse ease-in;
-  }
-  .wars {
-    animation: wars 10s forwards reverse ease-in;
-  }
-  .byline {
-    animation: move-byline 10s ;
-  }
-  #login-btn {
-    animation: fade-button 10s;
-  }
-  
-  /*** Media queries for adjusting to different screen sizes ***/
-  
-  @media only screen and (max-width: 600px) {
-    .starwars-demo {
-      font-size: 10px;
-    }
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .starwars-demo {
-      font-size: 7px;
-    }
-  }
-  
-
-
-
-
-  
+}

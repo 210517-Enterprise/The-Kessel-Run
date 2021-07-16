@@ -39,7 +39,7 @@ let navbarContent = `
               id="search-form"
               placeholder="Search"
             />
-            <button class="btn btn-outline-success" id="search-btn">
+            <button class="btn btn-outline-success starwars" id="search-btn">
               Search
             </button>
           </div>
