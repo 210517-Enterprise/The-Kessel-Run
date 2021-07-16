@@ -136,6 +136,12 @@ public class UserService {
 
 	}
 
+  @Transactional
+  public User update(User u) {
+    userDAO.deleteById(u.getId());
+    return userDAO.save(u);
+  }
+
   @Transactional(readOnly = true)
   public List<User> findByPlanet(String planet) {
     return userDAO.findByPlanet(planet);

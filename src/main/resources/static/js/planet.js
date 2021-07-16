@@ -29,10 +29,22 @@ planetOrbPer.setAttribute("class", "list-group-item list-group-item-dark");
 // Planet Users
 let usersList = document.createElement("ul");
 usersList.setAttribute("class", "list-group");
+
+// List of users on the planet
 let usersDisplay = document.createElement("h3");
 usersDisplay.setAttribute("id", "star-wars");
 usersDisplay.innerHTML = "The current users on this planet are";
 usersList.appendChild(usersDisplay);
+
+// Riddles
+let riddlesList = document.createElement("ul");
+riddlesList.setAttribute("class", "list-group");
+
+// Riddle Display
+let riddleDisplay = document.createElement("h6");
+riddleDisplay.setAttribute("id", "star-wars");
+riddleDisplay.innerHTML = "Answer this riddle";
+riddlesList.appendChild(riddleDisplay);
 
 planetList.appendChild(planetName);
 planetList.appendChild(planetClimate);
@@ -51,8 +63,11 @@ function loadUser(username) {
       sessionStorage.setItem("currentUserPlnt", JSON.stringify(data.planet));
       createPlanetList(data.planet);
       loadUsersOnPlanet(data.planet);
+      getRiddle(data.planet);
     });
 }
+
+// function to lead the users on the planet
 function loadUsersOnPlanet(planetName) {
   let url = `http://localhost:8080/planets/${planetName}/users`;
 
@@ -93,11 +108,28 @@ function createPlanetList(planetDisplayName) {
   // return uList;
 }
 
+function getRiddle(planetName) {
+  let riddleUrl = `http://localhost:8080/planets/${planetName}`;
+  fetch(riddleUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      data.map((r) => {
+        let riddleQuestion = document.createElement("li");
+        riddleQuestion.setAttribute("class", "h5");
+        riddleQuestion.setAttribute("id", "star-wars");
+        riddleQuestion.innerHTML = `${r.riddle}`;
+        sessionStorage.setItem("riddleAnswer", r.answer);
+        riddlesList.appendChild(riddleQuestion);
+      });
+    });
+}
+
 function createMainDiv() {
   // get the main div to connect everything to in planet.html
   let mainDiv = document.getElementById("content");
-  // mainDiv.setAttribute("class", "d-flex justify-content-center");
-  let row1 = document.getElementById("row");
+
+  // create first row in main div
+  let row1 = document.getElementById("row-one");
   mainDiv.append(row1);
 
   let listCol = document.getElementById("list-col");
@@ -105,13 +137,84 @@ function createMainDiv() {
   let imgCol = document.getElementById("img-col");
   imgCol.append(image);
 
-  // append the created elements to the main div
+  // append the created elements to the row1 div
   row1.append(listCol);
   row1.append(imgCol);
-  mainDiv.appendChild(usersList);
+
+  // create second row in main div
+  let row2 = document.getElementById("row-two");
+  mainDiv.append(row2);
+
+  // create user column and append userslist to the column
+  let userCol = document.getElementById("user-col");
+  userCol.append(usersList);
+  // create riddle column and append riddle to the column
+  let riddleCol = document.getElementById("riddle-col");
+  riddleCol.append(riddlesList);
+
+  // input field div
+  let inputDiv = document.createElement("div");
+  inputDiv.setAttribute("class", "input-group mb-3");
+  inputDiv.setAttribute("id", "input-div");
+  // answer input field
+  let answerInput = document.createElement("input");
+  answerInput.setAttribute("type", "text");
+  answerInput.setAttribute("class", "form-control");
+  answerInput.setAttribute("id", "answer-input");
+  answerInput.setAttribute("placeholder", "Answer");
+
+  // answer submit button
+  let answerSubmit = document.createElement("button");
+  answerSubmit.setAttribute("class", "btn btn-outline-secondary");
+  answerSubmit.setAttribute("id", "submitBtn");
+  answerSubmit.setAttribute("type", "button");
+  answerSubmit.addEventListener("click", getAnswer);
+  answerSubmit.innerHTML = "Submit";
+  inputDiv.append(answerSubmit);
+  inputDiv.append(answerInput);
+  riddleCol.append(inputDiv);
+  // append the created columns to the row2 div
+  row2.append(riddleCol);
+  row2.append(userCol);
 }
 
+function getAnswer() {
+  let answerValue = sessionStorage.getItem("riddleAnswer");
+  let submittedAnswer = document.getElementById("answer-input").value;
+  let inputDiv = document.getElementById("riddle-col");
+  let submitButton = document.getElementById("submitBtn");
+
+  let answeredDiv = document.createElement("div");
+  let answeredDivBtn = document.createElement("button");
+  answeredDivBtn.setAttribute("type", "button");
+  answeredDivBtn.setAttribute("class", "btn-close");
+  answeredDivBtn.setAttribute("data-bs-dismiss", "alert");
+  answeredDivBtn.setAttribute("aria-label", "Close");
+
+  if (submittedAnswer.toLowerCase().includes(answerValue)) {
+    submitButton.setAttribute("disabled", true);
+    answeredDiv.setAttribute(
+      "class",
+      "alert alert-info alert-dismissible fade show"
+    );
+    answeredDiv.setAttribute("role", "alert");
+    answeredDiv.innerHTML = "With you, the Force is. (Correct)";
+    answeredDiv.append(answeredDivBtn);
+    inputDiv.appendChild(answeredDiv);
+  } else {
+    answeredDiv.setAttribute(
+      "class",
+      "alert alert-danger alert-dismissible fade show"
+    );
+    answeredDiv.setAttribute("role", "alert");
+    answeredDiv.innerHTML =
+      "Patience you must have, my young Padawan. (Try Again)";
+    answeredDiv.append(answeredDivBtn);
+    inputDiv.appendChild(answeredDiv);
+  }
+}
+let username = sessionStorage.getItem("username");
 window.onload = function () {
   createMainDiv();
-  loadUser("ramarier11");
+  loadUser(username);
 };

@@ -8,7 +8,7 @@ function createForm() {
     let formDiv = document.getElementById('form-div');
 
     formDiv.innerHTML = `
-        <form>
+        <form class="boot-form">
             <div class="form-group row">
                 <label for="inputUsername" class="col-sm-3 col-form-label">Username</label>
                 <div class="col-sm-9">
@@ -28,6 +28,14 @@ function createForm() {
             </div>
         </form>
     `;
+
+
+    function redirectRegister(){
+
+        location.href = 'register.html';
+
+    }
+
     
 }
 

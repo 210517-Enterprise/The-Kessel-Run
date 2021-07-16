@@ -115,8 +115,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 140vh;
+    padding-top: 10%;
+    min-height: 80vh;
   }
+
+  /* .button-group {
+    position: 
+  } */
 
   
 
@@ -148,6 +153,11 @@
       margin-left: 10px;
   }
 
+  /* .boot-from {
+    position:absolute;
+    left: -100%;
+  } */
+
     /* Animation properties */
   .star {
     animation: star 10s forwards reverse ease-in;
@@ -175,9 +185,3 @@
       font-size: 7px;
     }
   }
-  
-
-
-
-
-  
