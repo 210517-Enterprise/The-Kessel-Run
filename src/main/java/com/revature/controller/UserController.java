@@ -47,15 +47,6 @@ public class UserController {
 	public ResponseEntity<User> insert(@Valid @RequestBody User u) {
 		return ResponseEntity.ok(userService.insert(u));
 	}
-	
-	@GetMapping("/login")
-	public BodyBuilder findByUsername(@RequestBody LoginForm loginForm) {
-		if (userService.login(loginForm.getUsername(), loginForm.getPassword())) {
-			return ResponseEntity.ok();
-		} else {
-			return ResponseEntity.badRequest();
-		}
-	}
 
   //update
   @PutMapping

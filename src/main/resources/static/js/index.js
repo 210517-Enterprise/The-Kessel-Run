@@ -8,7 +8,7 @@ function createForm() {
     let formDiv = document.getElementById('form-div');
 
     formDiv.innerHTML = `
-        <form class="boot-form">
+        <form method="dialog" class="boot-form">
             <div class="form-group row">
                 <label for="inputUsername" class="col-sm-3 col-form-label">Username</label>
                 <div class="col-sm-9">
@@ -29,6 +29,7 @@ function createForm() {
         </form>
     `;
 
+    document.getElementById("register-btn").addEventListener("click",redirectRegister)
 
     function redirectRegister(){
 
@@ -36,36 +37,37 @@ function createForm() {
 
     }
 
+    document.getElementById("form-submit").addEventListener("click", login)
+    function login() {
+
+    let psd;    
+
+    let data = {username : document.getElementById("inputUsername").value, pass : document.getElementById("inputPassword").value}
+    console.log("username"+data.username)
+    console.log("password"+data.password)
+    fetch(`http://localhost:8080/users/${data.username}`)
+        .then(res => {
+            res.json()
+        })
+        .then(data1 =>{
+            psd=data1.password;
+            console.log(data1)
+            
+        })
+
+        console.log("psd"+psd)
+
+        if(psd===data.password){
+            sessionStorage.setItem("username", document.getElementById("inputUsername").value)
+            location.href= "planet.html";
+        } else {
+            console.log("Invalid")
+        }     
+            
+}
+
     
 }
 
-document.getElementById("form-submit").addEventListener("click", login());
 
-function login() {
-  
 
-    let data = {username : document.getElementById("inputUsername").nodeValue, password : doucment.getElementById("inputPassword").nodeValue}
-    fetch(`http://localhost:8090/app/users/login`, {
-        body: JSON.stringify(data),
-        method: 'GET',
-        header: {
-            'Content-Type': 'application/json',
-        }
-        
-    }).then(res => {
-        if (res.ok) {
-            console.log("success")
-            window.sessionStorage.setItem("username", document.getElementById("inputUsername").nodeValue)
-            window.location.href= "planet.html";
-        } else { 
-            console.log('not successful')
-            const para = document.createElement("p");
-            const node = document.createTextNode("Username or password was incorrect");
-            para.appendChild(node);
-            const element = document.getElementsById("logBtn");
-            element.appendChild(para);
-        }
-        
-    })
-
-}
