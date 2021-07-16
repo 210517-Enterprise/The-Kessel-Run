@@ -24,10 +24,10 @@ let navbarContent = `
             </li>
             <li class="nav-item">
               <a
-                class="nav-link disabled"
-                href="#"
+                class="nav-link"
+                id="logout"
+                href="index.html"
                 tabindex="-1"
-                aria-disabled="true"
                 >Logout</a
               >
             </li>
@@ -57,3 +57,9 @@ id="navbar"
 }
 
 document.getElementById("navbar").innerHTML = navbarContent;
+
+let logoutBtn = document.getElementById("logout");
+logoutBtn.addEventListener("click", logout);
+function logout() {
+  sessionStorage.clear();
+}

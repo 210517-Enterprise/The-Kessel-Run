@@ -60,7 +60,7 @@ function loadUser(username) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      sessionStorage.setItem("currentUserPlnt", JSON.stringify(data.planet));
+      // sessionStorage.setItem("currentUserPlnt", JSON.stringify(data.planet));
       createPlanetList(data.planet);
       loadUsersOnPlanet(data.planet);
       getRiddle(data.planet);
@@ -96,16 +96,12 @@ function createPlanetList(planetDisplayName) {
         planetPop.innerHTML = `Population: ${entry.population}`;
         planetRotPer.innerHTML = `Rotational Period: ${entry.rotation_period}`;
         planetOrbPer.innerHTML = `Orbital Period: ${entry.orbital_period}`;
+
+        document.title = entry.name;
+
+        image.setAttribute("src", `./assets/${entry.name}.png`);
       });
     });
-
-  // sets the title to the name of the planet the user is currently on
-  let title = JSON.parse(sessionStorage.getItem("currentUserPlnt"));
-  document.title = title;
-
-  image.setAttribute("src", `./assets/${title}.png`);
-
-  // return uList;
 }
 
 function getRiddle(planetName) {
@@ -201,6 +197,7 @@ function getAnswer() {
     answeredDiv.innerHTML = "With you, the Force is. (Correct)";
     answeredDiv.append(answeredDivBtn);
     inputDiv.appendChild(answeredDiv);
+    sessionStorage.removeItem("riddleAnswer");
   } else {
     answeredDiv.setAttribute(
       "class",

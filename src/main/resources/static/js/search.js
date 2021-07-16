@@ -1,8 +1,11 @@
 let searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", searchByValue);
-// searchBtn.addEventListener("click", clearStorage);
-sessionStorage.setItem("username", "ramarier11");
+
+// CHANGE THIS BEFORE PRESENTATION ***************************************
+sessionStorage.setItem("username", "ramarier11"); // This is simulating that im logged in
 let username = sessionStorage.getItem("username");
+// ********************************************************
+
 function searchByValue() {
   // set searchParam to the current active tab
   let searchParam = getCurrentActiveTab();
@@ -23,7 +26,7 @@ function searchByValue() {
               <img src="./assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
                 <div class="card-body">
                   <h5 class="card-title">${planet.name}</h5>
-                  <button onclick='goToPlanet("${username}")' class="btn btn-secondary">Go To Planet</button> 
+                  <button onclick='goToPlanet("${username}", "${planet.name}")' class="btn btn-secondary">Go To Planet</button> 
                 </div>
               </div>
             </div>
@@ -87,14 +90,32 @@ function getCurrentActiveTab() {
 
 // set the planetName of the sessionStorage to the planetName clicked
 // and go to a planet
-function goToPlanet(username) {
-  let url = `http://localhost:8080/users/${username}`;
-  fetch(url)
+function goToPlanet(username, planetName) {
+  let getUrl = `http://localhost:8080/users/${username}`;
+  let postUrl = `http://localhost:8080/users/add`;
+
+  fetch(getUrl)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      data.planet = planetName;
+      let userObj = JSON.stringify(data);
+
+      fetch(postUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: userObj,
+      }).then((res) => {
+        if (res.ok) {
+          console.log("Success");
+          document.location = "asteroids.html";
+        } else {
+          console.log("Error");
+        }
+      });
     });
-  document.location = "asteroids.html";
 }
 // function clearStorage() {
 //   sessionStorage.clear();
