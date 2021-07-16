@@ -63,9 +63,9 @@
   }
   
   /* General styles and layout */
-  body {
+  /* body {
     background: #000 url(//cssanimation.rocks/demo/starwars/images/bg.jpg);
-  }
+  } */
   
   .starwars-demo {
     height: 17em;
@@ -118,6 +118,8 @@
     min-height: 140vh;
   }
 
+  
+
   #login-btn, .btn {
     border: 2px solid rgb(253, 242, 83);
     color: rgb(253, 242, 83);
@@ -128,7 +130,6 @@
   #login-btn:hover, .btn:hover {
     color: black;
     background-color: rgb(253, 242, 83);
-    /* font-weight: bold; */
   }
 
   label {

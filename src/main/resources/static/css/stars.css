@@ -63,7 +63,7 @@ ol, ul {
       }
   }
   
-  .background-container{
+  .background-container, .button-group{
       position: fixed;
       top: 0;
       left:0;
