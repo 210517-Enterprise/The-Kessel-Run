@@ -197,7 +197,7 @@ function registerUser() {
                     
                     <p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
 
-                    <p>During this period of unrest, bounty hunters traverse the galaxy in hopes of making a furtune. On ${user.planet}, the bounty hunter ${user.name} has just acquired a ship dubbed ${user.starship}. Joined by their new copilot ${user.copilot}, what legacy will they leave in the stars...</p>
+                    <p>During this period of unrest, bounty hunters traverse the galaxy in hopes of making a fortune. On ${user.planet}, the bounty hunter ${user.name} has just acquired a ship dubbed ${user.starship}. Joined by their new copilot ${user.copilot}, what legacy will they leave in the stars...</p>
                 </div>
                 </section>
             `;
