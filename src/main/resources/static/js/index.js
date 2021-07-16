@@ -30,7 +30,8 @@ function createForm() {
     `;
 
     function redirectRegister(){
-        location.href('register.html');
+
+        location.href = 'register.html';
 
     }
     
