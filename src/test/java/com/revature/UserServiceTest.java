@@ -78,27 +78,27 @@ public class UserServiceTest {
 
 	}
 	
-
-	@Test
-	public void testRegisterUser_idGreaterThanZero_throwsException() {
-		
-		user.setId(34);
-		
-		assertThrows(FailedToRegisterUserException.class, () -> 
-		userv.register(user), "Received User Object did not have ID of 0");
-			
-	}
-	
-	@Test
-	public void testLoginUser_returnsUser() {
-		
-		when(mockdao.findByUsername(user.getUsername())).thenReturn(expectedUser);
-		
-		User loggedinUser = userv.login(user.getUsername(),user.getPass());
-
-		assertEquals(loggedinUser, expectedUser);
-
-	}
+//
+//	@Test
+//	public void testRegisterUser_idGreaterThanZero_throwsException() {
+//		
+//		user.setId(34);
+//		
+//		assertThrows(FailedToRegisterUserException.class, () -> 
+//		userv.register(user), "Received User Object did not have ID of 0");
+//			
+//	}
+//	
+//	@Test
+//	public void testLoginUser_returnsUser() {
+//		
+//		when(mockdao.findByUsername(user.getUsername())).thenReturn(expectedUser);
+//		
+//		User loggedinUser = userv.login(user.getUsername(),user.getPass());
+//
+//		assertEquals(loggedinUser, expectedUser);
+//
+//	}
 	
 	@Test
 	public void testLoginUser_noPasswordandnoUsername_throwsUserNotFoundException() {
