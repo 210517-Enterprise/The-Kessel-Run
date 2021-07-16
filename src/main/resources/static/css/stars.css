@@ -1,16 +1,84 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -23,128 +91,131 @@ html {
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-
 @keyframes move-background {
-    from {
-          -webkit-transform: translate3d(0px, 0px, 0px);
-      }
-      to { 
-          -webkit-transform: translate3d(1000px, 0px, 0px);
-      }
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
   }
-  @-webkit-keyframes move-background {
-    from {
-          -webkit-transform: translate3d(0px, 0px, 0px);
-      }
-      to { 
-          -webkit-transform: translate3d(1000px, 0px, 0px);
-      }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
   }
-  
-  @-moz-keyframes move-background {    
-      from {
-          -webkit-transform: translate3d(0px, 0px, 0px);
-      }
-      to { 
-          -webkit-transform: translate3d(1000px, 0px, 0px);
-      }
+}
+@-webkit-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
   }
-  
-      @-webkit-keyframes move-background {
-      from {
-          -webkit-transform: translate3d(0px, 0px, 0px);
-      }
-      to { 
-          -webkit-transform: translate3d(1000px, 0px, 0px);
-      }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
   }
-  
-  .background-container {
-      position: fixed;
-      top: 0;
-      left:0;
-      bottom: 0;
-      right: 0;/* 0*/
-  }
-  
-  .stars {
-   background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
-   position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: block;
-      /* z-index: 0;  */
-  }
-  
-  .twinkling{
-      width:10000px;
-      height: 100%;
-      background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
-      background-size: 1000px 1000px;
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      /* z-index: 2;  */
-      
-      -moz-animation:move-background 60s linear infinite;
-    -ms-animation:move-background 60s linear infinite;
-    -o-animation:move-background 60s linear infinite;
-    -webkit-animation:move-background 60s linear infinite;
-    animation:move-background 60s linear infinite;
-      
-  }
-  
-  .clouds{
-      width:100%;
-      height: 100%; /* "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png"*/
-      background: transparent url("http://cdn153.picsart.com/225525982015202.png") repeat; 
-      animation: move-clouds-back 10s linear infinite;
-      opacity: 0.1;
-      background-size: 2000px 1000px;
-      position: absolute;
-      left: 0;
-      /* right: 0;
-      top: 0;
-      bottom: 0; */
-      /* z-index: 3; */
-  
-     -moz-animation:move-background 150s linear infinite;
-    -ms-animation:move-background 150s linear infinite;
-    -o-animation:move-background 150s linear infinite;
-    -webkit-animation:move-background 150s linear infinite;
-    animation:move-background 150s linear infinite;
-  } 
-
-
-  #asteroid-img-div {
-    width: auto;
-    height: auto;
-    overflow: hidden;
-    z-index: 10;
-    position: absolute;
-    left: 40%;
-    top: 40%;
-    transform: rotate(5deg);
 }
 
-.rotate{
-    animation: rotation 30s infinite linear;
+@-moz-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+@-webkit-keyframes move-background {
+  from {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+  to {
+    -webkit-transform: translate3d(1000px, 0px, 0px);
+  }
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; /* 0*/
+  z-index: -1;
+}
+
+.stars {
+  background: black
+    url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  /* z-index: 0;  */
+}
+
+.twinkling {
+  width: 10000px;
+  height: 100%;
+  background: transparent
+    url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png")
+    repeat;
+  background-size: 1000px 1000px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* z-index: 2;  */
+
+  -moz-animation: move-background 60s linear infinite;
+  -ms-animation: move-background 60s linear infinite;
+  -o-animation: move-background 60s linear infinite;
+  -webkit-animation: move-background 60s linear infinite;
+  animation: move-background 60s linear infinite;
+}
+
+.clouds {
+  width: 100%;
+  height: 100%; /* "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png"*/
+  background: transparent url("http://cdn153.picsart.com/225525982015202.png")
+    repeat;
+  animation: move-clouds-back 10s linear infinite;
+  opacity: 0.1;
+  background-size: 2000px 1000px;
+  position: absolute;
+  left: 0;
+  /* right: 0;
+      top: 0;
+      bottom: 0; */
+  /* z-index: 3; */
+
+  -moz-animation: move-background 150s linear infinite;
+  -ms-animation: move-background 150s linear infinite;
+  -o-animation: move-background 150s linear infinite;
+  -webkit-animation: move-background 150s linear infinite;
+  animation: move-background 150s linear infinite;
+}
+
+#asteroid-img-div {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  z-index: 10;
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  transform: rotate(5deg);
+}
+
+.rotate {
+  animation: rotation 30s infinite linear;
 }
 
 @keyframes rotation {
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(359deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 table {
@@ -152,16 +223,22 @@ table {
   border-spacing: 0;
 }
 
-caption, th, td {
+caption,
+th,
+td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-q, blockquote {
+q,
+blockquote {
   quotes: none;
 }
-q:before, q:after, blockquote:before, blockquote:after {
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
   content: "";
   content: none;
 }
@@ -170,13 +247,27 @@ a img {
   border: none;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
   display: block;
 }
 
-.stars, .twinkling, .clouds {
+.stars,
+.twinkling,
+.clouds {
   z-index: -1;
-  position:absolute;
+  position: absolute;
   display: block;
 }
 /* .stars, .twinkling, .clouds {
