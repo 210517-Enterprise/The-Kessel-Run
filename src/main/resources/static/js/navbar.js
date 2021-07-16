@@ -23,6 +23,9 @@ let navbarContent = `
               <a class="nav-link" href="/search.html">Travel</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/npc.html">Copilots</a>
+            </li>
+            <li class="nav-item">
               <a
                 class="nav-link"
                 id="logout"
