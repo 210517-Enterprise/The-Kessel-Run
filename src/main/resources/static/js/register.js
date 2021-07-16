@@ -19,7 +19,13 @@ let hair_field;
 let eye_field;  
 
 
-let copilot_field;  
+let copilot_field;
+
+let planet_field;
+
+let starship_field;
+
+
 
 
 function setUser() {
@@ -56,6 +62,11 @@ function setUser() {
 
 
     copilot_field = document.querySelector('#copilot').value;
+
+    
+    planet_field= document.querySelector('#planet').value;
+
+    starship_field= document.querySelector('#starship').value;
 }
 
 
@@ -93,7 +104,19 @@ function printUsertoConsole(){
              eyeColor: eye_field,
     
         
-             copilot: copilot_field
+             copilot: copilot_field,
+
+            starship: starship_field,
+
+            model: "YT-1300 light freighter",
+
+            credits: 0,
+
+            bounty: 0,
+
+            planet: planet_field
+
+
     }
 
     let json_str = JSON.stringify(user)
@@ -125,18 +148,20 @@ function registerUser() {
              eyeColor: eye_field,
     
         
-             copilot: copilot_field
+             copilot: copilot_field,
+
+             starship: starship_field,
+ 
+             model: "YT-1300 light freighter",
+ 
+             credits: 0,
+ 
+             bounty: 0,
+ 
+             planet: planet_field
     }
 
-    /*
-Access to fetch at 'http://localhost:8080/users/add' from origin 
-'http://127.0.0.1:5501' has been blocked by CORS policy: Response 
-to preflight request doesn't pass access control check: It does not 
-have HTTP ok status.
-------------------------------------------------------------------
-register.js:130 POST http://localhost:8080/users/add net::ERR_FAILED
-
-*/
+   if(!!starship_field){
 
     let json_str = JSON.stringify(user)
     
@@ -155,6 +180,8 @@ register.js:130 POST http://localhost:8080/users/add net::ERR_FAILED
             console.log('Error')
             alert("Invalid input")
         }
-    })   
+    }) 
+    
+    }
   
 }
