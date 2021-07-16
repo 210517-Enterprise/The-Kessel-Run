@@ -1,3 +1,6 @@
+// Setting Document Title
+document.title = "User Search";
+
 // User Stats userList
 let userList = document.createElement("ul");
 userList.setAttribute("class", "list-group");
@@ -68,36 +71,33 @@ function createUserList(username) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      data.results.forEach((entry) => {
-        userName.innerHTML = `Username: ${entry.username}`;
-        userChar.innerHTML = `Character's Name: ${entry.name}`;
-        userRace.innerHTML = `Character's Race: ${entry.race}`;
-        userHair.innerHTML = `Hair Color: ${entry.hairColor}`;
-        userEye.innerHTML = `Eye Color: ${entry.eyeColor}`;
-        userSkin.innerHTML = `Skin Color: ${entry.skinColor}`;
-        userCopilot.innerHTML = `Copilot: ${entry.copilot}`;
-        userStarship.innerHTML = `Starship's Name: ${entry.starship}`;
-        userModel.innerHTML = `Starship's Model: ${entry.model}`;
-        userCredits.innerHTML = `Current Credits: ${entry.credits}`;
-        userBounty.innerHTML = `Current Bounty: ${entry.bounty}`;
-        userPlanet.innerHTML = `Current Location: ${entry.planet}`;
-      });
+      userName.innerHTML = `Username: ${data.username}`;
+      userChar.innerHTML = `Character's Name: ${data.name}`;
+      userRace.innerHTML = `Character's Race: ${data.race}`;
+      userHair.innerHTML = `Hair Color: ${data.hairColor}`;
+      userEye.innerHTML = `Eye Color: ${data.eyeColor}`;
+      userSkin.innerHTML = `Skin Color: ${data.skinColor}`;
+      userCopilot.innerHTML = `Copilot: ${data.copilot}`;
+      userStarship.innerHTML = `Starship's Name: ${data.starship}`;
+      userModel.innerHTML = `Starship's Model: ${data.model}`;
+      userCredits.innerHTML = `Current Credits: ${data.credits}`;
+      userBounty.innerHTML = `Current Bounty: ${data.bounty}`;
+      userPlanet.innerHTML = `Current Location: ${data.planet}`;
     });
 
   // sets the title to the name of the the user is currently examining
 
-/**
- * STILL NEEDS USER VARIABLE TO FILL ELEMENTS
- */
+  /**
+   * STILL NEEDS USER VARIABLE TO FILL ELEMENTS
+   */
 
-  let title = JSON.parse(sessionStorage.getItem("currentUserPlnt"));
-  document.title = title;
-
+  createMainDiv();
 }
 
 function createMainDiv() {
   // get the main div to connect everything to in planet.html
   let mainDiv = document.getElementById("content");
+  mainDiv.removeChild(tempDiv);
   // mainDiv.setAttribute("class", "d-flex justify-content-center");
 
   let row1 = document.getElementById("row");
@@ -113,7 +113,30 @@ function createMainDiv() {
 /**
  * STILL NEEDS USER VARIABLE TO FILL ELEMENTS
  */
+let tempDiv = document.createElement("div");
+tempDiv.setAttribute("id", "star-wars");
+tempDiv.setAttribute("class", "h5");
+tempDiv.innerHTML = "Please enter a user name in the search bar";
+
 window.onload = function () {
-  createUserList(/*USERNAME GOES HERE*/);
-  createMainDiv();
+  document.getElementById("content").appendChild(tempDiv);
 };
+
+// SEARCH FUNCTIONALITY
+
+// search bar button
+let userSearchBtn = document.getElementById("search-btn");
+userSearchBtn.addEventListener("click", findUser);
+
+function findUser() {
+  let searchValue = getSearchValue();
+
+  createUserList(searchValue);
+}
+
+// get search value function
+function getSearchValue() {
+  let search = document.getElementById("search-form").value;
+
+  return search;
+}
