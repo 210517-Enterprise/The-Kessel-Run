@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/planets")
-public class PlanetController {
+@RequestMapping("/planets") // we can access the methods of this controller at http://localhost:8080/planets
+public class PlanetController { 
 
   @Autowired
   RiddleService riddleService;
@@ -31,7 +31,7 @@ public class PlanetController {
     return ResponseEntity.ok(riddleService.findByPlanet(planet));
   }
   
-  	// Getmapping for the planet page, findUserByPlanet()
+  	// Getmapping for the planet page, findUsersByPlanet()
 	@GetMapping("/{planet}/users")
   public ResponseEntity<List<User>> findByPlanet(@PathVariable("planet") String planet) {
     planet = planet.replace('_', ' ');
