@@ -30,7 +30,7 @@ function createForm() {
     `;
 
     function redirectRegister(){
-        location.replace('register.html');
+        location.href = 'register.html';
     }
     
     document.getElementById('register-btn').addEventListener('click', redirectRegister)
