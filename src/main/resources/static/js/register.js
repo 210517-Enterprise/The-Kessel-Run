@@ -174,8 +174,41 @@ function registerUser() {
         body: json_str,}) // fetch returns a PROMISE which is a obj that produces a single value at some point in the furture
     .then((res) =>{
         if(res.ok){
-            console.log("Success")
-            location.replace('index.html')
+
+            // fade out the form
+            let formEle = document.getElementsByTagName('form')[0];
+            formEle.id = 'form-fade';
+
+            document.getElementById('clouds').style.opacity = 0;
+
+
+            // append the text crawl
+            document.body.innerHTML = document.body.innerHTML + `
+                <div class="fade-crawl"></div>
+
+                <section class="star-wars">
+                <div class="crawl">
+                    <div class="title">
+                    <p>Star Wars</p>
+                    <h1>The Kessel Run</h1>
+                    </div>
+                    
+                    <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.</p>
+                    
+                    <p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
+
+                    <p>During this period of unrest, bounty hunters traverse the galaxy in hopes of making a furtune. On ${user.planet}, the bounty hunter ${user.name} has just acquired a ship dubbed ${user.starship}. Joined by their new copilot ${user.copilot}, what legacy will they leave in the stars...</p>
+                </div>
+                </section>
+            `;
+
+            // wait until the text crawl is finished
+            setTimeout(() => {
+                console.log("Success");
+                location.replace('index.html');
+            }, 60000);
+
+            
         }else{
             console.log('Error')
             alert("Invalid input")
@@ -185,3 +218,4 @@ function registerUser() {
     }
   
 }
+
