@@ -20,7 +20,7 @@ let navbarContent = `
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Crew</a>
+              <a class="nav-link" href="/search.html">Travel</a>
             </li>
             <li class="nav-item">
               <a

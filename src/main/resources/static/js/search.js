@@ -26,7 +26,7 @@ function searchByValue() {
           </div>
         </div>
         `;
-          sessionStorage.setItem(planet.name, JSON.stringify(planet));
+          // sessionStorage.setItem(planet.name, JSON.stringify(planet));
           document.getElementById(`${searchParam}-output`).innerHTML = output;
         });
       }
@@ -38,7 +38,7 @@ function searchByValue() {
           <div class="card text-white bg-dark" style="width: 18rem">
           <img src="./assets/${person.name}.png" class="card-img-top" alt="Picture Coming Soon..">
             <div class="card-body">
-              
+            <h5 class="card-title">${person.name}</h5>
               <a href="#" class="btn btn-secondary">Add to Crew</a>
             </div>
           </div>
@@ -67,9 +67,9 @@ function getCurrentActiveTab() {
   let peopleTab = document
     .getElementById("nav-people-tab")
     .getAttribute("aria-selected");
-  let profileTab = document
-    .getElementById("nav-profile-tab")
-    .getAttribute("aria-selected");
+  // let profileTab = document
+  //   .getElementById("nav-profile-tab")
+  //   .getAttribute("aria-selected");
 
   if (planetsTab == "true") {
     return "planets";
@@ -77,15 +77,15 @@ function getCurrentActiveTab() {
   if (peopleTab == "true") {
     return "people";
   }
-  if (profileTab == "true") {
-    return "profile";
-  }
+  // if (profileTab == "true") {
+  //   return "profile";
+  // }
 }
 
 // set the planetName of the sessionStorage to the planetName clicked
 // and go to a planet
 function goToPlanet(planetName) {
-  sessionStorage.setItem("test", planetName);
+  sessionStorage.setItem("currentUserPlnt", planetName);
   document.location = "planet.html";
 }
 // function clearStorage() {
