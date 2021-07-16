@@ -28,5 +28,13 @@ function createForm() {
             </div>
         </form>
     `;
+
+    function redirectRegister(){
+        location.replace('register.html');
+    }
     
+    document.getElementById('register-btn').addEventListener('click', redirectRegister)
 }
+
+
+            
