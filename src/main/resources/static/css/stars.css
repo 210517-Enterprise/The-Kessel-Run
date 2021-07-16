@@ -63,7 +63,7 @@ ol, ul {
       }
   }
   
-  .background-container, .button-group{
+  .background-container{
       position: fixed;
       top: 0;
       left:0;
@@ -93,11 +93,11 @@ ol, ul {
       bottom: 0;
       /* z-index: 2;  */
       
-      -moz-animation:move-background 70s linear infinite;
-    -ms-animation:move-background 70s linear infinite;
-    -o-animation:move-background 70s linear infinite;
-    -webkit-animation:move-background 70s linear infinite;
-    animation:move-background 70s linear infinite;
+      -moz-animation:move-background 60s linear infinite;
+    -ms-animation:move-background 60s linear infinite;
+    -o-animation:move-background 60s linear infinite;
+    -webkit-animation:move-background 60s linear infinite;
+    animation:move-background 60s linear infinite;
       
   }
   
@@ -105,13 +105,14 @@ ol, ul {
       width:100%;
       height: 100%; /* "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png"*/
       background: transparent url("http://cdn153.picsart.com/225525982015202.png") repeat; 
-      animation: move-clouds-back 200s linear infinite;
+      animation: move-clouds-back 10s linear infinite;
       opacity: 0.1;
-      background-size: 3000px 1000px;
+      background-size: 2000px 1000px;
       position: absolute;
-      right: 0;
+      left: 0;
+      /* right: 0;
       top: 0;
-      bottom: 0;
+      bottom: 0; */
       /* z-index: 3; */
   
      -moz-animation:move-background 150s linear infinite;
@@ -175,6 +176,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .stars, .twinkling, .clouds {
   z-index: -1;
+  position:absolute;
+  display: block;
 }
 /* .stars, .twinkling, .clouds {
   position: absolute;
