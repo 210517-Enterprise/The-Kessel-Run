@@ -15,17 +15,19 @@ function searchByValue() {
       // if the current active tab is planets, populate the planets tab with planets
       if (searchParam == "planets") {
         data.results.forEach(function (planet) {
-          output += `
-        <div class="col-md-auto">
-          <div class="card text-white bg-dark" style="width: 18rem">
-          <img src="./assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
-            <div class="card-body">
-              <h5 class="card-title">${planet.name}</h5>
-              <button onclick='goToPlanet("ramarier11")' class="btn btn-secondary">Go To Planet</button> 
+          if (planet.name !== "unknown") {
+            output += `
+            <div class="col-md-auto">
+              <div class="card text-white bg-dark" style="width: 18rem">
+              <img src="./assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
+                <div class="card-body">
+                  <h5 class="card-title">${planet.name}</h5>
+                  <button onclick='goToPlanet("ramarier11")' class="btn btn-secondary">Go To Planet</button> 
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        `; // ***************** IMPORTANT CHANGE THE GOTOPLANET PARAMETER TO THE SESSION VARIABLE USERNAME ***********************************
+        `;
+          } // ***************** IMPORTANT CHANGE THE GOTOPLANET PARAMETER TO THE SESSION VARIABLE USERNAME ***********************************
           // sessionStorage.setItem(planet.name, JSON.stringify(planet));
           document.getElementById(`${searchParam}-output`).innerHTML = output;
         });
@@ -34,15 +36,15 @@ function searchByValue() {
       if (searchParam == "people") {
         data.results.forEach(function (person) {
           output += `
-        <div class="col-md-auto">
-          <div class="card text-white bg-dark" style="width: 18rem">
-          <img src="./assets/${person.name}.png" class="card-img-top" alt="Picture Coming Soon..">
-            <div class="card-body">
-            <h5 class="card-title">${person.name}</h5>
-              <a href="#" class="btn btn-secondary">Add to Crew</a>
+          <div class="col-md-auto">
+            <div class="card text-white bg-dark" style="width: 18rem">
+            <img src="./assets/${person.name}.png" class="card-img-top" alt="Picture Coming Soon..">
+              <div class="card-body">
+              <h5 class="card-title">${person.name}</h5>
+                <a href="#" class="btn btn-secondary">Add to Crew</a>
+              </div>
             </div>
           </div>
-        </div>
         `;
           document.getElementById(`${searchParam}-output`).innerHTML = output;
         });
