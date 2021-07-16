@@ -120,18 +120,18 @@ public class UserService {
 	 * param username and password
 	 */
 	@Transactional(readOnly = true)
-	public User login(String username, String password) {
+	public boolean login(String username, String password) {
 
 		User u = (User) userDAO.findByUsername(username);
 
 		if (u != null) {
 			if (u.getPass().equals(password)) {
-				return u;
+				return true;
 			} else {
-				throw new LoginUserFailureException("The password or username you enter did not match!");
+				return false;
 			}
 		} else {
-			throw new LoginUserFailureException("The password or username you enter did not match!");
+			return false;
 		}
 
 	}

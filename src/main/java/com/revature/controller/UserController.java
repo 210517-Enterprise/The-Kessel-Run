@@ -6,6 +6,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.model.LoginForm;
 import com.revature.model.User;
 import com.revature.service.UserService;
 
@@ -42,10 +47,19 @@ public class UserController {
 	public ResponseEntity<User> insert(@Valid @RequestBody User u) {
 		return ResponseEntity.ok(userService.insert(u));
 	}
+	
+	@GetMapping("/login")
+	public BodyBuilder findByUsername(@RequestBody LoginForm loginForm) {
+		if (userService.login(loginForm.getUsername(), loginForm.getPassword())) {
+			return ResponseEntity.ok();
+		} else {
+			return ResponseEntity.badRequest();
+		}
+	}
 
   //update
-  @PutMapping("/{username}")
-	public ResponseEntity<User> update(@PathVariable("username") User u) {
+  @PutMapping
+	public ResponseEntity<User> update(@RequestBody User u) {
 		return ResponseEntity.ok(userService.update(u));
 	}
 
