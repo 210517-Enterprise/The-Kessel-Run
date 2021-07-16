@@ -48,7 +48,7 @@ function login() {
         if (res.ok) {
             console.log("success")
             window.sessionStorage.setItem("username", document.getElementById("inputUsername").nodeValue)
-            window.location.href("planet.html")
+            window.location.href= "planet.html";
         } else { 
             console.log('not successful')
             const para = document.createElement("p");
