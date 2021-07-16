@@ -19,7 +19,13 @@ let hair_field;
 let eye_field;  
 
 
-let copilot_field;  
+let copilot_field;
+
+let planet_field;
+
+let starship_field;
+
+
 
 
 function setUser() {
@@ -56,6 +62,11 @@ function setUser() {
 
 
     copilot_field = document.querySelector('#copilot').value;
+
+    
+    planet_field= document.querySelector('#planet').value;
+
+    starship_field= document.querySelector('#starship').value;
 }
 
 
@@ -63,9 +74,9 @@ window.onload = function() {
     console.log("register.js is loaded")
     // capture the button element and add an event listener
    
-    document.getElementById('btn').addEventListener("click", setUser);
-    document.getElementById('btn').addEventListener("click", printUsertoConsole);
-    document.getElementById('btn').addEventListener("click", registerUser);
+    document.getElementById('login-btn').addEventListener("click", setUser);
+    document.getElementById('login-btn').addEventListener("click", printUsertoConsole);
+    document.getElementById('login-btn').addEventListener("click", registerUser);
 }
 
 function printUsertoConsole(){
@@ -93,7 +104,19 @@ function printUsertoConsole(){
              eyeColor: eye_field,
     
         
-             copilot: copilot_field
+             copilot: copilot_field,
+
+            starship: starship_field,
+
+            model: "YT-1300 light freighter",
+
+            credits: 0,
+
+            bounty: 0,
+
+            planet: planet_field
+
+
     }
 
     let json_str = JSON.stringify(user)
@@ -125,18 +148,20 @@ function registerUser() {
              eyeColor: eye_field,
     
         
-             copilot: copilot_field
+             copilot: copilot_field,
+
+             starship: starship_field,
+ 
+             model: "YT-1300 light freighter",
+ 
+             credits: 0,
+ 
+             bounty: 0,
+ 
+             planet: planet_field
     }
 
-    /*
-Access to fetch at 'http://localhost:8080/users/add' from origin 
-'http://127.0.0.1:5501' has been blocked by CORS policy: Response 
-to preflight request doesn't pass access control check: It does not 
-have HTTP ok status.
-------------------------------------------------------------------
-register.js:130 POST http://localhost:8080/users/add net::ERR_FAILED
-
-*/
+   if(!!starship_field){
 
     let json_str = JSON.stringify(user)
     
@@ -147,26 +172,16 @@ register.js:130 POST http://localhost:8080/users/add net::ERR_FAILED
             'Content-Type':'application/json',
         },
         body: json_str,}) // fetch returns a PROMISE which is a obj that produces a single value at some point in the furture
-    .then((response) => response.json())
-    .then((data) => {
- 
-        console.log(data)
- 
- 
-    }, (err) => {
-        console.log(`error: ${err}`)
-    }); 
- }
- 
- let user1 = {
-    username: "jjjjjj",
-
+    .then((res) =>{
+        if(res.ok){
+            console.log("Success")
+            location.replace('login.html')
+        }else{
+            console.log('Error')
+            alert("Invalid input")
+        }
+    }) 
     
-         pass: "kjkgjkjg",
-
-    
-         name: "gkgpkgpkg"
-
- } 
-        
-console.log(JSON.stringify(user1))
+    }
+  
+}

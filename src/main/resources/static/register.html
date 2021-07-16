@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- CSS only -->
   <link rel="stylesheet" href="css/stars.css" />
+  <link rel="stylesheet" href="css/button.css" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -21,33 +22,33 @@
 
 <body>
   <!--Start-->
-  <form action="" class="container" method="dialog" ">
-    <fieldset style=" color: rgb(253, 242, 83); font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;">
+  <form class="container" method="dialog" ">
+    <fieldset class=" starwars">
     <legend class="">Your Profile</legend>
 
     <div class="row mb-3 ">
       <div class=" col">
         <label for="username" class="form-label">Username:</label>
-        <input id="username" type="text" class="form-control" name="username" maxlength="250"
+        <input required id="username" type="text" class="form-control" name="username" maxlength="250"
           placeholder="Please enter your username">
       </div>
 
       <div class="col">
         <label for="password" class="form-label">Password:</label>
-        <input id="password" type="password" class="form-control" name="password" maxlength="250"
+        <input required id="password" type="password" class="form-control" name="password" maxlength="250"
           placeholder="Please enter your password">
       </div>
     </div>
 
     <div class="row mb-3 ">
       <div class=" col">
-        <label for="character name" class="form-label">Character Name:</label>
-        <input id="character" type="text" class="form-control" name="character" maxlength="250"
-          placeholder="Please enter your character name">
+        <label for="character name" class="form-label">Character's Name:</label>
+        <input required id="character" type="text" class="form-control" name="character" maxlength="250"
+          placeholder="Please enter your character's name">
       </div>
 
       <div class="col">
-        <label for="race" class="form-label">Character Race:</label>
+        <label for="race" class="form-label">Character's Race:</label>
         <select name="race" class="form-select" id="race">
           <option value="Human" selected>Human</option>
           <option value="Droid">Droid</option>
@@ -57,7 +58,6 @@
           <option value="Yoda's species">Yoda's species</option>
           <option value="Trandoshan">Trandoshan</option>
           <option value="Mon Calamari">Mon Calamari</option>
-
           <option value="Ewok">Ewok</option>
           <option value="Sullustan">Sullustan</option>
           <option value="Neimodian">Neimodian</option>
@@ -93,57 +93,9 @@
 
     <div class="row mb-3 ">
       <div class=" col">
-        <label for="skin" class="form-label">Skin Color:</label>
-        <select name="skin" class="form-select" id="skinColor">
-          <option value="None" selected>None</option>
-          <option value="White">White</option>
-          <option value="Pale">Pale</option>
-          <option value="Tan">Tan</option>
-          <option value="Brown">Brown</option>
-          <option value="Black">Black</option>
-          <option value="Red">Red</option>
-          <option value="Orange">Orange</option>
-          <option value="Yellow">Yellow</option>
-          <option value="Green">Green</option>
-          <option value="Blue">Blue</option>
-          <option value="Magenta">Magenta</option>
-          <option value="Purple">Purple</option>
-          <option value="Pink">Pink</option>
-        </select>
-      </div>
-
-      <div class="col">
-        <label for="hair" class="form-label">Hair Color:</label>
-        <select name="hair" class="form-select" id="hairColor">
-          <option value="None" selected>None</option>
-          <option value="White">White</option>
-          <option value="Blonde">Blonde</option>
-          <option value="Brown">Brown</option>
-          <option value="Black">Black</option>
-          <option value="Red">Red</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row mb-3 ">
-      <div class=" col">
-        <label for="eye" class="form-label">Eye Color:</label>
-        <select name="eye" class="form-select" id="eyeColor">
-          <option value="None" selected>None</option>
-          <option value="Amber">Amber</option>
-          <option value="Indigo">Indigo</option>
-          <option value="Grey">Grey</option>
-          <option value="Silver">Silver</option>
-          <option value="Hazel">Hazel</option>
-          <option value="Brown">Brown</option>
-          <option value="Black">Black</option>
-          <option value="Red">Red</option>
-          <option value="Orange">Orange</option>
-          <option value="Yellow">Yellow</option>
-          <option value="Green">Green</option>
-          <option value="Blue">Blue</option>
-          <option value="Pink">Pink</option>
-        </select>
+        <label for="starship name" class="form-label">Starship's Name:</label>
+        <input required id="starship" type="text" class="form-control" name="starship" maxlength="250"
+          placeholder="Please enter your Starship's name">
       </div>
 
       <div class="col">
@@ -234,9 +186,145 @@
       </div>
     </div>
 
+    <div class="row mb-3 ">
+      <div class=" col">
+        <label for="skin" class="form-label">Skin Color:</label>
+        <select name="skin" class="form-select" id="skinColor">
+          <option value="None" selected>None</option>
+          <option value="White">White</option>
+          <option value="Pale">Pale</option>
+          <option value="Tan">Tan</option>
+          <option value="Brown">Brown</option>
+          <option value="Black">Black</option>
+          <option value="Red">Red</option>
+          <option value="Orange">Orange</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Green">Green</option>
+          <option value="Blue">Blue</option>
+          <option value="Magenta">Magenta</option>
+          <option value="Purple">Purple</option>
+          <option value="Pink">Pink</option>
+        </select>
+      </div>
+
+      <div class="col">
+        <label for="hair" class="form-label">Hair Color:</label>
+        <select name="hair" class="form-select" id="hairColor">
+          <option value="None" selected>None</option>
+          <option value="White">White</option>
+          <option value="Blonde">Blonde</option>
+          <option value="Brown">Brown</option>
+          <option value="Black">Black</option>
+          <option value="Red">Red</option>
+        </select>
+      </div>
+
+      <div class=" col">
+        <label for="eye" class="form-label">Eye Color:</label>
+        <select name="eye" class="form-select" id="eyeColor">
+          <option value="None" selected>None</option>
+          <option value="Amber">Amber</option>
+          <option value="Indigo">Indigo</option>
+          <option value="Grey">Grey</option>
+          <option value="Silver">Silver</option>
+          <option value="Hazel">Hazel</option>
+          <option value="Brown">Brown</option>
+          <option value="Black">Black</option>
+          <option value="Red">Red</option>
+          <option value="Orange">Orange</option>
+          <option value="Yellow">Yellow</option>
+          <option value="Green">Green</option>
+          <option value="Blue">Blue</option>
+          <option value="Pink">Pink</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3 ">
+      <div class=" col">
+        <label for="planet" class="form-label">Home World:</label>
+        <select name="planet" class="form-select" id="planet">
+          <option value="Tatooine">Tatooine</option>
+          <option value="Alderaan">Alderaan</option>
+          <option value="Yavin">Yavin</option>
+          <option value="IV">IV</option>
+          <option value="Hoth">Hoth</option>
+          <option value="Dagobah">Dagobah</option>
+          <option value="Bespin">Bespin</option>
+          <option value="Endor">Endor</option>
+          <option value="Naboo">Naboo</option>
+          <option value="Coruscant">Coruscant</option>
+          <option value="Kamino">Kamino</option>
+          <option value="Geonosis">Geonosis</option>
+          <option value="Utapau">Utapau</option>
+          <option value="Mustafar">Mustafar</option>
+          <option value="Kashyyyk">Kashyyyk</option>
+          <option value="Polis">Polis</option>
+          <option value="Massa">Massa</option>
+          <option value="Mygeeto">Mygeeto</option>
+          <option value="Felucia">Felucia</option>
+          <option value="Cato">Cato</option>
+          <option value="Neimoidia">Neimoidia</option>
+          <option value="Saleucami">Saleucami</option>
+          <option value="Stewjon">Stewjon</option>
+          <option value="Eriadu">Eriadu</option>
+          <option value="Corellia">Corellia</option>
+          <option value="Rodia">Rodia</option>
+          <option value="Nal">Nal</option>
+          <option value="Hutta">Hutta</option>
+          <option value="Dantooine">Dantooine</option>
+          <option value="Bestine">Bestine</option>
+          <option value="IV">IV</option>
+          <option value="Ord">Ord</option>
+          <option value="Mantell">Mantell</option>
+          <option value="UNKNOWN">UNKNOWN</option>
+          <option value="Trandosha">Trandosha</option>
+          <option value="Socorro">Socorro</option>
+          <option value="Mon">Mon</option>
+          <option value="Cala">Cala</option>
+          <option value="Chandrila">Chandrila</option>
+          <option value="Sullust">Sullust</option>
+          <option value="Toydaria">Toydaria</option>
+          <option value="Malastare">Malastare</option>
+          <option value="Dathomir">Dathomir</option>
+          <option value="Ryloth">Ryloth</option>
+          <option value="Aleen">Aleen</option>
+          <option value="Minor">Minor</option>
+          <option value="Vulpter">Vulpter</option>
+          <option value="Troiken">Troiken</option>
+          <option value="Tund">Tund</option>
+          <option value="Haruun">Haruun</option>
+          <option value="Kal">Kal</option>
+          <option value="Cerea">Cerea</option>
+          <option value="Glee">Glee</option>
+          <option value="Anselm">Anselm</option>
+          <option value="Iridonia">Iridonia</option>
+          <option value="Tholoth">Tholoth</option>
+          <option value="Iktotch">Iktotch</option>
+          <option value="Quermia">Quermia</option>
+          <option value="Dorin">Dorin</option>
+          <option value="Champala">Champala</option>
+          <option value="Mirial">Mirial</option>
+          <option value="Serenno">Serenno</option>
+          <option value="Concord">Concord</option>
+          <option value="Dawn">Dawn</option>
+          <option value="Zolan">Zolan</option>
+          <option value="Ojom">Ojom</option>
+          <option value="Skako">Skako</option>
+          <option value="Muunilinst">Muunilinst</option>
+          <option value="Shili">Shili</option>
+          <option value="Kalee">Kalee</option>
+          <option value="Umbara">Umbara</option>
+        </select>
+      </div>
+    </div>  
 
     </fieldset>
-    <button type="submit" id="btn">Submit</button>
+
+    <div class="button-group">
+      <button type="submit" class="btn" id="login-btn">Submit</button>
+    </div>
+
   </form>
   <!--end-->
 

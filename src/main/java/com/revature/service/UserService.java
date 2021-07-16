@@ -72,10 +72,7 @@ public class UserService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public User insert(User u) {
-		u.setBounty(0);
-		u.setCredits(0);
-		u.setModel("YT-1300 light freighter");
-		u.setPlanet("Tatooine");
+
 		return userDAO.save(u);
 	}
 	
