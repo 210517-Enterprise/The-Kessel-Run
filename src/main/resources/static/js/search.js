@@ -20,7 +20,7 @@ function searchByValue() {
         data.results.forEach(function (planet) {
           if (planet.name !== "unknown") {
             output += `
-            <div class="col-md-auto">
+            <div class="col-md-auto" style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif">
               <div class="card text-white bg-dark" style="width: 18rem">
               <img src="./assets/${planet.name}.png" class="card-img-top" alt="Picture Coming Soon..">
                 <div class="card-body">

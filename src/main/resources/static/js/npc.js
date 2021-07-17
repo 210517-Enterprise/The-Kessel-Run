@@ -19,7 +19,7 @@ function loadCharacter(characterName) {
       let output = "";
       data.results.forEach((entry) => {
         output += `
-        <div class="col-md-auto">
+        <div class="col-md-auto" style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif">
           <div class="card text-white bg-dark" style="width: 18rem">
             <img src="./assets/${
               entry.name
