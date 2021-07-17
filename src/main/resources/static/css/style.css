@@ -12,3 +12,7 @@ h2.error {
 #star-wars {
   color: rgb(253, 242, 83);
 }
+
+#nav-tab>* {
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
