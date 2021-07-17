@@ -224,3 +224,27 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     background-position: 10000px 0;
   }
 } 
+
+
+
+/* format the navbar */
+.navbar-collapse>* {
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+.nav-item:hover>* {
+  background-color: rgba(0, 0, 0, 0.582);
+  border-radius: 5px;
+  padding-left: 1%;
+  padding-right: 1%;
+  color: rgb(253, 242, 83) !important;
+}
+
+#search-btn>*, #search-btn {
+  color: black;
+  border-color: black;
+}
+
+#search-btn:hover>*, #search-btn:hover {
+  color: rgb(253, 242, 83) !important;
+  background-color: rgba(0, 0, 0, 0.582) !important;
+}
