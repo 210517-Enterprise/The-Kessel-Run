@@ -1,6 +1,8 @@
 // Setting Document Title
 document.title = "User Search";
 
+var userObjSearch;
+
 // User Stats userList
 let userList = document.createElement("ul");
 userList.setAttribute("class", "list-group");
@@ -65,6 +67,8 @@ userList.appendChild(userCredits);
 userList.appendChild(userBounty);
 userList.appendChild(userPlanet);
 
+
+
 // create list function for User stats
 function createUserList(username) {
   let url = `http://localhost:8080/users/${username}`;
@@ -83,6 +87,8 @@ function createUserList(username) {
       userCredits.innerHTML = `Current Credits: ${data.credits}`;
       userBounty.innerHTML = `Current Bounty: ${data.bounty}`;
       userPlanet.innerHTML = `Current Location: ${data.planet}`;
+
+      userObjSearch = JSON.stringify(data);
     });
 
   // sets the title to the name of the the user is currently examining
@@ -139,4 +145,95 @@ function getSearchValue() {
   let search = document.getElementById("search-form").value;
 
   return search;
+}
+
+function claimBounty() {
+let username = sessionStorage.getItem("username");
+let userObj;
+
+fetch(`http://localhost:8080/users/${username}`)
+  .then(res => {res.json()})
+  .then(data => {
+      userObj = JSON.stringify(data);
+  })
+
+if (userObj.planet == userObjSearch.planet) {
+  userObj.credits += userObjSearch.bounty;
+
+  fetch(`http://localhost:8080/users`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: userObj
+  }).then(res => {
+    if(res.ok) {
+      console.log("add credits successful");
+    } else {
+      console.log("Error add credits unsuccessful")
+    }
+  })
+
+  userObjSearch.bounty = 0;
+  fetch(`http://localhost:8080/users`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: userObjSearch
+  }).then(res => {
+    if(res.ok) {
+      console.log("remove bounty successful");
+    } else {
+      console.log("Error remove bounty unsuccessful")
+    }
+  })
+
+}
+
+}
+
+function addBounty() {
+  let username = sessionStorage.getItem("username");
+  let userObj;
+  let amount = doucment.getElementById().value;
+
+  fetch(`http://localhost:8080/users/${username}`)
+    .then(res => {res.json()})
+    .then(data => {
+        userObj = JSON.stringify(data);
+    })
+
+
+    userObj.credits -= amount;
+    fetch(`http://localhost:8080/users`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: userObj
+    }).then(res => {
+      if(res.ok) {
+        console.log("remove credits successful");
+      } else {
+        console.log("Error remove credits unsuccessful")
+      }
+    })
+
+    userObjSearch.bounty += amount;
+    fetch(`http://localhost:8080/users`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: userObjSearch
+  }).then(res => {
+    if(res.ok) {
+      console.log("add bounty successful");
+    } else {
+      console.log("Error add bounty unsuccessful")
+    }
+  })
+
+
 }
