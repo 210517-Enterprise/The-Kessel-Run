@@ -21,8 +21,32 @@ function continueToPlanet() {
     console.log("POINTS EARNED:" + points);
 
     // store points earned in session strorage
-    // sessionStorage.setItem("points", points);
-    let user = fetch(`localhost:8080/users/${user}`)
+    //  sessionStorage.setItem("points", points);
+    let user_name = sessionStorage.getItem('username')
+
+    fetch(`http://localhost:8080/users/${user_name}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      data.credits += parseInt(points);
+      let userObj = JSON.stringify(data);
+      fetch(`http://localhost:8080/users/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: userObj,
+      }).then((res) => {
+        if (res.ok) {
+          console.log("Success");
+          location.href = "planet.html";
+        } else {
+          console.log("Error");
+        }
+      });
+    });  
+
+   /* let user = fetch(`localhost:8080/users/${user}`)
         .then((response) => response.json())
         .then((data) => {
             return data;
@@ -30,15 +54,26 @@ function continueToPlanet() {
 
     user.credits = user.credits + points;
 
-    
-    fetch(`localhost:8080/users/${user}`, {method: "PUT"})
-        .then((response) => response.json())
-        .then((data) => {
-            return data;
-        });
-    
+   /* 
+    fetch(`localhost:8080/users/${user}`, {
+        method: "POST",
+        headers:{
+            'Content-Type':'application.json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then((res) => {
+            if(res.ok){
+                console.log("Susses")
+                location.href = "planet.html";
+            } else {
+                console.log("Error")
+            }
+        }
+        );
+    */
     // change url to planet location
-    location.href = "planet.html";
+    
 
 }
 

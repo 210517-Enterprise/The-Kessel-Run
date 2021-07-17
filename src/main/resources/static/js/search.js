@@ -2,7 +2,6 @@ let searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", searchByValue);
 
 // CHANGE THIS BEFORE PRESENTATION ***************************************
-sessionStorage.setItem("username", "ramarier11"); // This is simulating that im logged in
 let username = sessionStorage.getItem("username");
 // ********************************************************
 
