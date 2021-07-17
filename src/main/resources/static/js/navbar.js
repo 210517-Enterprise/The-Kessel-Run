@@ -1,5 +1,5 @@
 let navbarContent = `
-<div class="container-fluid">
+<div class="container-fluid" style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif">
         <button
           class="navbar-toggler"
           type="button"
