@@ -1,7 +1,7 @@
 // Setting Document Title
 document.title = "User Search";
 
-var userObjSearch;
+var usernameSearch;
 
 // User Stats userList
 let userList = document.createElement("ul");
@@ -71,6 +71,9 @@ userList.appendChild(userPlanet);
 
 // create list function for User stats
 function createUserList(username) {
+
+  usernameSearch = username;
+
   let url = `http://localhost:8080/users/${username}`;
   fetch(url)
     .then((res) => res.json())
@@ -88,7 +91,7 @@ function createUserList(username) {
       userBounty.innerHTML = `Current Bounty: ${data.bounty}`;
       userPlanet.innerHTML = `Current Location: ${data.planet}`;
 
-      userObjSearch = JSON.stringify(data);
+
     });
 
   // sets the title to the name of the the user is currently examining
@@ -98,6 +101,7 @@ function createUserList(username) {
    */
 
   createMainDiv();
+
 }
 
 function createMainDiv() {
@@ -115,6 +119,7 @@ function createMainDiv() {
   // append the created elements to the main div
   row1.append(listCol);
   mainDiv.appendChild(row1);
+
 }
 /**
  * STILL NEEDS USER VARIABLE TO FILL ELEMENTS
@@ -147,93 +152,113 @@ function getSearchValue() {
   return search;
 }
 
-function claimBounty() {
-let username = sessionStorage.getItem("username");
-let userObj;
+document.getElementById("claimBtn").addEventListener("click", claimBounty)
+document.getElementById("addBtn").addEventListener("click", addBounty)
 
-fetch(`http://localhost:8080/users/${username}`)
-  .then(res => {res.json()})
+
+
+//CLAIM BOUNTY==========================================================================
+
+async function claimBounty() {
+  let username1 = sessionStorage.getItem("username");
+
+   fetch(`http://localhost:8080/users/${username1}`)
+  .then(res => { res.json()})
   .then(data => {
-      userObj = JSON.stringify(data);
-  })
+    let userObj = JSON.stringify(data);
 
-if (userObj.planet == userObjSearch.planet) {
-  userObj.credits += userObjSearch.bounty;
-
-  fetch(`http://localhost:8080/users`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: userObj
-  }).then(res => {
-    if(res.ok) {
-      console.log("add credits successful");
-    } else {
-      console.log("Error add credits unsuccessful")
-    }
-  })
-
-  userObjSearch.bounty = 0;
-  fetch(`http://localhost:8080/users`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: userObjSearch
-  }).then(res => {
-    if(res.ok) {
-      console.log("remove bounty successful");
-    } else {
-      console.log("Error remove bounty unsuccessful")
-    }
-  })
-
-}
-
-}
-
-function addBounty() {
-  let username = sessionStorage.getItem("username");
-  let userObj;
-  let amount = doucment.getElementById().value;
-
-  fetch(`http://localhost:8080/users/${username}`)
+     fetch(`http://localhost:8080/users/${usernameSearch}`)
     .then(res => {res.json()})
     .then(data => {
-        userObj = JSON.stringify(data);
-    })
+      let userObjSearch = JSON.stringify(data);
 
+      if(userObj.planet == userObjSearch.planet) {
+        userObj.credits += userObjSearch.bounty;
 
-    userObj.credits -= amount;
-    fetch(`http://localhost:8080/users`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: userObj
-    }).then(res => {
-      if(res.ok) {
-        console.log("remove credits successful");
-      } else {
-        console.log("Error remove credits unsuccessful")
+        fetch(`http://localhost:8080/users/add`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: userObj
+        }).then(res => {
+          if(res.ok) {
+            console.log("add credits successful")
+          } else {
+            console.log("ERROR add credits unsuccessful")
+          }
+        })
+        userObjSearch.bounty = 0;
+        fetch(`http://localhost:8080/users/add`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: userObjSearch
+        }).then(res => {
+          if(res.ok) {
+            console.log("remove bounty successful")
+          } else {
+            console.log("ERROR remove bounty unsuccessful")
+          }
+        })
       }
     })
 
-    userObjSearch.bounty += amount;
-    fetch(`http://localhost:8080/users`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: userObjSearch
-  }).then(res => {
-    if(res.ok) {
-      console.log("add bounty successful");
-    } else {
-      console.log("Error add bounty unsuccessful")
-    }
+
+  })
+}
+
+
+async function addBounty() {
+  let username1 = sessionStorage.getItem("username");
+  let amount = document.getElementById("bountyAmount").value;
+
+  fetch(`http://localhost:8080/users/${username1}`)
+  .then(res => {res.json()})
+  .then(data => {
+    let userObj = JSON.stringify(data);
+
+    fetch(`http://localhost:8080/users/${usernameSearch}`)
+    .then(res => {res.json()})
+    .then(data => {
+      let userObjSearch = JSON.stringify(data);
+
+      userObj.credits -= amount;
+      fetch(`http://localhost:8080/users/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: userObj
+      })
+      .then(res =>{
+        if (res.ok){
+          console.log("remove credits successful")
+        } else {
+          console.log("ERROR remove credits unsuccessful")
+        }
+      })
+
+      userObjSearch.bounty = 0;
+      fetch(`http://localhost:8080/users/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: userObjSearch
+      })
+      .then(res => {
+        if (res.ok) {
+          console.log("remove bounty successful")
+        } else {
+          console.log("ERROR remove bounty unsuccessful")
+        }
+      })
+    })
+
   })
 
 
 }
+
