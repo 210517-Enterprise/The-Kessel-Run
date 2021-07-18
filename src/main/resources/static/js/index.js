@@ -5,6 +5,10 @@ let loginBtn = document.getElementById('login-btn')
 loginBtn.addEventListener("click", createForm);
 
 function createForm() {
+    if(!!sessionStorage.getItem('username') && !!sessionStorage.getItem('isLoggedIn')){
+        sessionStorage.clear();
+    }
+
     let formDiv = document.getElementById('form-div');
 
     formDiv.innerHTML = `
