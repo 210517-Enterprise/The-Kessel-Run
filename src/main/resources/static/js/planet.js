@@ -174,7 +174,7 @@ function createMainDiv() {
   row2.append(userCol);
 }
 
-function getAnswer() {
+async function getAnswer() {
   let answerValue = sessionStorage.getItem("riddleAnswer");
   let submittedAnswer = document.getElementById("answer-input").value;
   let inputDiv = document.getElementById("riddle-col");
@@ -188,6 +188,27 @@ function getAnswer() {
   answeredDivBtn.setAttribute("aria-label", "Close");
 
   if (submittedAnswer.toLowerCase().includes(answerValue)) {
+
+    let username = sessionStorage.getItem("username");
+    const userRes = await fetch(`http://localhost:8080/users/${username}`);
+    var userObj = await userRes.json();
+    userObj.credits += 5000;
+    userObj = JSON.stringify(userObj);
+
+    fetch(`http://localhost:8080/users/add`, {
+      method: "POST",
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: userObj
+    }).then(res => {
+      if (res.ok) {
+        console.log("add credits SUCCESS")
+      } else {
+        console.log("ERROR add credits NOT SUCCESSFUL")
+      }
+    })
+
     submitButton.setAttribute("disabled", true);
     answeredDiv.setAttribute(
       "class",
