@@ -1,3 +1,5 @@
+![](images/intro.gif)
+
 # The Kessel Run
 `Traverse a galaxy far, far, away...`
 
