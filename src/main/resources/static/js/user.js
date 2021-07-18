@@ -159,55 +159,105 @@ document.getElementById("addBtn").addEventListener("click", addBounty)
 
 //CLAIM BOUNTY==========================================================================
 
+
 async function claimBounty() {
   let username1 = sessionStorage.getItem("username");
+  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
+  var userObj = await getResponse1.json();
+  console.log('saved as json 1')
+  userObj = JSON.stringify(userObj);
+  console.log('stringified 1')
+  console.log(userObj);
 
-   fetch(`http://localhost:8080/users/${username1}`)
-  .then(res => { res.json()})
-  .then(data => {
-    let userObj = JSON.stringify(data);
+  const getResponse2 = await fetch(`http://localhost:8080/users/${usernameSearch}`)
+  var userObjSearch = await getResponse2.json();
+  console.log("saved as json 2");
+  userObjSearch = JSON.stringify(userObjSearch);
+  console.log("strigified 2");
+  console.log(userObjSearch);
 
-     fetch(`http://localhost:8080/users/${usernameSearch}`)
-    .then(res => {res.json()})
-    .then(data => {
-      let userObjSearch = JSON.stringify(data);
+  userObj.credits += userObjSearch.bounty;
+  userObjSearch.bounty = 0;
 
-      if(userObj.planet == userObjSearch.planet) {
-        userObj.credits += userObjSearch.bounty;
-
-        fetch(`http://localhost:8080/users/add`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: userObj
-        }).then(res => {
-          if(res.ok) {
-            console.log("add credits successful")
-          } else {
-            console.log("ERROR add credits unsuccessful")
-          }
-        })
-        userObjSearch.bounty = 0;
-        fetch(`http://localhost:8080/users/add`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: userObjSearch
-        }).then(res => {
-          if(res.ok) {
-            console.log("remove bounty successful")
-          } else {
-            console.log("ERROR remove bounty unsuccessful")
-          }
-        })
-      }
-    })
-
-
+  fetch(`http://localhost:8080/users/add`, {
+    method: "POST",
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: userObj
+  }).then(res => {
+    if (res.ok) {
+      console.log("add credits SUCCESS")
+    } else {
+      console.log("ERROR add credits NOT SUCCESSFUL")
+    }
   })
+
+  fetch(`http://localhost:8080/users/add`, {
+    method: "POST",
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: userObjSearch
+  }).then(res => {
+    if (res.ok) {
+      console.log("remove bounty SUCCESS")
+    } else {
+      console.log("ERROR remove bounty NOT SUCCESSFUL")
+    }
+  })
+  
 }
+
+// function claimBounty1() {
+//   let username1 = sessionStorage.getItem("username");
+
+//    fetch(`http://localhost:8080/users/${username1}`)
+//   .then(res => { res.json()})
+//   .then(data1 => {
+//     let userObj = JSON.stringify(data1);
+
+//     fetch(`http://localhost:8080/users/${usernameSearch}`)
+//     .then(res => {res.json()})
+//     .then(data2 => {
+//       let userObjSearch = JSON.stringify(data2);
+
+//       if(userObj.planet == userObjSearch.planet) {
+//         userObj.credits += userObjSearch.bounty;
+
+//         fetch(`http://localhost:8080/users/add`, {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: userObj
+//         }).then(res => {
+//           if(res.ok) {
+//             console.log("add credits successful")
+//           } else {
+//             console.log("ERROR add credits unsuccessful")
+//           }
+//         })
+//         userObjSearch.bounty = 0;
+//         fetch(`http://localhost:8080/users/add`, {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: userObjSearch
+//         }).then(res => {
+//           if(res.ok) {
+//             console.log("remove bounty successful")
+//           } else {
+//             console.log("ERROR remove bounty unsuccessful")
+//           }
+//         })
+//       }
+//     })
+
+
+//   })
+// }
 
 
 async function addBounty() {
