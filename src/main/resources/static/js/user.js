@@ -209,7 +209,7 @@ async function claimBounty() {
 
 async function addBounty() {
   let username1 = sessionStorage.getItem("username");
-  let amount = document.getElementById("bountyAmount").value;
+  let amount = parseInt(document.getElementById("bountyAmount").value);
 
   const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
   var userObj = await getResponse1.json();
