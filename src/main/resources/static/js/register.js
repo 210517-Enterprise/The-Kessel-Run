@@ -174,7 +174,7 @@ function registerUser() {
         body: json_str,}) // fetch returns a PROMISE which is a obj that produces a single value at some point in the furture
     .then((res) =>{
         if(res.ok){
-
+            console.log("Registration is valid.");
             // fade out the form
             let formEle = document.getElementsByTagName('form')[0];
             formEle.id = 'form-fade';
@@ -208,14 +208,15 @@ function registerUser() {
 
             // wait until the text crawl is finished
             setTimeout(() => {
-                console.log("Success");
+                console.log("Success, routing to login");
                 location.replace('index.html');
             }, 60000);
 
             
         }else{
-            console.log('Error')
-            alert("Invalid input")
+            console.log('Error');
+            alert("Invalid input");
+            console.error("Invalid input");
         }
     }) 
     

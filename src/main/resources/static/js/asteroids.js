@@ -38,10 +38,10 @@ function continueToPlanet() {
         body: userObj,
       }).then((res) => {
         if (res.ok) {
-          console.log("Success");
+          console.log("Success, routing to planet.");
           location.href = "planet.html";
         } else {
-          console.log("Error");
+          console.error("Couldn't submit points.");
         }
       });
     });  
