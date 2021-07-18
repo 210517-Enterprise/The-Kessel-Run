@@ -22,9 +22,9 @@ function createForm() {
                 </div>
             </div>
             <div class="row">
-            <div class="col-sm-4" id="logBtn"></div>
-            <button type="submit" class="btn col-sm-3" id="form-submit">Submit</button>
-            <button type="button" class="btn col-sm-3" style="font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif" id="register-btn">Register</button>
+              <div class="col-sm-4" id="logBtn"></div>
+              <button type="submit" class="btn col-sm-3" id="form-submit">Submit</button>
+              <button type="button" class="btn col-sm-3" id="register-btn">Register</button>
             </div>
         </form>
     `;

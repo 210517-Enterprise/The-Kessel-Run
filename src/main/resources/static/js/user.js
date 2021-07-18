@@ -120,7 +120,8 @@ function createMainDiv() {
  */
 let tempDiv = document.createElement("div");
 tempDiv.setAttribute("id", "star-wars");
-tempDiv.setAttribute("class", "h5");
+tempDiv.setAttribute("class", "h2 d-flex justify-content-center");
+tempDiv.setAttribute("style", "padding-top: 10px");
 tempDiv.innerHTML = "Please enter a user name in the search bar";
 
 window.onload = function () {

@@ -1,8 +1,3 @@
-window.onload = function () {
-  document.getElementById("planets-output").innerHTML =
-    "Please enter a planet into the search bar";
-};
-
 let searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", searchByValue);
 
