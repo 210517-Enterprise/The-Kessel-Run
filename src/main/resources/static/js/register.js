@@ -179,6 +179,10 @@ function registerUser() {
             let formEle = document.getElementsByTagName('form')[0];
             formEle.id = 'form-fade';
 
+            // fade out the submit button
+            let subBtn = document.getElementById('login-btn');
+            subBtn.id = 'form-fade';
+
             document.getElementById('clouds').style.opacity = 0;
 
 
