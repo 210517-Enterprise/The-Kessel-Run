@@ -65,8 +65,13 @@ userList.appendChild(userCredits);
 userList.appendChild(userBounty);
 userList.appendChild(userPlanet);
 
+// create usernameSearch
+var usernameSearch;
 // create list function for User stats
 function createUserList(username) {
+
+  usernameSearch = username;
+
   let url = `http://localhost:8080/users/${username}`;
   fetch(url)
     .then((res) => res.json())
@@ -139,4 +144,65 @@ function getSearchValue() {
   let search = document.getElementById("search-form").value;
 
   return search;
+}
+
+document.getElementById("claimBtn").addEventListener("click", claimBounty);
+document.getElementById("addBtn").addEventListener("click", addBounty);
+
+
+
+async function claimBounty() {
+  let username1 = sessionStorage.getItem("username");
+  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
+  var userObj = await getResponse1.json();
+  console.log('saved as json 1')
+  
+
+  const getResponse2 = await fetch(`http://localhost:8080/users/${usernameSearch}`)
+  var userObjSearch = await getResponse2.json();
+  console.log("saved as json 2");
+  
+
+  console.log(`Credits: ${userObj.credits}`);
+  userObj.credits += userObjSearch.bounty;
+  console.log(`Credits: ${userObj.credits}`);
+
+  userObjSearch.bounty = 0;
+  // stringify userObj
+  userObj = JSON.stringify(userObj);
+  console.log('stringified 1')
+  console.log(userObj);
+  // stringify userObjSearch
+  userObjSearch = JSON.stringify(userObjSearch);
+  console.log("strigified 2");
+  console.log(userObjSearch);
+
+  fetch(`http://localhost:8080/users/add`, {
+    method: "POST",
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: userObj
+  }).then(res => {
+    if (res.ok) {
+      console.log("add credits SUCCESS")
+    } else {
+      console.log("ERROR add credits NOT SUCCESSFUL")
+    }
+  })
+
+  fetch(`http://localhost:8080/users/add`, {
+    method: "POST",
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: userObjSearch
+  }).then(res => {
+    if (res.ok) {
+      console.log("remove bounty SUCCESS")
+    } else {
+      console.log("ERROR remove bounty NOT SUCCESSFUL")
+    }
+  })
+
 }
