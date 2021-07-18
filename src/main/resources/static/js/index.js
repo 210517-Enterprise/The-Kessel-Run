@@ -58,11 +58,12 @@ function createForm() {
         console.log("psd"+psd)
 
         if(psd===data.password){
+            console.log("Logging in.")
             sessionStorage.setItem("isLoggedIn", true)
             sessionStorage.setItem("username", document.getElementById("inputUsername").value)
             location.href= "planet.html";
         } else {
-            console.log("Invalid")
+            console.error("Invalid Login Credentials.")
         }     
             
 }
