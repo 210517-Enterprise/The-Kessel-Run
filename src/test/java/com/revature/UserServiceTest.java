@@ -7,9 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.Random;
 
-import com.revature.exceptions.FailedToRegisterUserException;
 import com.revature.exceptions.LoginUserFailureException;
-import com.revature.exceptions.UserNotFoundException;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 import com.revature.service.UserService;
@@ -19,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.TestPropertySource;
+
 @TestPropertySource(locations="classpath:/src/test/resources/test.properties")
 public class UserServiceTest {
 	
@@ -77,28 +76,6 @@ public class UserServiceTest {
 		assertEquals(registeredUser.getId(), fakePk);
 
 	}
-	
-//
-//	@Test
-//	public void testRegisterUser_idGreaterThanZero_throwsException() {
-//		
-//		user.setId(34);
-//		
-//		assertThrows(FailedToRegisterUserException.class, () -> 
-//		userv.register(user), "Received User Object did not have ID of 0");
-//			
-//	}
-//	
-//	@Test
-//	public void testLoginUser_returnsUser() {
-//		
-//		when(mockdao.findByUsername(user.getUsername())).thenReturn(expectedUser);
-//		
-//		User loggedinUser = userv.login(user.getUsername(),user.getPass());
-//
-//		assertEquals(loggedinUser, expectedUser);
-//
-//	}
 	
 	@Test
 	public void testLoginUser_noPasswordandnoUsername_throwsUserNotFoundException() {
