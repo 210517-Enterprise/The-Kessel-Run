@@ -163,6 +163,9 @@ async function claimBounty() {
   var userObjSearch = await getResponse2.json();
   console.log("saved as json 2");
   
+  if(userObj.planet == userObjSearch.planet) {
+
+  
 
   console.log(`Credits: ${userObj.credits}`);
   userObj.credits += userObjSearch.bounty;
@@ -205,6 +208,9 @@ async function claimBounty() {
       console.log("ERROR remove bounty NOT SUCCESSFUL")
     }
   })
+} else {
+  window.alert("You are on a different planet than the Target")
+}
 
 }
 
