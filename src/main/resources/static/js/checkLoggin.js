@@ -4,7 +4,7 @@ function checkLoggin(){
     }
 }
 
-// window.onload = checkLoggin()
+window.onload = checkLoggin()
 
 
 
