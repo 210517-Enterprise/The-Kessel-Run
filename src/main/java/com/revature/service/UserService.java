@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.exceptions.FailedToRegisterUserException;
-import com.revature.exceptions.LoginUserFailureException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
