@@ -206,3 +206,59 @@ async function claimBounty() {
   })
 
 }
+
+async function addBounty() {
+  let username1 = sessionStorage.getItem("username");
+  let amount = document.getElementById("bountyAmount").value;
+
+  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
+  var userObj = await getResponse1.json();
+  console.log('saved as json 1')
+
+
+  const getResponse2 = await fetch(`http://localhost:8080/users/${usernameSearch}`)
+  var userObjSearch = await getResponse2.json();
+  console.log("saved as json 2");
+
+
+  userObj.credits -= amount;
+  userObjSearch.bounty += amount;
+
+  userObj = JSON.stringify(userObj);
+  console.log('stringified 1')
+  console.log(userObj);
+
+  userObjSearch = JSON.stringify(userObjSearch);
+  console.log("strigified 2");
+  console.log(userObjSearch);
+
+  fetch(`http://localhost:8080/users/add`, {
+    method: "POST",
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: userObj
+  }).then(res => {
+    if (res.ok) {
+      console.log("remove credits SUCCESS")
+    } else {
+      console.log("ERROR remove credits NOT SUCCESSFUL")
+    }
+  })
+
+  fetch(`http://localhost:8080/users/add`, {
+    method: "POST",
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: userObjSearch
+  }).then(res => {
+    if (res.ok) {
+      console.log("add bounty SUCCESS")
+    } else {
+      console.log("ERROR add bounty NOT SUCCESSFUL")
+    }
+  })
+
+
+}
