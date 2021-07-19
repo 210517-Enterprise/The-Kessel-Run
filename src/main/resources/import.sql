@@ -1,11 +1,3 @@
--- INSERT USERS
-
-INSERT INTO users (USERNAME, PASS, NAME, RACE, SKIN_COLOR, HAIR_COLOR, EYE_COLOR, CREDITS, STARSHIP, MODEL, COPILOT, PLANET, BOUNTY) VALUES ('thomaspceci', 'pass', 'Qel', 'Mirialan', 'Green', 'White', 'Indigo', 23000, 'Shemzi', 'Star Courier', 'San Hill', 'Tatooine', 500);
-INSERT INTO users (USERNAME, PASS, NAME, RACE, SKIN_COLOR, HAIR_COLOR, EYE_COLOR, CREDITS, STARSHIP, MODEL, COPILOT, PLANET, BOUNTY) VALUES ('andregoulbourne', 'pass', 'Aram Acheron', 'Chagrian', 'Blue', 'None', 'Blue', 32000, 'Logue Rock', 'H-type Nubian yacht', 'Bib Fortuna', 'Tatooine', 500);
-INSERT INTO users (USERNAME, PASS, NAME, RACE, SKIN_COLOR, HAIR_COLOR, EYE_COLOR, CREDITS, STARSHIP, MODEL, COPILOT, PLANET, BOUNTY) VALUES ('nopsal', 'pass', 'Puw''kizi', 'Twi''lek', 'Red', 'None', 'Orange', 5000, 'Yomraju', 'Solar Sailer', 'Mas Amedda', 'Tatooine', 500);
-INSERT INTO users (USERNAME, PASS, NAME, RACE, SKIN_COLOR, HAIR_COLOR, EYE_COLOR, CREDITS, STARSHIP, MODEL, COPILOT, PLANET, BOUNTY) VALUES ('ramarier11', 'pass', 'Ocalt Pasaac', 'Kel Dor', 'Orange', 'None', 'Silver', 13400, 'Yikhuha Roln', 'Theta-class T-2c shuttle', 'Tarfful', 'Tatooine', 500);
-INSERT INTO users (USERNAME, PASS, NAME, RACE, SKIN_COLOR, HAIR_COLOR, EYE_COLOR, CREDITS, STARSHIP, MODEL, COPILOT, PLANET, BOUNTY) VALUES ('JakeGeiser', 'pass', 'Modi Boddoss', 'Nautolan', 'Blue', 'None', 'Black', 27900, 'Seacellon', 'J-type star skiff', 'Eeth Koth', 'Tatooine', 500);
-
 -- -- -- INSERT RIDDLES
 
 INSERT INTO riddle (riddle, answer, planet) VALUES ('Walks in a zephyr / Stands when it''s wetter / Counts time, stops clocks / Swallows kingdoms, gnaws rocks', 'sand', 'Tatooine');
