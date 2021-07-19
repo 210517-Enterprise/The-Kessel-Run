@@ -32,6 +32,7 @@ This is a traversable model of the galaxy based on the Star Wars themed API: SWA
 
 ## Usage Instructions
 - Clone the respository: `git clone https://github.com/210517-Enterprise/The-Kessel-Run.git`
+- Insert an application.properties file that connects to your own database
 - Run the application: `mvn spring-boot:run`
 - Go to the webpage: `http://localhost:8080`
 - Register, login and begin.
