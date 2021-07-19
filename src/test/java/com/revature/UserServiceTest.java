@@ -1,13 +1,11 @@
 package com.revature;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.Random;
 
-import com.revature.exceptions.LoginUserFailureException;
 import com.revature.model.User;
 import com.revature.repositories.UserDAO;
 import com.revature.service.UserService;
@@ -16,9 +14,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.TestPropertySource;
 
-@TestPropertySource(locations="classpath:/src/test/resources/test.properties")
 public class UserServiceTest {
 	
 	private UserService userv;
@@ -76,14 +72,5 @@ public class UserServiceTest {
 		assertEquals(registeredUser.getId(), fakePk);
 
 	}
-	
-	@Test
-	public void testLoginUser_noPasswordandnoUsername_throwsUserNotFoundException() {
-		
-		assertThrows(LoginUserFailureException.class, () -> 
-		userv.login("", ""), "No User was found");
-			
-	}
-	
 
 }
