@@ -217,6 +217,7 @@ async function claimBounty() {
 async function addBounty() {
   let username1 = sessionStorage.getItem("username");
   let amount = parseInt(document.getElementById("bountyAmount").value);
+  document.getElementById("bountyAmount").value = "";
 
   const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
   var userObj = await getResponse1.json();
@@ -227,9 +228,15 @@ async function addBounty() {
   var userObjSearch = await getResponse2.json();
   console.log("saved as json 2");
 
+  if(userObj.credits >= amount){
 
-  userObj.credits -= amount;
-  userObjSearch.bounty += amount;
+  
+  let ucredits = parseInt(userObj.credits);
+  ucredits -= amount;
+  let uSearchbounty = parseInt(userObjSearch.bounty);
+  uSearchbounty += amount;
+  userObj.credits = ucredits;
+  userObjSearch.bounty = uSearchbounty;
 
   userObj = JSON.stringify(userObj);
   console.log('stringified 1')
@@ -266,6 +273,9 @@ async function addBounty() {
       console.log("ERROR add bounty NOT SUCCESSFUL")
     }
   })
+} else {
+  window.alert("Insufficient funds")
+}
 
 
 }
