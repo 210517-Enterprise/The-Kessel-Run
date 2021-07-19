@@ -69,7 +69,6 @@ userList.appendChild(userPlanet);
 var usernameSearch;
 // create list function for User stats
 function createUserList(username) {
-
   usernameSearch = username;
 
   let url = `http://localhost:8080/users/${username}`;
@@ -150,68 +149,63 @@ function getSearchValue() {
 document.getElementById("claimBtn").addEventListener("click", claimBounty);
 document.getElementById("addBtn").addEventListener("click", addBounty);
 
-
-
 async function claimBounty() {
   let username1 = sessionStorage.getItem("username");
-  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
+  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`);
   var userObj = await getResponse1.json();
-  console.log('saved as json 1')
-  
+  console.log("saved as json 1");
 
-  const getResponse2 = await fetch(`http://localhost:8080/users/${usernameSearch}`)
+  const getResponse2 = await fetch(
+    `http://localhost:8080/users/${usernameSearch}`
+  );
   var userObjSearch = await getResponse2.json();
   console.log("saved as json 2");
-  
-  if(userObj.planet == userObjSearch.planet) {
 
-  
+  if (userObj.planet == userObjSearch.planet) {
+    console.log(`Credits: ${userObj.credits}`);
+    userObj.credits += userObjSearch.bounty;
+    console.log(`Credits: ${userObj.credits}`);
 
-  console.log(`Credits: ${userObj.credits}`);
-  userObj.credits += userObjSearch.bounty;
-  console.log(`Credits: ${userObj.credits}`);
+    userObjSearch.bounty = 0;
+    // stringify userObj
+    userObj = JSON.stringify(userObj);
+    console.log("stringified 1");
+    console.log(userObj);
+    // stringify userObjSearch
+    userObjSearch = JSON.stringify(userObjSearch);
+    console.log("strigified 2");
+    console.log(userObjSearch);
 
-  userObjSearch.bounty = 0;
-  // stringify userObj
-  userObj = JSON.stringify(userObj);
-  console.log('stringified 1')
-  console.log(userObj);
-  // stringify userObjSearch
-  userObjSearch = JSON.stringify(userObjSearch);
-  console.log("strigified 2");
-  console.log(userObjSearch);
+    fetch(`http://localhost:8080/users/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: userObj,
+    }).then((res) => {
+      if (res.ok) {
+        console.log("add credits SUCCESS");
+      } else {
+        console.log("ERROR add credits NOT SUCCESSFUL");
+      }
+    });
 
-  fetch(`http://localhost:8080/users/add`, {
-    method: "POST",
-    headers: {
-      'Content-Type' : 'application/json'
-    },
-    body: userObj
-  }).then(res => {
-    if (res.ok) {
-      console.log("add credits SUCCESS")
-    } else {
-      console.log("ERROR add credits NOT SUCCESSFUL")
-    }
-  })
-
-  fetch(`http://localhost:8080/users/add`, {
-    method: "POST",
-    headers: {
-      'Content-Type' : 'application/json'
-    },
-    body: userObjSearch
-  }).then(res => {
-    if (res.ok) {
-      console.log("remove bounty SUCCESS")
-    } else {
-      console.log("ERROR remove bounty NOT SUCCESSFUL")
-    }
-  })
-} else {
-  window.alert("You are on a different planet than the Target")
-}
-
+    fetch(`http://localhost:8080/users/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: userObjSearch,
+    }).then((res) => {
+      if (res.ok) {
+        console.log("remove bounty SUCCESS");
+      } else {
+        console.log("ERROR remove bounty NOT SUCCESSFUL");
+      }
+    });
+  } else {
+    window.alert("You are on a different planet than the Target");
+  }
 }
 
 async function addBounty() {
@@ -219,63 +213,60 @@ async function addBounty() {
   let amount = parseInt(document.getElementById("bountyAmount").value);
   document.getElementById("bountyAmount").value = "";
 
-  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`)
+  const getResponse1 = await fetch(`http://localhost:8080/users/${username1}`);
   var userObj = await getResponse1.json();
-  console.log('saved as json 1')
+  console.log("saved as json 1");
 
-
-  const getResponse2 = await fetch(`http://localhost:8080/users/${usernameSearch}`)
+  const getResponse2 = await fetch(
+    `http://localhost:8080/users/${usernameSearch}`
+  );
   var userObjSearch = await getResponse2.json();
   console.log("saved as json 2");
 
-  if(userObj.credits >= amount){
+  if (userObj.credits >= amount) {
+    let ucredits = parseInt(userObj.credits);
+    ucredits -= amount;
+    let uSearchbounty = parseInt(userObjSearch.bounty);
+    uSearchbounty += amount;
+    userObj.credits = ucredits;
+    userObjSearch.bounty = uSearchbounty;
 
-  
-  let ucredits = parseInt(userObj.credits);
-  ucredits -= amount;
-  let uSearchbounty = parseInt(userObjSearch.bounty);
-  uSearchbounty += amount;
-  userObj.credits = ucredits;
-  userObjSearch.bounty = uSearchbounty;
+    userObj = JSON.stringify(userObj);
+    console.log("stringified 1");
+    console.log(userObj);
 
-  userObj = JSON.stringify(userObj);
-  console.log('stringified 1')
-  console.log(userObj);
+    userObjSearch = JSON.stringify(userObjSearch);
+    console.log("strigified 2");
+    console.log(userObjSearch);
 
-  userObjSearch = JSON.stringify(userObjSearch);
-  console.log("strigified 2");
-  console.log(userObjSearch);
+    fetch(`http://localhost:8080/users/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: userObj,
+    }).then((res) => {
+      if (res.ok) {
+        console.log("remove credits SUCCESS");
+      } else {
+        console.log("ERROR remove credits NOT SUCCESSFUL");
+      }
+    });
 
-  fetch(`http://localhost:8080/users/add`, {
-    method: "POST",
-    headers: {
-      'Content-Type' : 'application/json'
-    },
-    body: userObj
-  }).then(res => {
-    if (res.ok) {
-      console.log("remove credits SUCCESS")
-    } else {
-      console.log("ERROR remove credits NOT SUCCESSFUL")
-    }
-  })
-
-  fetch(`http://localhost:8080/users/add`, {
-    method: "POST",
-    headers: {
-      'Content-Type' : 'application/json'
-    },
-    body: userObjSearch
-  }).then(res => {
-    if (res.ok) {
-      console.log("add bounty SUCCESS")
-    } else {
-      console.log("ERROR add bounty NOT SUCCESSFUL")
-    }
-  })
-} else {
-  window.alert("Insufficient funds")
-}
-
-
+    fetch(`http://localhost:8080/users/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: userObjSearch,
+    }).then((res) => {
+      if (res.ok) {
+        console.log("add bounty SUCCESS");
+      } else {
+        console.log("ERROR add bounty NOT SUCCESSFUL");
+      }
+    });
+  } else {
+    window.alert("Insufficient funds");
+  }
 }
